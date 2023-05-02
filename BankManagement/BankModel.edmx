@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BankModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="BankModelStoreContainer">
+    <EntitySet Name="TaiKhoans" EntityType="BankModel.Store.TaiKhoans" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GiaoDiches" EntityType="BankModel.Store.GiaoDiches" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="KhoanVays" EntityType="BankModel.Store.KhoanVays" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SoTietKiems" EntityType="BankModel.Store.SoTietKiems" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TheTinDungs" EntityType="BankModel.Store.TheTinDungs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="GiaoDichTaiKhoan" EntityType="BankModel.Store.GiaoDichTaiKhoan" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_GiaoDichTaiKhoan_GiaoDich" Association="BankModel.Store.FK_GiaoDichTaiKhoan_GiaoDich">
+      <End Role="GiaoDich" EntitySet="GiaoDiches" />
+      <End Role="GiaoDichTaiKhoan" EntitySet="GiaoDichTaiKhoan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GiaoDichTaiKhoan_TaiKhoan" Association="BankModel.Store.FK_GiaoDichTaiKhoan_TaiKhoan">
+      <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+      <End Role="GiaoDichTaiKhoan" EntitySet="GiaoDichTaiKhoan" />
+    </AssociationSet>
+    <AssociationSet Name="KhoanVayTaiKhoan" Association="BankModel.Store.KhoanVayTaiKhoan">
+      <End Role="KhoanVay" EntitySet="KhoanVays" />
+      <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+    </AssociationSet>
+    <AssociationSet Name="SoTietKiemTaiKhoan" Association="BankModel.Store.SoTietKiemTaiKhoan">
+      <End Role="SoTietKiem" EntitySet="SoTietKiems" />
+      <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+    </AssociationSet>
+    <AssociationSet Name="TheTinDungTaiKhoan" Association="BankModel.Store.TheTinDungTaiKhoan">
+      <End Role="TheTinDung" EntitySet="TheTinDungs" />
+      <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="TaiKhoans">
+    <Key>
+      <PropertyRef Name="SoTK" />
+    </Key>
+    <Property Name="SoTK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TenTK" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="MatKhau" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="HoVaTen" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NgaySinh" Type="datetime" Nullable="false" />
+    <Property Name="CCCD" Type="nvarchar" Nullable="false" MaxLength="12" />
+    <Property Name="DiaChi" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SDT" Type="nvarchar" Nullable="false" MaxLength="10" />
+    <Property Name="IsAdmin" Type="int" Nullable="false" />
+    <Property Name="SoDu" Type="float" Nullable="false" />
+    <Property Name="DiemTinDung" Type="int" Nullable="false" />
+    <Property Name="NgayMoTaiKhoan" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DanhSachDen" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GiaoDiches">
+    <Key>
+      <PropertyRef Name="MaGD" />
+    </Key>
+    <Property Name="MaGD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LoaiGD" Type="int" Nullable="false" />
+    <Property Name="MaNguoiGui" Type="int" Nullable="false" />
+    <Property Name="MaNguoiNhan" Type="int" Nullable="false" />
+    <Property Name="SoTienGD" Type="float" Nullable="false" />
+    <Property Name="NgayGD" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KhoanVays">
+    <Key>
+      <PropertyRef Name="SoKV" />
+    </Key>
+    <Property Name="SoKV" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SoTK" Type="int" Nullable="false" />
+    <Property Name="NgayVay" Type="datetime" Nullable="false" />
+    <Property Name="NgayHan" Type="datetime" Nullable="false" />
+    <Property Name="SoTienVay" Type="float" Nullable="false" />
+    <Property Name="TinhTrang" Type="int" Nullable="false" />
+    <Property Name="LoaiKhoanVay" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SoTietKiems">
+    <Key>
+      <PropertyRef Name="MaSTK" />
+    </Key>
+    <Property Name="MaSTK" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SoTK" Type="int" Nullable="false" />
+    <Property Name="TenSo" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="NgayGui" Type="datetime" Nullable="false" />
+    <Property Name="NgayTatToan" Type="datetime" Nullable="true" />
+    <Property Name="NgayHan" Type="datetime" Nullable="false" />
+    <Property Name="SoTienGui" Type="float" Nullable="false" />
+    <Property Name="LaiSuat" Type="float" Nullable="false" />
+    <Property Name="ThoiGian" Type="int" Nullable="false" />
+    <Property Name="TinhTrang" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TheTinDungs">
+    <Key>
+      <PropertyRef Name="MaTTD" />
+    </Key>
+    <Property Name="MaTTD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SoTK" Type="int" Nullable="false" />
+    <Property Name="DiemTD" Type="int" Nullable="false" />
+    <Property Name="DaVay" Type="float" Nullable="false" />
+    <Property Name="Khoa" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GiaoDichTaiKhoan">
+    <Key>
+      <PropertyRef Name="GiaoDiches_MaGD" />
+      <PropertyRef Name="TaiKhoans_SoTK" />
+    </Key>
+    <Property Name="GiaoDiches_MaGD" Type="int" Nullable="false" />
+    <Property Name="TaiKhoans_SoTK" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="KhoanVayTaiKhoan">
+    <End Role="KhoanVay" Type="BankModel.Store.KhoanVays" Multiplicity="*" />
+    <End Role="TaiKhoan" Type="BankModel.Store.TaiKhoans" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="SoTK" />
+      </Principal>
+      <Dependent Role="KhoanVay">
+        <PropertyRef Name="SoTK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SoTietKiemTaiKhoan">
+    <End Role="SoTietKiem" Type="BankModel.Store.SoTietKiems" Multiplicity="*" />
+    <End Role="TaiKhoan" Type="BankModel.Store.TaiKhoans" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="SoTK" />
+      </Principal>
+      <Dependent Role="SoTietKiem">
+        <PropertyRef Name="SoTK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TheTinDungTaiKhoan">
+    <End Role="TheTinDung" Type="BankModel.Store.TheTinDungs" Multiplicity="*" />
+    <End Role="TaiKhoan" Type="BankModel.Store.TaiKhoans" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="SoTK" />
+      </Principal>
+      <Dependent Role="TheTinDung">
+        <PropertyRef Name="SoTK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GiaoDichTaiKhoan_GiaoDich">
+    <End Role="GiaoDich" Type="BankModel.Store.GiaoDiches" Multiplicity="1" />
+    <End Role="GiaoDichTaiKhoan" Type="BankModel.Store.GiaoDichTaiKhoan" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GiaoDich">
+        <PropertyRef Name="MaGD" />
+      </Principal>
+      <Dependent Role="GiaoDichTaiKhoan">
+        <PropertyRef Name="GiaoDiches_MaGD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GiaoDichTaiKhoan_TaiKhoan">
+    <End Role="GiaoDichTaiKhoan" Type="BankModel.Store.GiaoDichTaiKhoan" Multiplicity="*" />
+    <End Role="TaiKhoan" Type="BankModel.Store.TaiKhoans" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="TaiKhoan">
+        <PropertyRef Name="SoTK" />
+      </Principal>
+      <Dependent Role="GiaoDichTaiKhoan">
+        <PropertyRef Name="TaiKhoans_SoTK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="BankModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="BankModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TaiKhoans" EntityType="BankModel.TaiKhoan" />
+          <EntitySet Name="GiaoDiches" EntityType="BankModel.GiaoDich" />
+          <AssociationSet Name="GiaoDichTaiKhoan" Association="BankModel.GiaoDichTaiKhoan">
+            <End Role="GiaoDich" EntitySet="GiaoDiches" />
+            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+          </AssociationSet>
+          <EntitySet Name="KhoanVays" EntityType="BankModel.KhoanVay" />
+          <EntitySet Name="SoTietKiems" EntityType="BankModel.SoTietKiem" />
+          <EntitySet Name="TheTinDungs" EntityType="BankModel.TheTinDung" />
+          <AssociationSet Name="KhoanVayTaiKhoan" Association="BankModel.KhoanVayTaiKhoan">
+            <End Role="KhoanVay" EntitySet="KhoanVays" />
+            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+          </AssociationSet>
+          <AssociationSet Name="SoTietKiemTaiKhoan" Association="BankModel.SoTietKiemTaiKhoan">
+            <End Role="SoTietKiem" EntitySet="SoTietKiems" />
+            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+          </AssociationSet>
+          <AssociationSet Name="TheTinDungTaiKhoan" Association="BankModel.TheTinDungTaiKhoan">
+            <End Role="TheTinDung" EntitySet="TheTinDungs" />
+            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="TaiKhoan">
+          <Key>
+            <PropertyRef Name="SoTK" />
+          </Key>
+          <Property Name="SoTK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TenTK" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="MatKhau" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="HoVaTen" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="NgaySinh" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CCCD" Type="String" Nullable="false" MaxLength="12" Unicode="true" FixedLength="false" />
+          <Property Name="DiaChi" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="SDT" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="IsAdmin" Type="Int32" Nullable="false" />
+          <Property Name="SoDu" Type="Double" Nullable="false" />
+          <Property Name="DiemTinDung" Type="Int32" Nullable="false" />
+          <Property Name="NgayMoTaiKhoan" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="GiaoDiches" Relationship="BankModel.GiaoDichTaiKhoan" FromRole="TaiKhoan" ToRole="GiaoDich" />
+          <NavigationProperty Name="KhoanVays" Relationship="BankModel.KhoanVayTaiKhoan" FromRole="TaiKhoan" ToRole="KhoanVay" />
+          <NavigationProperty Name="SoTietKiems" Relationship="BankModel.SoTietKiemTaiKhoan" FromRole="TaiKhoan" ToRole="SoTietKiem" />
+          <NavigationProperty Name="TheTinDungs" Relationship="BankModel.TheTinDungTaiKhoan" FromRole="TaiKhoan" ToRole="TheTinDung" />
+          <Property Name="DanhSachDen" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GiaoDich">
+          <Key>
+            <PropertyRef Name="MaGD" />
+          </Key>
+          <Property Name="MaGD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoaiGD" Type="Int32" Nullable="false" />
+          <Property Name="MaNguoiGui" Type="Int32" Nullable="false" />
+          <Property Name="MaNguoiNhan" Type="Int32" Nullable="false" />
+          <Property Name="SoTienGD" Type="Double" Nullable="false" />
+          <Property Name="NgayGD" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TaiKhoans" Relationship="BankModel.GiaoDichTaiKhoan" FromRole="GiaoDich" ToRole="TaiKhoan" />
+        </EntityType>
+        <Association Name="GiaoDichTaiKhoan">
+          <End Type="BankModel.GiaoDich" Role="GiaoDich" Multiplicity="*" />
+          <End Type="BankModel.TaiKhoan" Role="TaiKhoan" Multiplicity="*" />
+        </Association>
+        <EntityType Name="KhoanVay">
+          <Key>
+            <PropertyRef Name="SoKV" />
+          </Key>
+          <Property Name="SoKV" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SoTK" Type="Int32" Nullable="false" />
+          <Property Name="NgayVay" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NgayHan" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SoTienVay" Type="Double" Nullable="false" />
+          <Property Name="TinhTrang" Type="Int32" Nullable="false" />
+          <Property Name="LoaiKhoanVay" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TaiKhoan" Relationship="BankModel.KhoanVayTaiKhoan" FromRole="KhoanVay" ToRole="TaiKhoan" />
+        </EntityType>
+        <EntityType Name="SoTietKiem">
+          <Key>
+            <PropertyRef Name="MaSTK" />
+          </Key>
+          <Property Name="MaSTK" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SoTK" Type="Int32" Nullable="false" />
+          <Property Name="TenSo" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="NgayGui" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NgayTatToan" Type="DateTime" Nullable="true" Precision="3" />
+          <Property Name="NgayHan" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SoTienGui" Type="Double" Nullable="false" />
+          <Property Name="LaiSuat" Type="Double" Nullable="false" />
+          <Property Name="ThoiGian" Type="Int32" Nullable="false" />
+          <Property Name="TinhTrang" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TaiKhoan" Relationship="BankModel.SoTietKiemTaiKhoan" FromRole="SoTietKiem" ToRole="TaiKhoan" />
+        </EntityType>
+        <EntityType Name="TheTinDung">
+          <Key>
+            <PropertyRef Name="MaTTD" />
+          </Key>
+          <Property Name="MaTTD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SoTK" Type="Int32" Nullable="false" />
+          <Property Name="DiemTD" Type="Int32" Nullable="false" />
+          <Property Name="DaVay" Type="Double" Nullable="false" />
+          <Property Name="Khoa" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TaiKhoan" Relationship="BankModel.TheTinDungTaiKhoan" FromRole="TheTinDung" ToRole="TaiKhoan" />
+        </EntityType>
+        <Association Name="KhoanVayTaiKhoan">
+          <End Type="BankModel.KhoanVay" Role="KhoanVay" Multiplicity="*" />
+          <End Type="BankModel.TaiKhoan" Role="TaiKhoan" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="TaiKhoan">
+              <PropertyRef Name="SoTK" />
+            </Principal>
+            <Dependent Role="KhoanVay">
+              <PropertyRef Name="SoTK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="SoTietKiemTaiKhoan">
+          <End Type="BankModel.SoTietKiem" Role="SoTietKiem" Multiplicity="*" />
+          <End Type="BankModel.TaiKhoan" Role="TaiKhoan" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="TaiKhoan">
+              <PropertyRef Name="SoTK" />
+            </Principal>
+            <Dependent Role="SoTietKiem">
+              <PropertyRef Name="SoTK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="TheTinDungTaiKhoan">
+          <End Type="BankModel.TheTinDung" Role="TheTinDung" Multiplicity="*" />
+          <End Type="BankModel.TaiKhoan" Role="TaiKhoan" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="TaiKhoan">
+              <PropertyRef Name="SoTK" />
+            </Principal>
+            <Dependent Role="TheTinDung">
+              <PropertyRef Name="SoTK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BankModelStoreContainer" CdmEntityContainer="BankModelContainer">
+    <EntitySetMapping Name="TaiKhoans">
+      <EntityTypeMapping TypeName="IsTypeOf(BankModel.TaiKhoan)">
+        <MappingFragment StoreEntitySet="TaiKhoans">
+          <ScalarProperty Name="SoTK" ColumnName="SoTK" />
+          <ScalarProperty Name="TenTK" ColumnName="TenTK" />
+          <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+          <ScalarProperty Name="HoVaTen" ColumnName="HoVaTen" />
+          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+          <ScalarProperty Name="CCCD" ColumnName="CCCD" />
+          <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="SoDu" ColumnName="SoDu" />
+          <ScalarProperty Name="DiemTinDung" ColumnName="DiemTinDung" />
+          <ScalarProperty Name="NgayMoTaiKhoan" ColumnName="NgayMoTaiKhoan" />
+          <ScalarProperty Name="DanhSachDen" ColumnName="DanhSachDen" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GiaoDiches">
+      <EntityTypeMapping TypeName="IsTypeOf(BankModel.GiaoDich)">
+        <MappingFragment StoreEntitySet="GiaoDiches">
+          <ScalarProperty Name="MaGD" ColumnName="MaGD" />
+          <ScalarProperty Name="LoaiGD" ColumnName="LoaiGD" />
+          <ScalarProperty Name="MaNguoiGui" ColumnName="MaNguoiGui" />
+          <ScalarProperty Name="MaNguoiNhan" ColumnName="MaNguoiNhan" />
+          <ScalarProperty Name="SoTienGD" ColumnName="SoTienGD" />
+          <ScalarProperty Name="NgayGD" ColumnName="NgayGD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KhoanVays">
+      <EntityTypeMapping TypeName="IsTypeOf(BankModel.KhoanVay)">
+        <MappingFragment StoreEntitySet="KhoanVays">
+          <ScalarProperty Name="SoKV" ColumnName="SoKV" />
+          <ScalarProperty Name="SoTK" ColumnName="SoTK" />
+          <ScalarProperty Name="NgayVay" ColumnName="NgayVay" />
+          <ScalarProperty Name="NgayHan" ColumnName="NgayHan" />
+          <ScalarProperty Name="SoTienVay" ColumnName="SoTienVay" />
+          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+          <ScalarProperty Name="LoaiKhoanVay" ColumnName="LoaiKhoanVay" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SoTietKiems">
+      <EntityTypeMapping TypeName="IsTypeOf(BankModel.SoTietKiem)">
+        <MappingFragment StoreEntitySet="SoTietKiems">
+          <ScalarProperty Name="MaSTK" ColumnName="MaSTK" />
+          <ScalarProperty Name="SoTK" ColumnName="SoTK" />
+          <ScalarProperty Name="TenSo" ColumnName="TenSo" />
+          <ScalarProperty Name="NgayGui" ColumnName="NgayGui" />
+          <ScalarProperty Name="NgayTatToan" ColumnName="NgayTatToan" />
+          <ScalarProperty Name="NgayHan" ColumnName="NgayHan" />
+          <ScalarProperty Name="SoTienGui" ColumnName="SoTienGui" />
+          <ScalarProperty Name="LaiSuat" ColumnName="LaiSuat" />
+          <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TheTinDungs">
+      <EntityTypeMapping TypeName="IsTypeOf(BankModel.TheTinDung)">
+        <MappingFragment StoreEntitySet="TheTinDungs">
+          <ScalarProperty Name="MaTTD" ColumnName="MaTTD" />
+          <ScalarProperty Name="SoTK" ColumnName="SoTK" />
+          <ScalarProperty Name="DiemTD" ColumnName="DiemTD" />
+          <ScalarProperty Name="DaVay" ColumnName="DaVay" />
+          <ScalarProperty Name="Khoa" ColumnName="Khoa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="GiaoDichTaiKhoan" TypeName="BankModel.GiaoDichTaiKhoan" StoreEntitySet="GiaoDichTaiKhoan">
+      <EndProperty Name="GiaoDich">
+        <ScalarProperty Name="MaGD" ColumnName="GiaoDiches_MaGD" />
+      </EndProperty>
+      <EndProperty Name="TaiKhoan">
+        <ScalarProperty Name="SoTK" ColumnName="TaiKhoans_SoTK" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
