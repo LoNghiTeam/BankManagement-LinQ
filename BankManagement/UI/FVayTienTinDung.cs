@@ -52,6 +52,9 @@ namespace BankManagement.UI
                 {
                     taiKhoanVay = db.TaiKhoans.FirstOrDefault(tk => tk.SoTK == soTK);
                     lblTen.Text = taiKhoanVay.HoVaTen;
+                    lblDiemTD.Text = taiKhoanVay.DiemTinDung.ToString() + lblDiemTD.Tag;
+                    tienDuocVay = taiKhoanVay.DiemTinDung * 100000;
+                    lblTienDuocVay.Text = tienDuocVay.ToString() + lblTienDuocVay.Tag;
                 }
             }
         }
@@ -94,7 +97,9 @@ namespace BankManagement.UI
                     SoTK = taiKhoanVay.SoTK,
                     NgayVay = DateTime.Now,
                     NgayHan = DateTime.Now.AddMonths(thoiHan),
+                    ThoiGian = thoiHan,
                     SoTienVay = tienVay,
+                    LaiSuat = laiSuat,
                     TinhTrang = 0,
                     LoaiKhoanVay = (int)LoaiGiaoDich.VayTinDung
                 };
@@ -106,6 +111,10 @@ namespace BankManagement.UI
                     lblDiemTD.Text = taiKhoanVay.DiemTinDung.ToString() + lblDiemTD.Tag;
                     tienDuocVay = taiKhoanVay.DiemTinDung * 100000;
                     lblTienDuocVay.Text = tienDuocVay.ToString() + lblTienDuocVay.Tag;
+                    if(logging.Taikhoan.SoTK == taiKhoanVay.SoTK)
+                    {
+                        logging.Taikhoan = taiKhoanVay;
+                    }
                 }
             }
         }
@@ -116,6 +125,30 @@ namespace BankManagement.UI
             {
                 MessageBox.Show("Số tài khoản không hợp lệ!");
                 return false;
+            }
+            else
+            {
+                int soTK;
+                if (Int32.TryParse(tbSoTK.Texts, out soTK))
+                {
+                    using (var db = new BankModelContainer())
+                    {
+                        if (!db.TaiKhoans.Any(tk => tk.SoTK == soTK))
+                        {
+                            MessageBox.Show("Số tài khoản không tồn tại!");
+                            return false;
+                        }
+                        else
+                        {
+                            int blackUser = db.TaiKhoans.Where(tk => tk.SoTK == soTK).Select(tk => tk.DanhSachDen).FirstOrDefault();
+                            if (blackUser == 1)
+                            {
+                                MessageBox.Show("Tài khoản nằm trong danh sách đen, không thể cho vay!");
+                                return false;
+                            }
+                        }
+                    }
+                }
             }
             if (string.IsNullOrEmpty(tbTien.Texts) || tienVay <=0 || tienVay > tienDuocVay)
             {

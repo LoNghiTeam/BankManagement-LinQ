@@ -18,10 +18,14 @@ namespace BankManagement
         public int SoTK { get; set; }
         public System.DateTime NgayVay { get; set; }
         public System.DateTime NgayHan { get; set; }
+        public int ThoiGian { get; set; }
         public double SoTienVay { get; set; }
+        public double LaiSuat { get; set; }
         public int TinhTrang { get; set; }
         public int LoaiKhoanVay { get; set; }
+        public Nullable<System.DateTime> NgayTatToan { get; set; }
     
         public virtual TaiKhoan TaiKhoan { get; set; }
+        public virtual TheChap TheChap { get; set; }
     }
 }

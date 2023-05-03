@@ -428,10 +428,10 @@
             // 
             this.panelDesktop.BackColor = System.Drawing.SystemColors.Control;
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktop.Location = new System.Drawing.Point(229, 53);
+            this.panelDesktop.Location = new System.Drawing.Point(229, 55);
             this.panelDesktop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(948, 519);
+            this.panelDesktop.Size = new System.Drawing.Size(948, 517);
             this.panelDesktop.TabIndex = 0;
             // 
             // menuStrip1
@@ -443,7 +443,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(229, 25);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(948, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(948, 30);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -453,8 +453,8 @@
             this.tsmiSignin,
             this.đổiMậtKhẩuToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(69, 24);
-            this.fileToolStripMenuItem.Text = "Tài liệu";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(85, 26);
+            this.fileToolStripMenuItem.Text = "Tài khoản";
             // 
             // tsmiSignin
             // 

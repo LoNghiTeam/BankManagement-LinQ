@@ -1,7 +1,9 @@
-﻿using System;
+﻿using BankManagement.Service;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common.CommandTrees.ExpressionBuilder;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,86 +14,109 @@ namespace BankManagement.UI
 {
     public partial class CKhoanVay : UserControl
     {
-        //KhoanVayDAO khoanVayDAO = new KhoanVayDAO();
+        KhoanVayService kvService = new KhoanVayService();
         public CKhoanVay()
         {
             InitializeComponent();
-            tbxLoai.Enabled = false;
-            tbxMaLS.Enabled = false;
-            tbxTien.Enabled = false;
-            tbxTinhTrang.Enabled = false;
-            dpNgayHan.Enabled = false;
-            dpNgayVay.Enabled = false;
-            //dtgvKhoanVay.DataSource = khoanVayDAO.FindAll();
-            btnTatToan.Enabled = false;
+            this.dtgvKhoanVay.Size = new Size(Width, Height);
+
+            dtgvKhoanVay.AutoGenerateColumns = false;
+            CustomDataGridView();
+
+            HienThiDanhSach();
         }
 
-        private void tbxSoKV__TextChanged(object sender, EventArgs e)
+        private void HienThiDanhSach()
         {
-            btnTatToan.Enabled = false;
+            using (var db = new BankModelContainer())
+            {
+                if (logging.Taikhoan.IsAdmin == 1)
+                    this.dtgvKhoanVay.DataSource = db.KhoanVays.ToList();
+                else
+                    this.dtgvKhoanVay.DataSource = db.KhoanVays.Where(s => s.SoTK == logging.Taikhoan.SoTK).ToList();
+            }
+        }
 
-        }
-        private void tbxSoTK__TextChanged(object sender, EventArgs e)
+        private void CustomDataGridView()
         {
-            btnTatToan.Enabled = false;
-            int soTK;
-            int.TryParse(tbxSoTK.Texts, out soTK);
-            //dtgvKhoanVay.DataSource = khoanVayDAO.FindSoTK(soTK);
+            DataGridViewTextBoxColumn soKVColumn = new DataGridViewTextBoxColumn();
+            soKVColumn.DataPropertyName = "SoKV";
+            soKVColumn.HeaderText = "Mã số khoản vay";
+            dtgvKhoanVay.Columns.Add(soKVColumn);
+
+            DataGridViewTextBoxColumn soTKColumn = new DataGridViewTextBoxColumn();
+            soTKColumn.DataPropertyName = "SoTK";
+            soTKColumn.HeaderText = "Số tài khoản vay";
+            dtgvKhoanVay.Columns.Add(soTKColumn);
+
+            DataGridViewTextBoxColumn ngayVayColumn = new DataGridViewTextBoxColumn();
+            ngayVayColumn.DataPropertyName = "NgayVay";
+            ngayVayColumn.HeaderText = "Ngày vay";
+            dtgvKhoanVay.Columns.Add(ngayVayColumn);
+
+            DataGridViewTextBoxColumn ngayHanColumn = new DataGridViewTextBoxColumn();
+            ngayHanColumn.DataPropertyName = "NgayHan";
+            ngayHanColumn.HeaderText = "Ngày hạn trả nợ";
+            dtgvKhoanVay.Columns.Add(ngayHanColumn);
+
+            DataGridViewTextBoxColumn soTienColumn = new DataGridViewTextBoxColumn();
+            soTienColumn.DataPropertyName = "SoTienVay";
+            soTienColumn.HeaderText = "Số tiền vay";
+            dtgvKhoanVay.Columns.Add(soTienColumn);
+
+            DataGridViewTextBoxColumn tinhTrangColumn = new DataGridViewTextBoxColumn();
+            tinhTrangColumn.DataPropertyName = "TinhTrang";
+            tinhTrangColumn.HeaderText = "Tình trạng";
+            dtgvKhoanVay.Columns.Add(tinhTrangColumn);
+
+            DataGridViewTextBoxColumn loaiKVColumn = new DataGridViewTextBoxColumn();
+            loaiKVColumn.DataPropertyName = "LoaiKhoanVay";
+            loaiKVColumn.HeaderText = "Loại khoản vay";
+            dtgvKhoanVay.Columns.Add(loaiKVColumn);
         }
+
+        private void btnTatToan_Click(object sender, EventArgs e)
+        {
+            int index = dtgvKhoanVay.CurrentCell.RowIndex;
+            int soKV = int.Parse(dtgvKhoanVay.Rows[index].Cells[0].Value.ToString());
+
+            FTatToanKV tatToanKV = new FTatToanKV(soKV);
+            tatToanKV.ShowDialog();
+
+            HienThiDanhSach();
+            btnTatToan.Visible = false;
+        }
+
         private void dtgvKhoanVay_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
             {
                 DataGridViewRow row = dtgvKhoanVay.Rows[e.RowIndex];
 
+                int soKV = int.Parse(row.Cells[0].Value.ToString());
                 tbxSoKV.Texts = row.Cells[0].Value.ToString();
                 tbxSoTK.Texts = row.Cells[1].Value.ToString();
-                try
-                {
-                    dpNgayVay.Value = (DateTime)row.Cells[2].Value;
-                    dpNgayHan.Value = (DateTime)row.Cells[3].Value;
-                }
-                catch
-                {
-                    dpNgayVay.Value = DateTime.Now;
-                    dpNgayHan.Value = DateTime.Now;
-                }
+
+                tbxNgVay.Texts = row.Cells[2].Value.ToString();
+                tbxNgHan.Texts = row.Cells[3].Value.ToString();
+
                 tbxTien.Texts = row.Cells[4].Value.ToString();
-                tbxMaLS.Texts = row.Cells[5].Value.ToString();
-                tbxTinhTrang.Texts = row.Cells[6].Value.ToString();
-                tbxLoai.Texts = row.Cells[7].Value.ToString();
-            }
-            if (tbxTinhTrang.Texts == "0")
-            {
-                btnTatToan.Enabled = true;
-            }
-            else
-            {
-                btnTatToan.Enabled = false;
+                tbxTinhTrang.Texts = row.Cells[5].Value.ToString();
+                tbxLoai.Texts = row.Cells[6].Value.ToString();
+
+                using (var db = new BankModelContainer())
+                {
+                    int tinhTrang = db.KhoanVays.Where(v => v.SoKV == soKV).Select(tk => tk.TinhTrang).FirstOrDefault();
+                    if (tinhTrang == 0)
+                    {
+                        btnTatToan.Visible = true;
+                    }
+                    else
+                    {
+                        btnTatToan.Visible = false;
+                    }
+                }
             }
         }
-
-        private void btnTatToan_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        //private void btnTatToan_Click(object sender, EventArgs e)
-        //{
-        //    int index = dtgvKhoanVay.CurrentCell.RowIndex;
-        //    KhoanVay khoanVay = new KhoanVay(
-        //            int.Parse(dtgvKhoanVay.Rows[index].Cells[0].Value.ToString()),
-        //            int.Parse(dtgvKhoanVay.Rows[index].Cells[1].Value.ToString()),
-
-        //            (DateTime)dtgvKhoanVay.Rows[index].Cells[2].Value,
-        //            (DateTime)dtgvKhoanVay.Rows[index].Cells[3].Value,
-        //            double.Parse(dtgvKhoanVay.Rows[index].Cells[4].Value.ToString()),
-        //            int.Parse(dtgvKhoanVay.Rows[index].Cells[5].Value.ToString()),
-        //            int.Parse(dtgvKhoanVay.Rows[index].Cells[6].Value.ToString()),
-        //            int.Parse(dtgvKhoanVay.Rows[index].Cells[7].Value.ToString())
-        //    );
-        //    FTatToanKV tatToanKV = new FTatToanKV(khoanVay);
-        //    tatToanKV.ShowDialog();
-        //}
     }
 }

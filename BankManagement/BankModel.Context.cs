@@ -30,5 +30,6 @@ namespace BankManagement
         public DbSet<KhoanVay> KhoanVays { get; set; }
         public DbSet<SoTietKiem> SoTietKiems { get; set; }
         public DbSet<TheTinDung> TheTinDungs { get; set; }
+        public DbSet<TheChap> TheChaps { get; set; }
     }
 }

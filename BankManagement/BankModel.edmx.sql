@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/02/2023 16:14:48
+-- Date Created: 05/03/2023 19:18:23
 -- Generated from EDMX file: C:\Users\admin\Documents\GitHub\BankManagement-LinQ\BankManagement\BankModel.edmx
 -- --------------------------------------------------
 
@@ -32,6 +32,9 @@ GO
 IF OBJECT_ID(N'[dbo].[FK_TheTinDungTaiKhoan]', 'F') IS NOT NULL
     ALTER TABLE [dbo].[TheTinDungs] DROP CONSTRAINT [FK_TheTinDungTaiKhoan];
 GO
+IF OBJECT_ID(N'[dbo].[FK_TheChapKhoanVay]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[TheChaps] DROP CONSTRAINT [FK_TheChapKhoanVay];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
@@ -51,6 +54,9 @@ IF OBJECT_ID(N'[dbo].[SoTietKiems]', 'U') IS NOT NULL
 GO
 IF OBJECT_ID(N'[dbo].[TheTinDungs]', 'U') IS NOT NULL
     DROP TABLE [dbo].[TheTinDungs];
+GO
+IF OBJECT_ID(N'[dbo].[TheChaps]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[TheChaps];
 GO
 IF OBJECT_ID(N'[dbo].[GiaoDichTaiKhoan]', 'U') IS NOT NULL
     DROP TABLE [dbo].[GiaoDichTaiKhoan];
@@ -95,9 +101,12 @@ CREATE TABLE [dbo].[KhoanVays] (
     [SoTK] int  NOT NULL,
     [NgayVay] datetime  NOT NULL,
     [NgayHan] datetime  NOT NULL,
+    [ThoiGian] int  NOT NULL,
     [SoTienVay] float  NOT NULL,
+    [LaiSuat] float  NOT NULL,
     [TinhTrang] int  NOT NULL,
-    [LoaiKhoanVay] int  NOT NULL
+    [LoaiKhoanVay] int  NOT NULL,
+    [NgayTatToan] datetime  NULL
 );
 GO
 
@@ -107,12 +116,12 @@ CREATE TABLE [dbo].[SoTietKiems] (
     [SoTK] int  NOT NULL,
     [TenSo] nvarchar(max)  NOT NULL,
     [NgayGui] datetime  NOT NULL,
-    [NgayTatToan] datetime  NULL,
     [NgayHan] datetime  NOT NULL,
     [SoTienGui] float  NOT NULL,
     [LaiSuat] float  NOT NULL,
     [ThoiGian] int  NOT NULL,
-    [TinhTrang] int  NOT NULL
+    [TinhTrang] int  NOT NULL,
+    [NgayTatToan] datetime  NULL
 );
 GO
 
@@ -123,6 +132,14 @@ CREATE TABLE [dbo].[TheTinDungs] (
     [DiemTD] int  NOT NULL,
     [DaVay] float  NOT NULL,
     [Khoa] int  NOT NULL
+);
+GO
+
+-- Creating table 'TheChaps'
+CREATE TABLE [dbo].[TheChaps] (
+    [MaKVTC] int IDENTITY(1,1) NOT NULL,
+    [VatTheChap] nvarchar(max)  NOT NULL,
+    [KhoanVay_SoKV] int  NOT NULL
 );
 GO
 
@@ -165,6 +182,12 @@ GO
 ALTER TABLE [dbo].[TheTinDungs]
 ADD CONSTRAINT [PK_TheTinDungs]
     PRIMARY KEY CLUSTERED ([MaTTD] ASC);
+GO
+
+-- Creating primary key on [MaKVTC] in table 'TheChaps'
+ALTER TABLE [dbo].[TheChaps]
+ADD CONSTRAINT [PK_TheChaps]
+    PRIMARY KEY CLUSTERED ([MaKVTC] ASC);
 GO
 
 -- Creating primary key on [GiaoDiches_MaGD], [TaiKhoans_SoTK] in table 'GiaoDichTaiKhoan'
@@ -244,6 +267,21 @@ GO
 CREATE INDEX [IX_FK_TheTinDungTaiKhoan]
 ON [dbo].[TheTinDungs]
     ([SoTK]);
+GO
+
+-- Creating foreign key on [KhoanVay_SoKV] in table 'TheChaps'
+ALTER TABLE [dbo].[TheChaps]
+ADD CONSTRAINT [FK_TheChapKhoanVay]
+    FOREIGN KEY ([KhoanVay_SoKV])
+    REFERENCES [dbo].[KhoanVays]
+        ([SoKV])
+    ON DELETE NO ACTION ON UPDATE NO ACTION;
+GO
+
+-- Creating non-clustered index for FOREIGN KEY 'FK_TheChapKhoanVay'
+CREATE INDEX [IX_FK_TheChapKhoanVay]
+ON [dbo].[TheChaps]
+    ([KhoanVay_SoKV]);
 GO
 
 -- --------------------------------------------------

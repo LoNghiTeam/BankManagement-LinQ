@@ -30,6 +30,8 @@
         {
             this.components = new System.ComponentModel.Container();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.cbThoiGianVay = new RJCodeAdvance.RJControls.RJComboBox();
             this.tbTheChap = new RJCodeAdvance.RJControls.RJTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,8 +51,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.rjDropdownMenu1 = new RJCodeAdvance.RJControls.RJDropdownMenu(this.components);
             this.rjDropdownMenu2 = new RJCodeAdvance.RJControls.RJDropdownMenu(this.components);
-            this.cbThoiGianVay = new RJCodeAdvance.RJControls.RJComboBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -82,6 +82,42 @@
             this.panel3.Size = new System.Drawing.Size(423, 449);
             this.panel3.TabIndex = 2;
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(359, 274);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(54, 16);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "(Tháng)";
+            // 
+            // cbThoiGianVay
+            // 
+            this.cbThoiGianVay.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cbThoiGianVay.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbThoiGianVay.BorderSize = 1;
+            this.cbThoiGianVay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.cbThoiGianVay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cbThoiGianVay.ForeColor = System.Drawing.Color.DimGray;
+            this.cbThoiGianVay.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbThoiGianVay.Items.AddRange(new object[] {
+            "1",
+            "3",
+            "6",
+            "12",
+            "24",
+            "36"});
+            this.cbThoiGianVay.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.cbThoiGianVay.ListTextColor = System.Drawing.Color.DimGray;
+            this.cbThoiGianVay.Location = new System.Drawing.Point(146, 268);
+            this.cbThoiGianVay.MinimumSize = new System.Drawing.Size(200, 30);
+            this.cbThoiGianVay.Name = "cbThoiGianVay";
+            this.cbThoiGianVay.Padding = new System.Windows.Forms.Padding(1);
+            this.cbThoiGianVay.Size = new System.Drawing.Size(207, 30);
+            this.cbThoiGianVay.TabIndex = 18;
+            this.cbThoiGianVay.Texts = "";
+            this.cbThoiGianVay.OnSelectedIndexChanged += new System.EventHandler(this.cbThoiGian_OnSelectedIndexChanged);
+            // 
             // tbTheChap
             // 
             this.tbTheChap.BackColor = System.Drawing.SystemColors.Window;
@@ -103,6 +139,7 @@
             this.tbTheChap.TabIndex = 17;
             this.tbTheChap.Texts = "";
             this.tbTheChap.UnderlinedStyle = false;
+            this.tbTheChap._TextChanged += new System.EventHandler(this.tbTheChap__TextChanged);
             // 
             // label7
             // 
@@ -240,6 +277,7 @@
             this.lblLaiSuat.Name = "lblLaiSuat";
             this.lblLaiSuat.Size = new System.Drawing.Size(26, 16);
             this.lblLaiSuat.TabIndex = 1;
+            this.lblLaiSuat.Tag = " % / năm";
             this.lblLaiSuat.Text = "0%";
             // 
             // label4
@@ -313,34 +351,6 @@
             this.rjDropdownMenu2.Name = "rjDropdownMenu2";
             this.rjDropdownMenu2.PrimaryColor = System.Drawing.Color.Empty;
             this.rjDropdownMenu2.Size = new System.Drawing.Size(61, 4);
-            // 
-            // cbThoiGianVay
-            // 
-            this.cbThoiGianVay.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cbThoiGianVay.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.cbThoiGianVay.BorderSize = 1;
-            this.cbThoiGianVay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.cbThoiGianVay.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbThoiGianVay.ForeColor = System.Drawing.Color.DimGray;
-            this.cbThoiGianVay.IconColor = System.Drawing.Color.MediumSlateBlue;
-            this.cbThoiGianVay.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
-            this.cbThoiGianVay.ListTextColor = System.Drawing.Color.DimGray;
-            this.cbThoiGianVay.Location = new System.Drawing.Point(146, 268);
-            this.cbThoiGianVay.MinimumSize = new System.Drawing.Size(200, 30);
-            this.cbThoiGianVay.Name = "cbThoiGianVay";
-            this.cbThoiGianVay.Padding = new System.Windows.Forms.Padding(1);
-            this.cbThoiGianVay.Size = new System.Drawing.Size(207, 30);
-            this.cbThoiGianVay.TabIndex = 18;
-            this.cbThoiGianVay.Texts = "";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(359, 274);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(54, 16);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "(Tháng)";
             // 
             // FVayTienTheChap
             // 

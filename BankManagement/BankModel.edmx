@@ -11,6 +11,7 @@
     <EntitySet Name="KhoanVays" EntityType="BankModel.Store.KhoanVays" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="SoTietKiems" EntityType="BankModel.Store.SoTietKiems" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="TheTinDungs" EntityType="BankModel.Store.TheTinDungs" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TheChaps" EntityType="BankModel.Store.TheChaps" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="GiaoDichTaiKhoan" EntityType="BankModel.Store.GiaoDichTaiKhoan" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="FK_GiaoDichTaiKhoan_GiaoDich" Association="BankModel.Store.FK_GiaoDichTaiKhoan_GiaoDich">
       <End Role="GiaoDich" EntitySet="GiaoDiches" />
@@ -31,6 +32,10 @@
     <AssociationSet Name="TheTinDungTaiKhoan" Association="BankModel.Store.TheTinDungTaiKhoan">
       <End Role="TheTinDung" EntitySet="TheTinDungs" />
       <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+    </AssociationSet>
+    <AssociationSet Name="TheChapKhoanVay" Association="BankModel.Store.TheChapKhoanVay">
+      <End Role="TheChap" EntitySet="TheChaps" />
+      <End Role="KhoanVay" EntitySet="KhoanVays" />
     </AssociationSet>
   </EntityContainer>
   <EntityType Name="TaiKhoans">
@@ -70,9 +75,12 @@
     <Property Name="SoTK" Type="int" Nullable="false" />
     <Property Name="NgayVay" Type="datetime" Nullable="false" />
     <Property Name="NgayHan" Type="datetime" Nullable="false" />
+    <Property Name="ThoiGian" Type="int" Nullable="false" />
     <Property Name="SoTienVay" Type="float" Nullable="false" />
+    <Property Name="LaiSuat" Type="float" Nullable="false" />
     <Property Name="TinhTrang" Type="int" Nullable="false" />
     <Property Name="LoaiKhoanVay" Type="int" Nullable="false" />
+    <Property Name="NgayTatToan" Type="datetime" Nullable="true" />
   </EntityType>
   <EntityType Name="SoTietKiems">
     <Key>
@@ -82,12 +90,12 @@
     <Property Name="SoTK" Type="int" Nullable="false" />
     <Property Name="TenSo" Type="nvarchar(max)" Nullable="false" />
     <Property Name="NgayGui" Type="datetime" Nullable="false" />
-    <Property Name="NgayTatToan" Type="datetime" Nullable="true" />
     <Property Name="NgayHan" Type="datetime" Nullable="false" />
     <Property Name="SoTienGui" Type="float" Nullable="false" />
     <Property Name="LaiSuat" Type="float" Nullable="false" />
     <Property Name="ThoiGian" Type="int" Nullable="false" />
     <Property Name="TinhTrang" Type="int" Nullable="false" />
+    <Property Name="NgayTatToan" Type="datetime" Nullable="true" />
   </EntityType>
   <EntityType Name="TheTinDungs">
     <Key>
@@ -98,6 +106,14 @@
     <Property Name="DiemTD" Type="int" Nullable="false" />
     <Property Name="DaVay" Type="float" Nullable="false" />
     <Property Name="Khoa" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TheChaps">
+    <Key>
+      <PropertyRef Name="MaKVTC" />
+    </Key>
+    <Property Name="MaKVTC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="VatTheChap" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="KhoanVay_SoKV" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="GiaoDichTaiKhoan">
     <Key>
@@ -140,6 +156,18 @@
       </Principal>
       <Dependent Role="TheTinDung">
         <PropertyRef Name="SoTK" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TheChapKhoanVay">
+    <End Role="TheChap" Type="BankModel.Store.TheChaps" Multiplicity="*" />
+    <End Role="KhoanVay" Type="BankModel.Store.KhoanVays" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="KhoanVay">
+        <PropertyRef Name="SoKV" />
+      </Principal>
+      <Dependent Role="TheChap">
+        <PropertyRef Name="KhoanVay_SoKV" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -193,6 +221,11 @@
             <End Role="TheTinDung" EntitySet="TheTinDungs" />
             <End Role="TaiKhoan" EntitySet="TaiKhoans" />
           </AssociationSet>
+          <EntitySet Name="TheChaps" EntityType="BankModel.TheChap" />
+          <AssociationSet Name="TheChapKhoanVay" Association="BankModel.TheChapKhoanVay">
+            <End Role="TheChap" EntitySet="TheChaps" />
+            <End Role="KhoanVay" EntitySet="KhoanVays" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="TaiKhoan">
           <Key>
@@ -240,10 +273,14 @@
           <Property Name="SoTK" Type="Int32" Nullable="false" />
           <Property Name="NgayVay" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="NgayHan" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ThoiGian" Type="Int32" Nullable="false" />
           <Property Name="SoTienVay" Type="Double" Nullable="false" />
+          <Property Name="LaiSuat" Type="Double" Nullable="false" />
           <Property Name="TinhTrang" Type="Int32" Nullable="false" />
           <Property Name="LoaiKhoanVay" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TaiKhoan" Relationship="BankModel.KhoanVayTaiKhoan" FromRole="KhoanVay" ToRole="TaiKhoan" />
+          <NavigationProperty Name="TheChap" Relationship="BankModel.TheChapKhoanVay" FromRole="KhoanVay" ToRole="TheChap" />
+          <Property Name="NgayTatToan" Type="DateTime" Nullable="true" />
         </EntityType>
         <EntityType Name="SoTietKiem">
           <Key>
@@ -253,12 +290,12 @@
           <Property Name="SoTK" Type="Int32" Nullable="false" />
           <Property Name="TenSo" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="NgayGui" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="NgayTatToan" Type="DateTime" Nullable="true" Precision="3" />
           <Property Name="NgayHan" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="SoTienGui" Type="Double" Nullable="false" />
           <Property Name="LaiSuat" Type="Double" Nullable="false" />
           <Property Name="ThoiGian" Type="Int32" Nullable="false" />
           <Property Name="TinhTrang" Type="Int32" Nullable="false" />
+          <Property Name="NgayTatToan" Type="DateTime" Nullable="true" Precision="3" />
           <NavigationProperty Name="TaiKhoan" Relationship="BankModel.SoTietKiemTaiKhoan" FromRole="SoTietKiem" ToRole="TaiKhoan" />
         </EntityType>
         <EntityType Name="TheTinDung">
@@ -308,6 +345,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="TheChap">
+          <Key>
+            <PropertyRef Name="MaKVTC" />
+          </Key>
+          <Property Name="MaKVTC" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="VatTheChap" Type="String" Nullable="false" />
+          <NavigationProperty Name="KhoanVay" Relationship="BankModel.TheChapKhoanVay" FromRole="TheChap" ToRole="KhoanVay" />
+        </EntityType>
+        <Association Name="TheChapKhoanVay">
+          <End Type="BankModel.TheChap" Role="TheChap" Multiplicity="0..1" />
+          <End Type="BankModel.KhoanVay" Role="KhoanVay" Multiplicity="1" />
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -352,9 +401,12 @@
           <ScalarProperty Name="SoTK" ColumnName="SoTK" />
           <ScalarProperty Name="NgayVay" ColumnName="NgayVay" />
           <ScalarProperty Name="NgayHan" ColumnName="NgayHan" />
+          <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
           <ScalarProperty Name="SoTienVay" ColumnName="SoTienVay" />
+          <ScalarProperty Name="LaiSuat" ColumnName="LaiSuat" />
           <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
           <ScalarProperty Name="LoaiKhoanVay" ColumnName="LoaiKhoanVay" />
+          <ScalarProperty Name="NgayTatToan" ColumnName="NgayTatToan" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -365,12 +417,12 @@
           <ScalarProperty Name="SoTK" ColumnName="SoTK" />
           <ScalarProperty Name="TenSo" ColumnName="TenSo" />
           <ScalarProperty Name="NgayGui" ColumnName="NgayGui" />
-          <ScalarProperty Name="NgayTatToan" ColumnName="NgayTatToan" />
           <ScalarProperty Name="NgayHan" ColumnName="NgayHan" />
           <ScalarProperty Name="SoTienGui" ColumnName="SoTienGui" />
           <ScalarProperty Name="LaiSuat" ColumnName="LaiSuat" />
           <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
           <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+          <ScalarProperty Name="NgayTatToan" ColumnName="NgayTatToan" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -385,12 +437,28 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TheChaps">
+      <EntityTypeMapping TypeName="IsTypeOf(BankModel.TheChap)">
+        <MappingFragment StoreEntitySet="TheChaps">
+          <ScalarProperty Name="MaKVTC" ColumnName="MaKVTC" />
+          <ScalarProperty Name="VatTheChap" ColumnName="VatTheChap" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="GiaoDichTaiKhoan" TypeName="BankModel.GiaoDichTaiKhoan" StoreEntitySet="GiaoDichTaiKhoan">
       <EndProperty Name="GiaoDich">
         <ScalarProperty Name="MaGD" ColumnName="GiaoDiches_MaGD" />
       </EndProperty>
       <EndProperty Name="TaiKhoan">
         <ScalarProperty Name="SoTK" ColumnName="TaiKhoans_SoTK" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TheChapKhoanVay" TypeName="BankModel.TheChapKhoanVay" StoreEntitySet="TheChaps">
+      <EndProperty Name="KhoanVay">
+        <ScalarProperty Name="SoKV" ColumnName="KhoanVay_SoKV" />
+      </EndProperty>
+      <EndProperty Name="TheChap">
+        <ScalarProperty Name="MaKVTC" ColumnName="MaKVTC" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

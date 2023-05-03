@@ -9,11 +9,13 @@
         <EntityTypeShape EntityType="BankModel.GiaoDich" Width="1.5" PointX="2.875" PointY="0.5" />
         <AssociationConnector Association="BankModel.GiaoDichTaiKhoan" />
         <EntityTypeShape EntityType="BankModel.KhoanVay" Width="1.5" PointX="5.625" PointY="1.375" />
-        <EntityTypeShape EntityType="BankModel.SoTietKiem" PointX="4.25" PointY="4.25" Width="1.5" />
+        <EntityTypeShape EntityType="BankModel.SoTietKiem" PointX="2.875" PointY="4.25" Width="1.5" />
         <EntityTypeShape EntityType="BankModel.TheTinDung" Width="1.5" PointX="0.625" PointY="5.75" />
         <AssociationConnector Association="BankModel.KhoanVayTaiKhoan" />
         <AssociationConnector Association="BankModel.SoTietKiemTaiKhoan" />
         <AssociationConnector Association="BankModel.TheTinDungTaiKhoan" />
+        <EntityTypeShape EntityType="BankModel.TheChap" Width="1.5" PointX="5.625" PointY="5" />
+        <AssociationConnector Association="BankModel.TheChapKhoanVay" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -104,8 +104,26 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GiaoDich.cs">
+      <DependentUpon>BankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KhoanVay.cs">
+      <DependentUpon>BankModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Service\KhoanVayService.cs" />
     <Compile Include="Service\TheTinDungService.cs" />
+    <Compile Include="SoTietKiem.cs">
+      <DependentUpon>BankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TaiKhoan.cs">
+      <DependentUpon>BankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TheChap.cs">
+      <DependentUpon>BankModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TheTinDung.cs">
+      <DependentUpon>BankModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="UI\bankDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -130,22 +148,7 @@
     <Compile Include="Service\SoTietKiemService.cs" />
     <Compile Include="Enums\LoaiGiaoDich.cs" />
     <Compile Include="Service\TaiKhoanService.cs" />
-    <Compile Include="GiaoDich.cs">
-      <DependentUpon>BankModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="KhoanVay.cs">
-      <DependentUpon>BankModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Enums\ThoiHanTatToan.cs" />
-    <Compile Include="SoTietKiem.cs">
-      <DependentUpon>BankModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TaiKhoan.cs">
-      <DependentUpon>BankModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TheTinDung.cs">
-      <DependentUpon>BankModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="UI\CKhoanVay.cs">
       <SubType>UserControl</SubType>
     </Compile>
