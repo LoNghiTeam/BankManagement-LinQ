@@ -21,6 +21,16 @@ namespace BankManagement.Service
                 TaiKhoan tkTD = db.TaiKhoans.FirstOrDefault(t=>t.SoTK == soTK);
                 if (tkTD != null)
                 {
+                    if (tkTD.TheTinDungs.Count >= 3)
+                    {
+                        MessageBox.Show("Không được tạo quá 3 thẻ tín dụng!");
+                        return;
+                    }
+                    if(tkTD.DanhSachDen == 1)
+                    {
+                        MessageBox.Show("Tài khoản đang nằm trong danh sách đen, không thể tạo thẻ tín dụng mới!");
+                        return;
+                    }
                     TheTinDung newTheTD = new TheTinDung
                     {
                         SoTK = soTK,

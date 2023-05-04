@@ -34,9 +34,11 @@ namespace BankManagement.Service
                 taiKhoanThanhToan.GiaoDiches.Add(newGD);
                 taiKhoanThanhToan.SoDu -= soTien;
                 theTD.SoDu += soTien;
-                if(theTD.TrangThai != 0)
+                theTD.NgayHan = DateTime.Now.AddMonths(3);
+
+                if(theTD.TrangThai != (int)TrangThai.DangHoatDong)
                 {
-                    theTD.TrangThai = 0;
+                    theTD.TrangThai = (int)TrangThai.DangHoatDong;
                 }
 
                 taiKhoanNhan.SoDu += soTien;
@@ -67,6 +69,11 @@ namespace BankManagement.Service
 
                 taiKhoanRut.GiaoDiches.Add(newGD);
                 theTD.SoDu -= soTien;
+                if (theTD.SoDu <= 0)
+                {
+                    theTD.TrangThai = (int)TrangThai.BiKhoa;
+                    db.SaveChanges();
+                }
 
                 db.GiaoDiches.Add(newGD);
 
@@ -95,6 +102,11 @@ namespace BankManagement.Service
 
                 taiKhoanChuyen.GiaoDiches.Add(newGD);
                 theTD.SoDu -= soTien;
+                if (theTD.SoDu <= 0)
+                {
+                    theTD.TrangThai = (int)TrangThai.BiKhoa;
+                    db.SaveChanges();
+                }
 
                 taiKhoanNhan.SoDu += soTien;
                 taiKhoanNhan.GiaoDiches.Add(newGD);
@@ -117,7 +129,7 @@ namespace BankManagement.Service
                 {
                     LoaiGD = (int)LoaiGiaoDich.ThanhToanNo,
                     MaNguoiNhan= 1,
-                    MaNguoiGui = taiKhoanNhan.SoTK,
+                    MaNguoiGui = taiKhoanGui.SoTK,
                     SoTienGD = soTien,
                     NgayGD = DateTime.Now
                 };

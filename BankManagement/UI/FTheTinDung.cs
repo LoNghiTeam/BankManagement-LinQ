@@ -79,6 +79,11 @@ namespace BankManagement.UI
         
         private void btnRutTien_Click(object sender, EventArgs e)
         {
+            if (taiKhoan.DanhSachDen == 1)
+            {
+                MessageBox.Show("Tài khoản của bạn đang bị khoá!");
+                return;
+            }
             if (theTD.TrangThai == 0 || theTD.NgayHan >= DateTime.Now)
             {
                 FRutTienTTD fRutTienTTD = new FRutTienTTD(theTD, taiKhoan);
@@ -93,6 +98,11 @@ namespace BankManagement.UI
 
         private void btnChuyenTien_Click(object sender, EventArgs e)
         {
+            if (taiKhoan.DanhSachDen == 1)
+            {
+                MessageBox.Show("Tài khoản của bạn đang bị khoá!");
+                return;
+            }
             if (theTD.TrangThai == 0 || theTD.NgayHan >= DateTime.Now)
             {
                 FChuyenTienTTD fChuyenTienTTD = new FChuyenTienTTD(theTD, taiKhoan);
@@ -172,10 +182,11 @@ namespace BankManagement.UI
                             btnRutTien.Enabled = true;
                         }
                         btnThanhToan.Enabled = true;
+
                     }
                     else
                     {
-                        MessageBox.Show("Thẻ lỗi hoặc không tồn tại!");
+                        MessageBox.Show("Thẻ lỗi và không tồn tại!");
                     }
                 }
             }

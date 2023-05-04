@@ -132,10 +132,10 @@
             this.panelMenuBottom.AutoScroll = true;
             this.panelMenuBottom.Controls.Add(this.btnClose2);
             this.panelMenuBottom.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelMenuBottom.Location = new System.Drawing.Point(0, 586);
+            this.panelMenuBottom.Location = new System.Drawing.Point(0, 595);
             this.panelMenuBottom.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelMenuBottom.Name = "panelMenuBottom";
-            this.panelMenuBottom.Size = new System.Drawing.Size(229, 103);
+            this.panelMenuBottom.Size = new System.Drawing.Size(229, 83);
             this.panelMenuBottom.TabIndex = 0;
             // 
             // btnClose2
@@ -150,7 +150,7 @@
             this.btnClose2.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnClose2.IconSize = 30;
             this.btnClose2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnClose2.Location = new System.Drawing.Point(0, 64);
+            this.btnClose2.Location = new System.Drawing.Point(0, 44);
             this.btnClose2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 15);
             this.btnClose2.Name = "btnClose2";
             this.btnClose2.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
@@ -182,7 +182,7 @@
             this.panelMenuTop.Location = new System.Drawing.Point(0, 100);
             this.panelMenuTop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelMenuTop.Name = "panelMenuTop";
-            this.panelMenuTop.Size = new System.Drawing.Size(229, 486);
+            this.panelMenuTop.Size = new System.Drawing.Size(229, 495);
             this.panelMenuTop.TabIndex = 13;
             // 
             // btnTheTinDung
@@ -201,7 +201,7 @@
             this.btnTheTinDung.Margin = new System.Windows.Forms.Padding(2);
             this.btnTheTinDung.Name = "btnTheTinDung";
             this.btnTheTinDung.Padding = new System.Windows.Forms.Padding(19, 0, 0, 0);
-            this.btnTheTinDung.Size = new System.Drawing.Size(229, 32);
+            this.btnTheTinDung.Size = new System.Drawing.Size(229, 39);
             this.btnTheTinDung.TabIndex = 16;
             this.btnTheTinDung.Tag = "     Thẻ tín dụng";
             this.btnTheTinDung.Text = "     Thẻ tín dung";
