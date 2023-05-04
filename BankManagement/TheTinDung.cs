@@ -16,9 +16,13 @@ namespace BankManagement
     {
         public int MaTTD { get; set; }
         public int SoTK { get; set; }
-        public int DiemTD { get; set; }
-        public double DaVay { get; set; }
-        public int Khoa { get; set; }
+        public string TenChuThe { get; set; }
+        public double SoDu { get; set; }
+        public double HanMuc { get; set; }
+        public int TrangThai { get; set; }
+        public System.DateTime NgayMoThe { get; set; }
+        public System.DateTime NgayHan { get; set; }
+        public string MaBaoMat { get; set; }
     
         public virtual TaiKhoan TaiKhoan { get; set; }
     }

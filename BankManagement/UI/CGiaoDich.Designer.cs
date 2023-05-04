@@ -137,7 +137,10 @@
             "Vay Tín Dụng",
             "Vay Thế Chấp",
             "Tất Toán Giao Dịch",
-            "Thanh Toán Nợ"});
+            "Thanh Toán Nợ",
+            "Rút Tiền Thẻ Tín Dụng",
+            "Chuyển Tiền Thẻ Tín Dụng",
+            "Thanh Toán Nợ Thẻ Tín Dụng"});
             this.cbbLoaiGD.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cbbLoaiGD.ListTextColor = System.Drawing.Color.DimGray;
             this.cbbLoaiGD.Location = new System.Drawing.Point(131, 264);

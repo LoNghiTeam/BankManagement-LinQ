@@ -338,5 +338,20 @@ namespace BankManagement
             FDoiMK fChangePass = new FDoiMK();
             fChangePass.ShowDialog();
         }
+
+        private void btnQLKV_Click(object sender, EventArgs e)
+        {
+            userControl = new CKhoanVay();
+            CKhoanVay cKV = userControl as CKhoanVay;
+            cKV.Size = new Size(panelDesktop.Width, panelDesktop.Height);
+            panelDesktop.Controls.Clear();
+            panelDesktop.Controls.Add(cKV);
+        }
+
+        private void btnTheTinDung_Click(object sender, EventArgs e)
+        {
+            FTheTinDung fTheTinDung = new FTheTinDung();
+            fTheTinDung.ShowDialog();
+        }
     }
 }

@@ -15,6 +15,9 @@ namespace BankManagement.Enums
         VayTinDung = 5,
         VayTheChap = 6,
         TatToanGiaoDich = 7,
-        ThanhToanNo=8
+        ThanhToanNo=8,
+        RutTienTheTinDung = 9,
+        ChuyenTienTheTinDung = 10,
+        ThanhToanNoTheTinDung = 11
     }
 }

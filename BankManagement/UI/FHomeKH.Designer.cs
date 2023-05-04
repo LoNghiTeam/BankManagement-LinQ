@@ -32,6 +32,7 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnMenu = new FontAwesome.Sharp.IconButton();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.btnQLKV = new FontAwesome.Sharp.IconButton();
             this.btnVayTD = new FontAwesome.Sharp.IconButton();
             this.btnTransHis = new FontAwesome.Sharp.IconButton();
             this.btnQLSTK = new FontAwesome.Sharp.IconButton();
@@ -51,6 +52,7 @@
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiSignin = new System.Windows.Forms.ToolStripMenuItem();
             this.đổiMậtKhẩuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnTheTinDung = new FontAwesome.Sharp.IconButton();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panelMenu.SuspendLayout();
@@ -100,6 +102,8 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(98)))), ((int)(((byte)(102)))), ((int)(((byte)(244)))));
+            this.panelMenu.Controls.Add(this.btnTheTinDung);
+            this.panelMenu.Controls.Add(this.btnQLKV);
             this.panelMenu.Controls.Add(this.btnVayTD);
             this.panelMenu.Controls.Add(this.btnTransHis);
             this.panelMenu.Controls.Add(this.btnQLSTK);
@@ -116,6 +120,31 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(229, 547);
             this.panelMenu.TabIndex = 0;
+            // 
+            // btnQLKV
+            // 
+            this.btnQLKV.BackColor = System.Drawing.Color.Transparent;
+            this.btnQLKV.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnQLKV.FlatAppearance.BorderSize = 0;
+            this.btnQLKV.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnQLKV.ForeColor = System.Drawing.Color.White;
+            this.btnQLKV.IconChar = FontAwesome.Sharp.IconChar.LariSign;
+            this.btnQLKV.IconColor = System.Drawing.Color.White;
+            this.btnQLKV.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnQLKV.IconSize = 30;
+            this.btnQLKV.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnQLKV.Location = new System.Drawing.Point(0, 412);
+            this.btnQLKV.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnQLKV.Name = "btnQLKV";
+            this.btnQLKV.Padding = new System.Windows.Forms.Padding(25, 0, 0, 0);
+            this.btnQLKV.Size = new System.Drawing.Size(229, 39);
+            this.btnQLKV.TabIndex = 17;
+            this.btnQLKV.Tag = "   Quản lý khoản vay";
+            this.btnQLKV.Text = "   Quản lý khoản vay";
+            this.btnQLKV.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnQLKV.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnQLKV.UseVisualStyleBackColor = false;
+            this.btnQLKV.Click += new System.EventHandler(this.btnQLKV_Click);
             // 
             // btnVayTD
             // 
@@ -428,10 +457,10 @@
             // 
             this.panelDesktop.BackColor = System.Drawing.SystemColors.Control;
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktop.Location = new System.Drawing.Point(229, 55);
+            this.panelDesktop.Location = new System.Drawing.Point(229, 53);
             this.panelDesktop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(948, 517);
+            this.panelDesktop.Size = new System.Drawing.Size(948, 519);
             this.panelDesktop.TabIndex = 0;
             // 
             // menuStrip1
@@ -443,7 +472,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(229, 25);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(948, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(948, 28);
             this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -453,7 +482,7 @@
             this.tsmiSignin,
             this.đổiMậtKhẩuToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(85, 26);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(85, 24);
             this.fileToolStripMenuItem.Text = "Tài khoản";
             // 
             // tsmiSignin
@@ -469,6 +498,31 @@
             this.đổiMậtKhẩuToolStripMenuItem.Size = new System.Drawing.Size(264, 26);
             this.đổiMậtKhẩuToolStripMenuItem.Text = "Đổi mật khẩu";
             this.đổiMậtKhẩuToolStripMenuItem.Click += new System.EventHandler(this.đổiMậtKhẩuToolStripMenuItem_Click);
+            // 
+            // btnTheTinDung
+            // 
+            this.btnTheTinDung.BackColor = System.Drawing.Color.Transparent;
+            this.btnTheTinDung.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnTheTinDung.FlatAppearance.BorderSize = 0;
+            this.btnTheTinDung.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTheTinDung.ForeColor = System.Drawing.Color.White;
+            this.btnTheTinDung.IconChar = FontAwesome.Sharp.IconChar.Apple;
+            this.btnTheTinDung.IconColor = System.Drawing.Color.White;
+            this.btnTheTinDung.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnTheTinDung.IconSize = 30;
+            this.btnTheTinDung.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTheTinDung.Location = new System.Drawing.Point(0, 451);
+            this.btnTheTinDung.Margin = new System.Windows.Forms.Padding(2);
+            this.btnTheTinDung.Name = "btnTheTinDung";
+            this.btnTheTinDung.Padding = new System.Windows.Forms.Padding(19, 0, 0, 0);
+            this.btnTheTinDung.Size = new System.Drawing.Size(229, 32);
+            this.btnTheTinDung.TabIndex = 18;
+            this.btnTheTinDung.Tag = "     Thẻ tín dụng";
+            this.btnTheTinDung.Text = "     Thẻ tín dung";
+            this.btnTheTinDung.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnTheTinDung.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTheTinDung.UseVisualStyleBackColor = false;
+            this.btnTheTinDung.Click += new System.EventHandler(this.btnTheTinDung_Click);
             // 
             // FHomeKH
             // 
@@ -521,5 +575,7 @@
         private FontAwesome.Sharp.IconButton btnQLSTK;
         private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.ToolStripMenuItem đổiMậtKhẩuToolStripMenuItem;
+        private FontAwesome.Sharp.IconButton btnQLKV;
+        private FontAwesome.Sharp.IconButton btnTheTinDung;
     }
 }

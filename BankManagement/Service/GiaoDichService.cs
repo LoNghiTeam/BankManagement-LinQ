@@ -10,6 +10,97 @@ namespace BankManagement.Service
 {
     internal class GiaoDichService
     {
+        public void TaoGiaoDichThanhToanNoTheTD(int maTheTD,int soTK, double soTien)
+        {
+            using (var db = new BankModelContainer())
+            {
+                TaiKhoan taiKhoanThanhToan = db.TaiKhoans.FirstOrDefault(t => t.SoTK == soTK);
+                TaiKhoan taiKhoanNhan = db.TaiKhoans.FirstOrDefault(t => t.SoTK == 1);
+                TheTinDung theTD = db.TheTinDungs.FirstOrDefault(t => t.MaTTD == maTheTD);
+
+                GiaoDich newGD = new GiaoDich
+                {
+                    LoaiGD = (int)LoaiGiaoDich.ThanhToanNoTheTinDung,
+                    MaNguoiGui = taiKhoanThanhToan.SoTK,
+                    MaNguoiNhan = 1,
+                    SoTienGD = soTien,
+                    NgayGD = DateTime.Now
+                };
+
+                taiKhoanThanhToan.GiaoDiches.Add(newGD);
+                taiKhoanThanhToan.SoDu -= soTien;
+                theTD.SoDu += soTien;
+                if(theTD.TrangThai != 0)
+                {
+                    theTD.TrangThai = 0;
+                }
+
+                taiKhoanNhan.SoDu += soTien;
+
+                db.GiaoDiches.Add(newGD);
+
+                db.SaveChanges();
+                MessageBox.Show("Thanh toán nợ thành công!");
+            }
+        }
+        public void TaoGiaoDichRutTienTheTD(int soTKRut, int maTheTD, double soTien)
+        {
+            using (var db = new BankModelContainer())
+            {
+                TaiKhoan taiKhoanRut = db.TaiKhoans.FirstOrDefault(t => t.SoTK == soTKRut);
+                TaiKhoan taiKhoanNH = db.TaiKhoans.FirstOrDefault(t => t.SoTK == 1);
+                TheTinDung theTD = db.TheTinDungs.FirstOrDefault(t => t.MaTTD == maTheTD);
+
+                GiaoDich newGD = new GiaoDich
+                {
+                    LoaiGD = (int)LoaiGiaoDich.RutTienTheTinDung,
+                    MaNguoiGui = taiKhoanRut.SoTK,
+                    MaNguoiNhan = taiKhoanRut.SoTK,
+                    SoTienGD = soTien,
+                    NgayGD = DateTime.Now
+                };
+                taiKhoanNH.SoDu -= soTien;
+
+                taiKhoanRut.GiaoDiches.Add(newGD);
+                theTD.SoDu -= soTien;
+
+                db.GiaoDiches.Add(newGD);
+
+                db.SaveChanges();
+                MessageBox.Show("Rút tiền thành công!");
+            }
+        }
+        public void TaoGiaoDichChuyenTienTheTD(int soTKChuyen, int soTKNhan,int maTheTD, double soTien)
+        {
+            using (var db = new BankModelContainer())
+            {
+                TaiKhoan taiKhoanChuyen = db.TaiKhoans.FirstOrDefault(t => t.SoTK == soTKChuyen);
+                TaiKhoan taiKhoanNhan = db.TaiKhoans.FirstOrDefault(t => t.SoTK == soTKNhan);
+                TaiKhoan taiKhoanNH = db.TaiKhoans.FirstOrDefault(t => t.SoTK == 1);
+                TheTinDung theTD = db.TheTinDungs.FirstOrDefault(t=>t.MaTTD == maTheTD);
+
+                GiaoDich newGD = new GiaoDich
+                {
+                    LoaiGD = (int)LoaiGiaoDich.ChuyenTienTheTinDung,
+                    MaNguoiGui = taiKhoanChuyen.SoTK,
+                    MaNguoiNhan = taiKhoanNhan.SoTK,
+                    SoTienGD = soTien,
+                    NgayGD = DateTime.Now
+                };
+                taiKhoanNH.SoDu -= soTien;
+
+                taiKhoanChuyen.GiaoDiches.Add(newGD);
+                theTD.SoDu -= soTien;
+
+                taiKhoanNhan.SoDu += soTien;
+                taiKhoanNhan.GiaoDiches.Add(newGD);
+
+                db.GiaoDiches.Add(newGD);
+
+                db.SaveChanges();
+                MessageBox.Show("Chuyển tiền thành công!");
+            }
+        }
         public void TaoGiaoDichTatToanKV(KhoanVay kv, double soTien)
         {
             using (var db = new BankModelContainer())
@@ -35,7 +126,7 @@ namespace BankManagement.Service
                         taiKhoanGui.GiaoDiches.Add(newGD);
                         if(kv.NgayHan.Date < DateTime.Now.Date)
                         {
-                            taiKhoanGui.DanhSachDen = 1;
+                            taiKhoanGui.DanhSachDen = (int)TrangThai.BiKhoa;
                         }
                     }
                     else
@@ -234,12 +325,12 @@ namespace BankManagement.Service
                 MessageBox.Show("Gửi tiết kiệm thành công!");
             }
         }
-        public void TaoGiaoDichChuyenTien(TaiKhoan tkChuyen, TaiKhoan tkNhan, double soTien)
+        public void TaoGiaoDichChuyenTien(int soTKChuyen, int soTKNhan, double soTien)
         {
             using (var db = new BankModelContainer())
             {
-                TaiKhoan taiKhoanChuyen = db.TaiKhoans.FirstOrDefault(t => t.SoTK == tkChuyen.SoTK);
-                TaiKhoan taiKhoanNhan = db.TaiKhoans.FirstOrDefault(t => t.SoTK == tkNhan.SoTK);
+                TaiKhoan taiKhoanChuyen = db.TaiKhoans.FirstOrDefault(t => t.SoTK == soTKChuyen);
+                TaiKhoan taiKhoanNhan = db.TaiKhoans.FirstOrDefault(t => t.SoTK == soTKNhan);
 
                 GiaoDich newGDChuyenTien = new GiaoDich
                 {
@@ -263,11 +354,11 @@ namespace BankManagement.Service
             }
         }
 
-        public void TaoGiaoDichRut(TaiKhoan tk, double soTien)
+        public void TaoGiaoDichRut(int soTK, double soTien)
         {
             using (var db = new BankModelContainer())
             {
-                TaiKhoan taiKhoanRut = db.TaiKhoans.FirstOrDefault(t => t.SoTK == tk.SoTK);
+                TaiKhoan taiKhoanRut = db.TaiKhoans.FirstOrDefault(t => t.SoTK == soTK);
 
                 GiaoDich newGDRut = new GiaoDich
                 {
@@ -287,11 +378,11 @@ namespace BankManagement.Service
                 MessageBox.Show("Rút tiền thành công!");
             }
         }
-        public void TaoGiaoDichNap(TaiKhoan tk, double soTien)
+        public void TaoGiaoDichNap(int soTK, double soTien)
         {
             using (var db = new BankModelContainer())
             {
-                TaiKhoan taiKhoanNap = db.TaiKhoans.FirstOrDefault(t => t.SoTK == tk.SoTK);
+                TaiKhoan taiKhoanNap = db.TaiKhoans.FirstOrDefault(t => t.SoTK == soTK);
 
                 GiaoDich newGDNap = new GiaoDich
                 {

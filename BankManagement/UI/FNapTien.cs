@@ -33,7 +33,7 @@ namespace BankManagement
                 MessageBox.Show("Yêu cầu nhập số tiền nạp! (>0)", "Thông báo", MessageBoxButtons.OK);
                 return;
             }
-            gdService.TaoGiaoDichNap(taiKhoan, soTien);
+            gdService.TaoGiaoDichNap(taiKhoan.SoTK, soTien);
 
             BankModelContainer db = new BankModelContainer();
             taiKhoan = db.TaiKhoans.FirstOrDefault(tk => tk.SoTK == taiKhoan.SoTK);

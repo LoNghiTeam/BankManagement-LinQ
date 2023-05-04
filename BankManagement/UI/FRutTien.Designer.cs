@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel3 = new System.Windows.Forms.Panel();
+            this.tbxSoTK = new RJCodeAdvance.RJControls.RJTextBox();
             this.lblTen = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnRut = new RJCodeAdvance.RJControls.RJButton();
@@ -40,7 +41,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.lblSoTK = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -49,7 +49,7 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.lblSoTK);
+            this.panel3.Controls.Add(this.tbxSoTK);
             this.panel3.Controls.Add(this.lblTen);
             this.panel3.Controls.Add(this.label1);
             this.panel3.Controls.Add(this.btnRut);
@@ -64,6 +64,29 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(434, 273);
             this.panel3.TabIndex = 2;
+            // 
+            // tbxSoTK
+            // 
+            this.tbxSoTK.BackColor = System.Drawing.SystemColors.Window;
+            this.tbxSoTK.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.tbxSoTK.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.tbxSoTK.BorderRadius = 0;
+            this.tbxSoTK.BorderSize = 2;
+            this.tbxSoTK.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxSoTK.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tbxSoTK.Location = new System.Drawing.Point(146, 11);
+            this.tbxSoTK.Margin = new System.Windows.Forms.Padding(4);
+            this.tbxSoTK.Multiline = false;
+            this.tbxSoTK.Name = "tbxSoTK";
+            this.tbxSoTK.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.tbxSoTK.PasswordChar = false;
+            this.tbxSoTK.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.tbxSoTK.PlaceholderText = "";
+            this.tbxSoTK.Size = new System.Drawing.Size(274, 35);
+            this.tbxSoTK.TabIndex = 12;
+            this.tbxSoTK.Texts = "";
+            this.tbxSoTK.UnderlinedStyle = false;
+            this.tbxSoTK._TextChanged += new System.EventHandler(this.tbxSoTK__TextChanged);
             // 
             // lblTen
             // 
@@ -113,7 +136,7 @@
             this.tbTienRut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbTienRut.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.tbTienRut.Location = new System.Drawing.Point(147, 139);
-            this.tbTienRut.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.tbTienRut.Margin = new System.Windows.Forms.Padding(5);
             this.tbTienRut.Multiline = false;
             this.tbTienRut.Name = "tbTienRut";
             this.tbTienRut.Padding = new System.Windows.Forms.Padding(11, 7, 11, 7);
@@ -196,15 +219,6 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // lblSoTK
-            // 
-            this.lblSoTK.AutoSize = true;
-            this.lblSoTK.Location = new System.Drawing.Point(143, 21);
-            this.lblSoTK.Name = "lblSoTK";
-            this.lblSoTK.Size = new System.Drawing.Size(16, 16);
-            this.lblSoTK.TabIndex = 11;
-            this.lblSoTK.Text = "...";
-            // 
             // FRutTien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -240,6 +254,6 @@
         private System.Windows.Forms.Label lblTen;
         private System.Windows.Forms.Label label1;
         private RJCodeAdvance.RJControls.RJTextBox tbTienRut;
-        private System.Windows.Forms.Label lblSoTK;
+        private RJCodeAdvance.RJControls.RJTextBox tbxSoTK;
     }
 }

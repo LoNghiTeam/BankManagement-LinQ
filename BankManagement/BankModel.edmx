@@ -103,9 +103,13 @@
     </Key>
     <Property Name="MaTTD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="SoTK" Type="int" Nullable="false" />
-    <Property Name="DiemTD" Type="int" Nullable="false" />
-    <Property Name="DaVay" Type="float" Nullable="false" />
-    <Property Name="Khoa" Type="int" Nullable="false" />
+    <Property Name="TenChuThe" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SoDu" Type="float" Nullable="false" />
+    <Property Name="HanMuc" Type="float" Nullable="false" />
+    <Property Name="TrangThai" Type="int" Nullable="false" />
+    <Property Name="NgayMoThe" Type="datetime" Nullable="false" />
+    <Property Name="NgayHan" Type="datetime" Nullable="false" />
+    <Property Name="MaBaoMat" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="TheChaps">
     <Key>
@@ -304,10 +308,14 @@
           </Key>
           <Property Name="MaTTD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SoTK" Type="Int32" Nullable="false" />
-          <Property Name="DiemTD" Type="Int32" Nullable="false" />
-          <Property Name="DaVay" Type="Double" Nullable="false" />
-          <Property Name="Khoa" Type="Int32" Nullable="false" />
+          <Property Name="TenChuThe" Type="String" Nullable="false" />
+          <Property Name="SoDu" Type="Double" Nullable="false" />
+          <Property Name="HanMuc" Type="Double" Nullable="false" />
+          <Property Name="TrangThai" Type="Int32" Nullable="false" />
           <NavigationProperty Name="TaiKhoan" Relationship="BankModel.TheTinDungTaiKhoan" FromRole="TheTinDung" ToRole="TaiKhoan" />
+          <Property Name="NgayMoThe" Type="DateTime" Nullable="false" />
+          <Property Name="NgayHan" Type="DateTime" Nullable="false" />
+          <Property Name="MaBaoMat" Type="String" Nullable="false" />
         </EntityType>
         <Association Name="KhoanVayTaiKhoan">
           <End Type="BankModel.KhoanVay" Role="KhoanVay" Multiplicity="*" />
@@ -431,9 +439,13 @@
         <MappingFragment StoreEntitySet="TheTinDungs">
           <ScalarProperty Name="MaTTD" ColumnName="MaTTD" />
           <ScalarProperty Name="SoTK" ColumnName="SoTK" />
-          <ScalarProperty Name="DiemTD" ColumnName="DiemTD" />
-          <ScalarProperty Name="DaVay" ColumnName="DaVay" />
-          <ScalarProperty Name="Khoa" ColumnName="Khoa" />
+          <ScalarProperty Name="TenChuThe" ColumnName="TenChuThe" />
+          <ScalarProperty Name="SoDu" ColumnName="SoDu" />
+          <ScalarProperty Name="HanMuc" ColumnName="HanMuc" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="NgayMoThe" ColumnName="NgayMoThe" />
+          <ScalarProperty Name="NgayHan" ColumnName="NgayHan" />
+          <ScalarProperty Name="MaBaoMat" ColumnName="MaBaoMat" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

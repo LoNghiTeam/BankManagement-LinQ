@@ -104,6 +104,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Enums\TrangThai.cs" />
     <Compile Include="GiaoDich.cs">
       <DependentUpon>BankModel.tt</DependentUpon>
     </Compile>

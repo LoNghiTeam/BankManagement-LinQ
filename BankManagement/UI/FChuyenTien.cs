@@ -63,7 +63,7 @@ namespace BankManagement
                 {
                     if (taiKhoanChuyen.SoDu >= soTien)
                     {
-                        gdService.TaoGiaoDichChuyenTien(taiKhoanChuyen, taiKhoanNhan, soTien);
+                        gdService.TaoGiaoDichChuyenTien(taiKhoanChuyen.SoTK, taiKhoanNhan.SoTK, soTien);
                         BankModelContainer db = new BankModelContainer();
                         taiKhoanChuyen = db.TaiKhoans.FirstOrDefault(tk => tk.SoTK == taiKhoanChuyen.SoTK);
                         taiKhoanNhan = db.TaiKhoans.FirstOrDefault(tk => tk.SoTK == taiKhoanNhan.SoTK);

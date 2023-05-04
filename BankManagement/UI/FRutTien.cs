@@ -14,17 +14,23 @@ namespace BankManagement.UI
     public partial class FRutTien : Form
     {
         GiaoDichService gdService = new GiaoDichService();
+        TaiKhoan taiKhoan = logging.Taikhoan;
+        double tienRut=0;
         public FRutTien()
         {
             InitializeComponent();
         }
-        TaiKhoan taiKhoan = new TaiKhoan();
         private void FRutTien_Load(object sender, EventArgs e)
         {
-            lblSoDu.Text = logging.Taikhoan.SoDu.ToString();
-            lblTen.Text = logging.Taikhoan.HoVaTen;
-            lblSoTK.Text = logging.Taikhoan.SoTK.ToString();
+            lblSoDu.Text = taiKhoan.SoDu.ToString();
+            lblTen.Text = taiKhoan.HoVaTen;
+            tbxSoTK.Texts = taiKhoan.SoTK.ToString();
             btnRut.Enabled = false;
+
+            if(logging.Taikhoan.IsAdmin != 1)
+            {
+                tbxSoTK.Enabled = false;
+            }
         }
 
         private void tbSoTK__TextChanged(object sender, EventArgs e)
@@ -34,32 +40,64 @@ namespace BankManagement.UI
 
         private void btnRut_Click(object sender, EventArgs e)
         {
-            double tienRut;
-            Double.TryParse(tbTienRut.Texts, out tienRut);
-            if (tienRut <= logging.Taikhoan.SoDu)
+            if (CheckRutTien())
             {
-                gdService.TaoGiaoDichRut(logging.Taikhoan, tienRut);
-                BankModelContainer db = new BankModelContainer();
-                logging.Taikhoan = db.TaiKhoans.FirstOrDefault(tk => tk.SoTK == logging.Taikhoan.SoTK);
-                lblSoDu.Text = logging.Taikhoan.SoDu.ToString();
+                gdService.TaoGiaoDichRut(taiKhoan.SoTK, tienRut);
+                using (var db = new BankModelContainer())
+                {
+                    taiKhoan = db.TaiKhoans.FirstOrDefault(tk => tk.SoTK == taiKhoan.SoTK);
+                    lblSoDu.Text = taiKhoan.SoDu.ToString();
+
+                    if (logging.Taikhoan.SoTK == taiKhoan.SoTK)
+                    {
+                        logging.Taikhoan = taiKhoan;
+                    }
+                }
             }
-            else
+        }
+
+        private Boolean CheckRutTien()
+        {
+            if (taiKhoan == null)
             {
-                MessageBox.Show("Số dư không đủ để rút tiền");
+                MessageBox.Show("Tài khoản không xác định!");
+                return false;
             }
+            if (tienRut > taiKhoan.SoDu || tienRut <= 0)
+            {
+                MessageBox.Show("Số tiền rút không hợp lệ! (0 < tiền rút =< số dư)");
+                return false;
+            }
+            return true;
         }
 
         private void tbTienRut__TextChanged(object sender, EventArgs e)
         {
-            double tienRut;
             Double.TryParse(tbTienRut.Texts, out tienRut);
-            if (tienRut <= logging.Taikhoan.SoDu)
+            if (tienRut <= taiKhoan.SoDu && tienRut > 0)
             {
                 btnRut.Enabled = true;
             }
             else
             {
                 btnRut.Enabled = false;
+            }
+        }
+
+        private void tbxSoTK__TextChanged(object sender, EventArgs e)
+        {
+            int soTK;
+            if(Int32.TryParse(tbxSoTK.Texts, out soTK))
+            {
+                using (var db = new BankModelContainer())
+                {
+                    taiKhoan = db.TaiKhoans.FirstOrDefault(t=>t.SoTK == soTK);
+                    if(taiKhoan != null)
+                    {
+                        lblTen.Text = taiKhoan.HoVaTen;
+                        lblSoDu.Text = taiKhoan.SoDu.ToString();
+                    }
+                }
             }
         }
     }
