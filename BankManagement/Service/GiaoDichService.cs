@@ -26,7 +26,11 @@ namespace BankManagement.Service
                     SoTienGD = soTien,
                     NgayGD = DateTime.Now
                 };
-
+                if(taiKhoanThanhToan.SoDu < soTien)
+                {
+                    MessageBox.Show("Số dư không đủ để thanh toán nợ!");
+                    return;
+                }
                 taiKhoanThanhToan.GiaoDiches.Add(newGD);
                 taiKhoanThanhToan.SoDu -= soTien;
                 theTD.SoDu += soTien;
