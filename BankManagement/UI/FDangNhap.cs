@@ -1,13 +1,9 @@
 ﻿using BankManagement.Service;
 using BankManagement.UI;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
 
 namespace BankManagement
@@ -40,8 +36,7 @@ namespace BankManagement
         {
             if (tkService.CheckTenTKVaMK(txtTK.Text, txtMK.Text))
             {
-                BankModelContainer db = new BankModelContainer();
-                logging.Taikhoan = db.TaiKhoans.FirstOrDefault(t => t.TenTK == txtTK.Text);
+                logging.Taikhoan = tkService.GetTaiKhoanByTen(txtTK.Text);
                 this.Hide();
                 if (logging.Taikhoan.IsAdmin != 0)
                 {

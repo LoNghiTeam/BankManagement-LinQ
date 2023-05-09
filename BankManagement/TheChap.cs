@@ -16,6 +16,7 @@ namespace BankManagement
     {
         public int MaKVTC { get; set; }
         public string VatTheChap { get; set; }
+        public double GiaTriTheChap { get; set; }
     
         public virtual KhoanVay KhoanVay { get; set; }
     }

@@ -1,13 +1,9 @@
 ﻿using BankManagement.Service;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.Common.CommandTrees.ExpressionBuilder;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BankManagement.UI
@@ -28,13 +24,7 @@ namespace BankManagement.UI
 
         private void HienThiDanhSach()
         {
-            using (var db = new BankModelContainer())
-            {
-                if (logging.Taikhoan.IsAdmin == 1)
-                    this.dtgvKhoanVay.DataSource = db.KhoanVays.ToList();
-                else
-                    this.dtgvKhoanVay.DataSource = db.KhoanVays.Where(s => s.SoTK == logging.Taikhoan.SoTK).ToList();
-            }
+            dtgvKhoanVay.DataSource = kvService.GetDSKhoanVay();
         }
 
         private void CustomDataGridView()
@@ -104,10 +94,9 @@ namespace BankManagement.UI
                 tbxTinhTrang.Texts = row.Cells[5].Value.ToString();
                 tbxLoai.Texts = row.Cells[6].Value.ToString();
 
-                using (var db = new BankModelContainer())
+                KhoanVay kv = kvService.GetKhoanVay(soKV);
                 {
-                    int tinhTrang = db.KhoanVays.Where(v => v.SoKV == soKV).Select(tk => tk.TinhTrang).FirstOrDefault();
-                    if (tinhTrang == 0)
+                    if (kv.TinhTrang == 0)
                     {
                         btnTatToan.Visible = true;
                     }

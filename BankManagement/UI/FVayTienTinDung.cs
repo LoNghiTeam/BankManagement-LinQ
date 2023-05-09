@@ -1,13 +1,6 @@
 ﻿using BankManagement.Enums;
 using BankManagement.Service;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BankManagement.UI
@@ -15,8 +8,10 @@ namespace BankManagement.UI
     public partial class FVayTienTinDung : Form
     {
         TaiKhoan taiKhoanVay = logging.Taikhoan;
+        TaiKhoanService tkService = new TaiKhoanService();
         KhoanVayService kvService = new KhoanVayService();
         GiaoDichService gdService = new GiaoDichService();
+
         int thoiHan = 0;
         double laiSuat = 0;
         double tienVay = 0;
@@ -46,16 +41,13 @@ namespace BankManagement.UI
         {
             int soTK;
             Int32.TryParse(tbSoTK.Texts, out soTK);
-            using (var db = new BankModelContainer())
-            {
-                if (db.TaiKhoans.Any(tk => tk.SoTK == soTK))
-                {
-                    taiKhoanVay = db.TaiKhoans.FirstOrDefault(tk => tk.SoTK == soTK);
-                    lblTen.Text = taiKhoanVay.HoVaTen;
-                    lblDiemTD.Text = taiKhoanVay.DiemTinDung.ToString() + lblDiemTD.Tag;
-                    tienDuocVay = taiKhoanVay.DiemTinDung * 100000;
-                    lblTienDuocVay.Text = tienDuocVay.ToString() + lblTienDuocVay.Tag;
-                }
+            if (tkService.CheckSoTaiKhoan(soTK)) 
+            {  
+                taiKhoanVay = tkService.GetTaiKhoan(soTK);
+                lblTen.Text = taiKhoanVay.HoVaTen;
+                lblDiemTD.Text = taiKhoanVay.DiemTinDung.ToString() + lblDiemTD.Tag;
+                tienDuocVay = taiKhoanVay.DiemTinDung * 100000;
+                lblTienDuocVay.Text = tienDuocVay.ToString() + lblTienDuocVay.Tag;
             }
         }
 
@@ -105,16 +97,14 @@ namespace BankManagement.UI
                 };
                 gdService.TaoGiaoDichVayTD(kv);
 
-                using (var db = new BankModelContainer())
+                //Load lai tai khoan
+                taiKhoanVay = tkService.GetTaiKhoan(taiKhoanVay.SoTK);
+                lblDiemTD.Text = taiKhoanVay.DiemTinDung.ToString() + lblDiemTD.Tag;
+                tienDuocVay = taiKhoanVay.DiemTinDung * 100000;
+                lblTienDuocVay.Text = tienDuocVay.ToString() + lblTienDuocVay.Tag;
+                if(logging.Taikhoan.SoTK == taiKhoanVay.SoTK)
                 {
-                    taiKhoanVay = db.TaiKhoans.FirstOrDefault(tk => tk.SoTK == taiKhoanVay.SoTK);
-                    lblDiemTD.Text = taiKhoanVay.DiemTinDung.ToString() + lblDiemTD.Tag;
-                    tienDuocVay = taiKhoanVay.DiemTinDung * 100000;
-                    lblTienDuocVay.Text = tienDuocVay.ToString() + lblTienDuocVay.Tag;
-                    if(logging.Taikhoan.SoTK == taiKhoanVay.SoTK)
-                    {
-                        logging.Taikhoan = taiKhoanVay;
-                    }
+                    logging.Taikhoan = taiKhoanVay;
                 }
             }
         }
@@ -131,21 +121,17 @@ namespace BankManagement.UI
                 int soTK;
                 if (Int32.TryParse(tbSoTK.Texts, out soTK))
                 {
-                    using (var db = new BankModelContainer())
+                    if (!tkService.CheckSoTaiKhoan(soTK))
                     {
-                        if (!db.TaiKhoans.Any(tk => tk.SoTK == soTK))
+                        MessageBox.Show("Số tài khoản không tồn tại!");
+                        return false;
+                    }
+                    else
+                    {
+                        if (taiKhoanVay.DanhSachDen == 1)
                         {
-                            MessageBox.Show("Số tài khoản không tồn tại!");
+                            MessageBox.Show("Tài khoản nằm trong danh sách đen, không thể cho vay!");
                             return false;
-                        }
-                        else
-                        {
-                            int blackUser = db.TaiKhoans.Where(tk => tk.SoTK == soTK).Select(tk => tk.DanhSachDen).FirstOrDefault();
-                            if (blackUser == 1)
-                            {
-                                MessageBox.Show("Tài khoản nằm trong danh sách đen, không thể cho vay!");
-                                return false;
-                            }
                         }
                     }
                 }

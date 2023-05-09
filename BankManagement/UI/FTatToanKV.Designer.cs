@@ -51,16 +51,19 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.lblLoai = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.lblDaoHan = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.lblNgayTT = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.panel11 = new System.Windows.Forms.Panel();
             this.lblNgaySai = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.lblThang = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel12 = new System.Windows.Forms.Panel();
             this.lblTienLai = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -70,9 +73,6 @@
             this.panel14 = new System.Windows.Forms.Panel();
             this.lblTongTien = new System.Windows.Forms.Label();
             this.btnTatToan = new RJCodeAdvance.RJControls.RJButton();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.lblThang = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -83,14 +83,14 @@
             this.panel4.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.flowLayoutPanel4.SuspendLayout();
             this.panel9.SuspendLayout();
+            this.flowLayoutPanel4.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel11.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panel12.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel14.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // label20
@@ -321,21 +321,6 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Loại vay:";
             // 
-            // flowLayoutPanel4
-            // 
-            this.flowLayoutPanel4.Controls.Add(this.panel10);
-            this.flowLayoutPanel4.Controls.Add(this.panel11);
-            this.flowLayoutPanel4.Controls.Add(this.panel5);
-            this.flowLayoutPanel4.Controls.Add(this.panel12);
-            this.flowLayoutPanel4.Controls.Add(this.panel13);
-            this.flowLayoutPanel4.Controls.Add(this.panel14);
-            this.flowLayoutPanel4.Controls.Add(this.btnTatToan);
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(573, 2);
-            this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(429, 406);
-            this.flowLayoutPanel4.TabIndex = 5;
-            // 
             // panel9
             // 
             this.panel9.Controls.Add(this.lblDaoHan);
@@ -343,7 +328,7 @@
             this.panel9.Location = new System.Drawing.Point(3, 326);
             this.panel9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(415, 50);
+            this.panel9.Size = new System.Drawing.Size(436, 50);
             this.panel9.TabIndex = 0;
             // 
             // lblDaoHan
@@ -363,6 +348,21 @@
             this.label9.Size = new System.Drawing.Size(95, 16);
             this.label9.TabIndex = 0;
             this.label9.Text = "Ngày đáo hạn:";
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Controls.Add(this.panel10);
+            this.flowLayoutPanel4.Controls.Add(this.panel11);
+            this.flowLayoutPanel4.Controls.Add(this.panel5);
+            this.flowLayoutPanel4.Controls.Add(this.panel12);
+            this.flowLayoutPanel4.Controls.Add(this.panel13);
+            this.flowLayoutPanel4.Controls.Add(this.panel14);
+            this.flowLayoutPanel4.Controls.Add(this.btnTatToan);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(573, 2);
+            this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(429, 406);
+            this.flowLayoutPanel4.TabIndex = 5;
             // 
             // panel10
             // 
@@ -419,6 +419,34 @@
             this.label14.Size = new System.Drawing.Size(109, 16);
             this.label14.TabIndex = 0;
             this.label14.Text = "Số ngày sai lệch:";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.lblThang);
+            this.panel5.Controls.Add(this.label8);
+            this.panel5.Location = new System.Drawing.Point(3, 110);
+            this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(415, 50);
+            this.panel5.TabIndex = 1;
+            // 
+            // lblThang
+            // 
+            this.lblThang.AutoSize = true;
+            this.lblThang.Location = new System.Drawing.Point(195, 17);
+            this.lblThang.Name = "lblThang";
+            this.lblThang.Size = new System.Drawing.Size(16, 16);
+            this.lblThang.TabIndex = 0;
+            this.lblThang.Text = "...";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(13, 17);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(103, 16);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Số tháng tính lãi:";
             // 
             // panel12
             // 
@@ -515,34 +543,6 @@
             this.btnTatToan.UseVisualStyleBackColor = false;
             this.btnTatToan.Click += new System.EventHandler(this.btnTatToan_Click);
             // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.lblThang);
-            this.panel5.Controls.Add(this.label8);
-            this.panel5.Location = new System.Drawing.Point(3, 110);
-            this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(415, 50);
-            this.panel5.TabIndex = 1;
-            // 
-            // lblThang
-            // 
-            this.lblThang.AutoSize = true;
-            this.lblThang.Location = new System.Drawing.Point(195, 17);
-            this.lblThang.Name = "lblThang";
-            this.lblThang.Size = new System.Drawing.Size(16, 16);
-            this.lblThang.TabIndex = 0;
-            this.lblThang.Text = "...";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(13, 17);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(103, 16);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "Số tháng tính lãi:";
-            // 
             // FTatToanKV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -572,21 +572,21 @@
             this.panel6.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            this.flowLayoutPanel4.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
+            this.flowLayoutPanel4.ResumeLayout(false);
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
             this.panel11.ResumeLayout(false);
             this.panel11.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.panel12.ResumeLayout(false);
             this.panel12.PerformLayout();
             this.panel13.ResumeLayout(false);
             this.panel13.PerformLayout();
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.ResumeLayout(false);
 
         }

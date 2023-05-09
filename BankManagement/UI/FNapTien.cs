@@ -35,8 +35,7 @@ namespace BankManagement
             }
             gdService.TaoGiaoDichNap(taiKhoan.SoTK, soTien);
 
-            BankModelContainer db = new BankModelContainer();
-            taiKhoan = db.TaiKhoans.FirstOrDefault(tk => tk.SoTK == taiKhoan.SoTK);
+            taiKhoan = tkService.GetTaiKhoan(taiKhoan.SoTK);
             if (logging.Taikhoan.SoTK == taiKhoan.SoTK)
                 logging.Taikhoan = taiKhoan;
             lblSoDu.Text = taiKhoan.SoDu.ToString();
@@ -58,12 +57,11 @@ namespace BankManagement
 
         private void btnCheck_Click(object sender, EventArgs e)
         {
-            BankModelContainer db = new BankModelContainer();
-            int result;
-            Int32.TryParse(tbSoTK.Text, out result);
-            if (db.TaiKhoans.Any(tk => tk.SoTK == result)) 
+            int soTK;
+            Int32.TryParse(tbSoTK.Text, out soTK);
+            if (tkService.CheckSoTaiKhoan(soTK)) 
             {
-                taiKhoan = db.TaiKhoans.FirstOrDefault(tk => tk.SoTK == result);
+                taiKhoan = tkService.GetTaiKhoan(soTK);
                 lblNguoiNhan.Text = taiKhoan.HoVaTen;
                 lblSoDu.Text = taiKhoan.SoDu.ToString() + lblSoDu.Tag;
                 btnNap.Enabled = true;

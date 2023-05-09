@@ -1,4 +1,5 @@
-﻿using BankManagement.Enums;
+﻿using BankManagement.DAO;
+using BankManagement.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace BankManagement.Service
 {
     internal class KhoanVayService
     {
+        KhoanVayDAO kvDAO = new KhoanVayDAO();
         public double TinhTienLai(double tienVay, int thoiHan, double laiSuat)
         {
             double tienLai = tienVay;
@@ -46,6 +48,16 @@ namespace BankManagement.Service
                     break;
             }
             return Math.Round(laiSuat, 2);
+        }
+
+        public KhoanVay GetKhoanVay(int soKV)
+        {
+            return kvDAO.GetKhoanVay(soKV);
+        }
+
+        internal List<KhoanVay> GetDSKhoanVay()
+        {
+            return kvDAO.GetDSKhoanVay();
         }
     }
 }

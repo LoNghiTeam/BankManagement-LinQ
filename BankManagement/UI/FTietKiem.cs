@@ -1,14 +1,7 @@
 ﻿using BankManagement.Enums;
 using BankManagement.Service;
-using BankManagement.UI;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BankManagement
@@ -16,8 +9,10 @@ namespace BankManagement
     public partial class FTietKiem : Form
     {
         TaiKhoan taiKhoanTK = logging.Taikhoan;
+        TaiKhoanService tkService = new TaiKhoanService();
         SoTietKiemService gtkService= new SoTietKiemService();
         GiaoDichService gdService = new GiaoDichService();
+
         int thoiHan = 0;
         double laiSuat = 0;
         double tienGui = 0;
@@ -44,14 +39,11 @@ namespace BankManagement
         {
             int soTK;
             Int32.TryParse(tbSoTK.Texts, out soTK);
-            using (var db = new BankModelContainer())
-            {
-                if (db.TaiKhoans.Any(tk => tk.SoTK == soTK))
-                {
-                    taiKhoanTK = db.TaiKhoans.FirstOrDefault(tk => tk.SoTK == soTK);
-                    lblTen.Text = taiKhoanTK.HoVaTen;
-                    lblTienHienCo.Text = taiKhoanTK.SoDu.ToString();
-                }
+            if (tkService.CheckSoTaiKhoan(soTK)) 
+            {  
+                taiKhoanTK = tkService.GetTaiKhoan(soTK);
+                lblTen.Text = taiKhoanTK.HoVaTen;
+                lblTienHienCo.Text = taiKhoanTK.SoDu.ToString();
             }
         }
 
@@ -103,9 +95,10 @@ namespace BankManagement
                 };
                 gdService.TaoGiaoDichGuiTietKiem(stk);
 
-                using (var db = new BankModelContainer())
+                taiKhoanTK = tkService.GetTaiKhoan(taiKhoanTK.SoTK);
+                if(logging.Taikhoan.SoTK == taiKhoanTK.SoTK)
                 {
-                    taiKhoanTK = db.TaiKhoans.FirstOrDefault(tk => tk.SoTK == taiKhoanTK.SoTK);
+                    logging.Taikhoan = taiKhoanTK;
                 }
 
                 lblTienHienCo.Text = taiKhoanTK.SoDu.ToString();

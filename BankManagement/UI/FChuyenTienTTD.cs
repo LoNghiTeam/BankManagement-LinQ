@@ -1,12 +1,6 @@
 ﻿using BankManagement.Service;
 using System;   
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BankManagement.UI
@@ -14,6 +8,9 @@ namespace BankManagement.UI
     public partial class FChuyenTienTTD : Form
     {
         GiaoDichService gdService = new GiaoDichService();
+        TheTinDungService ttdService = new TheTinDungService();
+        TaiKhoanService tkService = new TaiKhoanService();
+
         TheTinDung theTD;
         TaiKhoan taiKhoanChuyen;
         TaiKhoan taiKhoanNhan;
@@ -43,13 +40,10 @@ namespace BankManagement.UI
             int soTKNhan;
             if(Int32.TryParse(tbSoTKNhan.Texts, out soTKNhan))
             {
-                using (var db = new BankModelContainer())
+                if(tkService.CheckSoTaiKhoan(soTKNhan))
                 {
-                    taiKhoanNhan = db.TaiKhoans.FirstOrDefault(t => t.SoTK == soTKNhan);
-                    if (taiKhoanNhan != null)
-                    {
-                        lblTenNguoiNhan.Text = taiKhoanNhan.HoVaTen;
-                    }
+                    taiKhoanNhan = tkService.GetTaiKhoan(soTKNhan);
+                    lblTenNguoiNhan.Text = taiKhoanNhan.HoVaTen;
                 }
             }
         }
@@ -60,11 +54,8 @@ namespace BankManagement.UI
             {
                 gdService.TaoGiaoDichChuyenTienTheTD(taiKhoanChuyen.SoTK, taiKhoanNhan.SoTK, theTD.MaTTD, soTien);
                 
-                using (var db = new BankModelContainer())
-                {
-                    theTD = db.TheTinDungs.FirstOrDefault(t => t.SoTK == theTD.SoTK);
-                    lblSoDu.Text = theTD.SoDu.ToString();
-                }
+                theTD = ttdService.GetTheTinDung(theTD.MaTTD);
+                lblSoDu.Text = theTD.SoDu.ToString();
             }
         }
 

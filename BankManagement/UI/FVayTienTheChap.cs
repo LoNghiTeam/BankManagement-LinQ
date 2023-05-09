@@ -1,14 +1,6 @@
 ﻿using BankManagement.Enums;
 using BankManagement.Service;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BankManagement.UI
@@ -16,13 +8,17 @@ namespace BankManagement.UI
     public partial class FVayTienTheChap : Form
     {
         TaiKhoan taiKhoanVay = logging.Taikhoan;
+        TaiKhoanService tkService = new TaiKhoanService();
+
         KhoanVayService kvService = new KhoanVayService();
         GiaoDichService gdService = new GiaoDichService();
+
         int thoiHan = 0;
         double laiSuat = 0;
         double tienVay = 0;
         double tienLai = 0;
         string vatTheChap = "";
+        double giaTriTC = 0;
         public FVayTienTheChap()
         {
             InitializeComponent();
@@ -39,20 +35,16 @@ namespace BankManagement.UI
                 tbSoTK.Enabled = false;
             }
             lblTen.Text = taiKhoanVay.HoVaTen;
-            tbTien.Texts = "10000000"; 
         }
 
         private void tbSoTK__TextChanged(object sender, EventArgs e)
         {
             int soTK;
             Int32.TryParse(tbSoTK.Texts, out soTK);
-            using (var db = new BankModelContainer())
+            if (tkService.CheckSoTaiKhoan(soTK))
             {
-                if (db.TaiKhoans.Any(tk => tk.SoTK == soTK))
-                {
-                    taiKhoanVay = db.TaiKhoans.FirstOrDefault(tk => tk.SoTK == soTK);
-                    lblTen.Text = taiKhoanVay.HoVaTen;
-                }
+                taiKhoanVay =tkService.GetTaiKhoan(soTK);
+                lblTen.Text = taiKhoanVay.HoVaTen;
             }
         }
 
@@ -60,7 +52,7 @@ namespace BankManagement.UI
         {
             if (Double.TryParse(tbTien.Texts, out tienVay))
             {
-                if (tienVay >= 10000000 && tienVay <= 1000000000)
+                if (tienVay > 0 && tienVay <= giaTriTC)
                 {
                     tienLai = kvService.TinhTienLai(tienVay, thoiHan, laiSuat);
                     lblTong.Text = (tienVay + tienLai).ToString();
@@ -103,18 +95,16 @@ namespace BankManagement.UI
                     TheChap = new TheChap
                     {
                         VatTheChap = vatTheChap,
+                        GiaTriTheChap = giaTriTC
                     }
                 };
                 gdService.TaoGiaoDichVayTC(kv, vatTheChap);
 
                 //đặt lại dữ liệu thực
-                using (var db = new BankModelContainer())
+                taiKhoanVay = tkService.GetTaiKhoan(taiKhoanVay.SoTK);
+                if (logging.Taikhoan.SoTK == taiKhoanVay.SoTK)
                 {
-                    taiKhoanVay = db.TaiKhoans.FirstOrDefault(tk => tk.SoTK == taiKhoanVay.SoTK);
-                    if (logging.Taikhoan.SoTK == taiKhoanVay.SoTK)
-                    {
-                        logging.Taikhoan = taiKhoanVay;
-                    }
+                    logging.Taikhoan = taiKhoanVay;
                 }
             }
         }
@@ -130,29 +120,31 @@ namespace BankManagement.UI
                 int soTK;
                 if(Int32.TryParse(tbSoTK.Texts, out soTK))
                 {
-                    using (var db = new BankModelContainer())
+                    if (!tkService.CheckSoTaiKhoan(soTK))
                     {
-                        if (!db.TaiKhoans.Any(tk => tk.SoTK == soTK))
+                        MessageBox.Show("Số tài khoản không tồn tại!");
+                        return false;
+                    }
+                    else
+                    {
+                        if (taiKhoanVay.DanhSachDen == 1)
                         {
-                            MessageBox.Show("Số tài khoản không tồn tại!");
+                            MessageBox.Show("Tài khoản nằm trong danh sách đen, không thể cho vay!");
                             return false;
-                        }
-                        else
-                        {
-                           int blackUser = db.TaiKhoans.Where(tk => tk.SoTK == soTK).Select(tk => tk.DanhSachDen).FirstOrDefault();
-                           if (blackUser == 1)
-                            {
-                                MessageBox.Show("Tài khoản nằm trong danh sách đen, không thể cho vay!");
-                                return false;
-                            }
                         }
                     }
                 }
             }
 
-            if (string.IsNullOrEmpty(tbTien.Texts) || tienVay < 10000000 || tienVay > 1000000000 )
+            if (!Double.TryParse(tbxGiaTriTC.Texts, out giaTriTC) || giaTriTC <= 0)
             {
-                MessageBox.Show("Số tiền muốn vay không hợp lệ (10000000<TienVay<1000000000) !");
+                MessageBox.Show("Vui lòng nhập giá trị vật thế chấp hợp lệ!");
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(tbTien.Texts) || tienVay <= 0 || tienVay > giaTriTC )
+            {
+                MessageBox.Show("Số tiền muốn vay không hợp lệ (0 < tiền vay =< giá trị thế chấp) !");
                 return false;
             }
 
@@ -164,7 +156,7 @@ namespace BankManagement.UI
 
             if (string.IsNullOrEmpty(tbTheChap.Texts))
             {
-                MessageBox.Show("Giá trị thế chấp không hợp lệ!");
+                MessageBox.Show("Vật thế chấp không hợp lệ!");
                 return false;
             }
 
@@ -173,12 +165,21 @@ namespace BankManagement.UI
                 MessageBox.Show("Vui lòng nhập đủ thông tin!");
                 return false;
             }
+
+            
             return true;
         }
 
         private void tbTheChap__TextChanged(object sender, EventArgs e)
         {
+        }
 
+        private void tbxGiaTriTC__TextChanged(object sender, EventArgs e)
+        {
+            if (!Double.TryParse(tbxGiaTriTC.Texts, out giaTriTC))
+            {
+                giaTriTC = 0;
+            }
         }
     }
 }

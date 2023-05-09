@@ -1,12 +1,6 @@
 ﻿using BankManagement.Service;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BankManagement
@@ -14,6 +8,8 @@ namespace BankManagement
     public partial class FChuyenTien : Form
     {
         GiaoDichService gdService = new GiaoDichService();
+        TaiKhoanService tkService = new TaiKhoanService();
+
         TaiKhoan taiKhoanChuyen = logging.Taikhoan;
         TaiKhoan taiKhoanNhan;
         public FChuyenTien()
@@ -36,12 +32,11 @@ namespace BankManagement
 
         private void btnKiemTra_Click(object sender, EventArgs e)
         {
-            BankModelContainer db = new BankModelContainer();
             int soTKNhan;
             Int32.TryParse(tbxSoTKNhan.Text, out soTKNhan);
-            if (db.TaiKhoans.Any(tk=> tk.SoTK == soTKNhan))
+            if (tkService.CheckSoTaiKhoan(soTKNhan))
             {
-                taiKhoanNhan = db.TaiKhoans.FirstOrDefault(tk => tk.SoTK == soTKNhan);
+                taiKhoanNhan = tkService.GetTaiKhoan(soTKNhan);
                 if (taiKhoanNhan.SoTK != taiKhoanChuyen.SoTK)
                 {
                     btnChuyenTien.Enabled = true;
@@ -64,12 +59,11 @@ namespace BankManagement
                     if (taiKhoanChuyen.SoDu >= soTien)
                     {
                         gdService.TaoGiaoDichChuyenTien(taiKhoanChuyen.SoTK, taiKhoanNhan.SoTK, soTien);
-                        BankModelContainer db = new BankModelContainer();
-                        taiKhoanChuyen = db.TaiKhoans.FirstOrDefault(tk => tk.SoTK == taiKhoanChuyen.SoTK);
-                        taiKhoanNhan = db.TaiKhoans.FirstOrDefault(tk => tk.SoTK == taiKhoanNhan.SoTK);
+                        taiKhoanChuyen = tkService.GetTaiKhoan(taiKhoanChuyen.SoTK);
+                        taiKhoanNhan = tkService.GetTaiKhoan(taiKhoanNhan.SoTK);
                         if (logging.Taikhoan.SoTK == taiKhoanChuyen.SoTK || logging.Taikhoan.SoTK == taiKhoanNhan.SoTK)
                         {
-                            logging.Taikhoan = db.TaiKhoans.FirstOrDefault(t => t.SoTK == logging.Taikhoan.SoTK);
+                            logging.Taikhoan = tkService.GetTaiKhoan(logging.Taikhoan.SoTK);
                         }
 
                         lblSoDu.Text = taiKhoanChuyen.SoDu.ToString();
@@ -94,10 +88,9 @@ namespace BankManagement
         {
             int soTKChuyen;
             Int32.TryParse(tbxSoTKChuyen.Text, out soTKChuyen);
-            BankModelContainer db = new BankModelContainer();
-            if(db.TaiKhoans.Any(tk=>tk.SoTK == soTKChuyen))
+            if(tkService.CheckSoTaiKhoan(soTKChuyen))
             {
-                taiKhoanChuyen = db.TaiKhoans.FirstOrDefault(tk => tk.SoTK == soTKChuyen);
+                taiKhoanChuyen = tkService.GetTaiKhoan(soTKChuyen);
                 lblNguoiChuyen.Text = taiKhoanChuyen.HoVaTen;
                 lblSoDu.Text = taiKhoanChuyen.SoDu.ToString();
                 btnChuyenTien.Enabled = true;

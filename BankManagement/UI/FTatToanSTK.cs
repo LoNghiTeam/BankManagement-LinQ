@@ -1,12 +1,6 @@
 ﻿using BankManagement.Service;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BankManagement.UI
@@ -24,9 +18,9 @@ namespace BankManagement.UI
         public FTatToanSTK(int maSTK)
         {
             InitializeComponent();
-            using (var db = new BankModelContainer())
+            if (stkService.CheckSoTietKiem(maSTK))
             {
-                stk = db.SoTietKiems.FirstOrDefault(s => s.MaSTK == maSTK);
+                stk = stkService.GetSoTietKiem(maSTK);
             }
         }
 

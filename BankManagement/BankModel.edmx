@@ -117,6 +117,7 @@
     </Key>
     <Property Name="MaKVTC" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="VatTheChap" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="GiaTriTheChap" Type="float" Nullable="false" />
     <Property Name="KhoanVay_SoKV" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="GiaoDichTaiKhoan">
@@ -360,6 +361,7 @@
           <Property Name="MaKVTC" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
           <Property Name="VatTheChap" Type="String" Nullable="false" />
           <NavigationProperty Name="KhoanVay" Relationship="BankModel.TheChapKhoanVay" FromRole="TheChap" ToRole="KhoanVay" />
+          <Property Name="GiaTriTheChap" Type="Double" Nullable="false" />
         </EntityType>
         <Association Name="TheChapKhoanVay">
           <End Type="BankModel.TheChap" Role="TheChap" Multiplicity="0..1" />
@@ -454,6 +456,7 @@
         <MappingFragment StoreEntitySet="TheChaps">
           <ScalarProperty Name="MaKVTC" ColumnName="MaKVTC" />
           <ScalarProperty Name="VatTheChap" ColumnName="VatTheChap" />
+          <ScalarProperty Name="GiaTriTheChap" ColumnName="GiaTriTheChap" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

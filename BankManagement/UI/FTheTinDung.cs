@@ -17,6 +17,7 @@ namespace BankManagement.UI
         TheTinDungService theTDService = new TheTinDungService();
         TheTinDung theTD = new TheTinDung();
         TaiKhoan taiKhoan = logging.Taikhoan;
+        TaiKhoanService tkService = new TaiKhoanService();
         public FTheTinDung()
         {
             InitializeComponent();
@@ -37,18 +38,15 @@ namespace BankManagement.UI
             int soTK;
             if (Int32.TryParse(tbxSoTK.Texts, out soTK))
             {
-                using (var db = new BankModelContainer())
+                if (tkService.CheckSoTaiKhoan(soTK))
                 {
-                    if (db.TaiKhoans.Any(t=>t.SoTK == soTK))
-                    {
-                        theTDService.MoTheTinDung(soTK);
-                        LoadTheTinDung();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Số tài khoản không hợp lệ!");
-                        gbThongTinThe.Enabled = false;
-                    }
+                    theTDService.MoTheTinDung(soTK);
+                    LoadTheTinDung();
+                }
+                else
+                {
+                    MessageBox.Show("Số tài khoản không hợp lệ!");
+                    gbThongTinThe.Enabled = false;
                 }
             }
         }
@@ -61,13 +59,10 @@ namespace BankManagement.UI
                 fThanhToanTTD.ShowDialog();
                 cbSoTheTD_OnSelectedIndexChanged(sender, e);
 
-                using (var db = new BankModelContainer())
+                taiKhoan = tkService.GetTaiKhoan(taiKhoan.SoTK);
+                if(logging.Taikhoan.SoTK == taiKhoan.SoTK)
                 {
-                    taiKhoan = db.TaiKhoans.FirstOrDefault(t => t.SoTK == taiKhoan.SoTK);
-                    if(logging.Taikhoan.SoTK == taiKhoan.SoTK)
-                    {
-                        logging.Taikhoan = taiKhoan;
-                    }
+                    logging.Taikhoan = taiKhoan;
                 }
             }
             else
@@ -120,18 +115,15 @@ namespace BankManagement.UI
             int soTK;
             if (Int32.TryParse(tbxSoTK.Texts, out soTK))
             {
-                using (var db = new BankModelContainer())
+                if (tkService.CheckSoTaiKhoan(soTK))
                 {
-                    taiKhoan = db.TaiKhoans.FirstOrDefault(t => t.SoTK == soTK);
-                    if(taiKhoan != null)
-                    {
-                        lbTenChuThe.Text = taiKhoan.HoVaTen;
-                        LoadTheTinDung();
-                    }
-                    else
-                    {
-                        gbThongTinThe.Enabled = false;
-                    }
+                    taiKhoan = tkService.GetTaiKhoan(soTK);
+                    lbTenChuThe.Text = taiKhoan.HoVaTen;
+                    LoadTheTinDung();
+                }
+                else
+                {
+                    gbThongTinThe.Enabled = false;
                 }
             }
         }
@@ -139,10 +131,8 @@ namespace BankManagement.UI
         private void LoadTheTinDung()
         {
             gbThongTinThe.Enabled = true;
-            using (var db = new BankModelContainer())
-            {
-                cbSoTheTD.DataSource = db.TheTinDungs.Where(t => t.SoTK == taiKhoan.SoTK).Select(s => s.MaTTD).ToList();
-            }
+            cbSoTheTD.DataSource = theTDService.LoadDSTheTinDung(taiKhoan.SoTK);
+
             if (cbSoTheTD.Items.Count == 0)
             {
                 cbSoTheTD.SelectedItem = "";
@@ -161,33 +151,30 @@ namespace BankManagement.UI
             int maTheTD;
             if (Int32.TryParse(cbSoTheTD.SelectedItem.ToString(), out maTheTD))
             {
-                using (var db = new BankModelContainer())
+                if (theTDService.CheckTheTinDung(maTheTD))
                 {
-                    theTD = db.TheTinDungs.FirstOrDefault(t => t.MaTTD == maTheTD);
-                    if(theTD != null)
+                    theTD = theTDService.GetTheTinDung(maTheTD);
+
+                    lbSoDuThe.Text = theTD.SoDu.ToString();
+                    lbHanMuc.Text = theTD.HanMuc.ToString();
+                    lbTrangThai.Text = Enum.GetName(typeof(TrangThai), theTD.TrangThai);
+                    lbNgayHan.Text = theTD.NgayHan.ToString();
+
+                    if (theTD.TrangThai != 0 || theTD.NgayHan < DateTime.Now)
                     {
-                        lbSoDuThe.Text = theTD.SoDu.ToString();
-                        lbHanMuc.Text = theTD.HanMuc.ToString();
-                        lbTrangThai.Text = Enum.GetName(typeof(TrangThai), theTD.TrangThai);
-                        lbNgayHan.Text = theTD.NgayHan.ToString();
-
-                        if(theTD.TrangThai !=0 || theTD.NgayHan < DateTime.Now)
-                        {
-                            btnChuyenTien.Enabled = false;
-                            btnRutTien.Enabled = false;
-                        }
-                        else
-                        {
-                            btnChuyenTien.Enabled = true;
-                            btnRutTien.Enabled = true;
-                        }
-                        btnThanhToan.Enabled = true;
-
+                        btnChuyenTien.Enabled = false;
+                        btnRutTien.Enabled = false;
                     }
                     else
                     {
-                        MessageBox.Show("Thẻ lỗi và không tồn tại!");
+                        btnChuyenTien.Enabled = true;
+                        btnRutTien.Enabled = true;
                     }
+                    btnThanhToan.Enabled = true;
+                }
+                else
+                {
+                    MessageBox.Show("Thẻ lỗi và không tồn tại!");
                 }
             }
         }

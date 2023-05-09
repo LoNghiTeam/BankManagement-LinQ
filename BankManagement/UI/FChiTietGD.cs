@@ -1,20 +1,16 @@
 ﻿using BankManagement.Enums;
 using BankManagement.Service;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BankManagement.UI
 {
     public partial class FChiTietGD : Form
     {
-        private int maGD;
+        TaiKhoanService tkService = new TaiKhoanService();
+        GiaoDichService gdService = new GiaoDichService();
+
         GiaoDich gd = new GiaoDich();
         TaiKhoan taiKhoanGui = new TaiKhoan();
         TaiKhoan taiKhoanNhan = new TaiKhoan();
@@ -26,12 +22,10 @@ namespace BankManagement.UI
         public FChiTietGD(int maGD)
         {
             InitializeComponent();
-            this.maGD = maGD;
-            using (var db = new BankModelContainer())
             {
-                gd = db.GiaoDiches.FirstOrDefault(g => g.MaGD == maGD);
-                taiKhoanGui = db.TaiKhoans.FirstOrDefault(t => t.SoTK == gd.MaNguoiGui);
-                taiKhoanNhan = db.TaiKhoans.FirstOrDefault(t => t.SoTK == gd.MaNguoiNhan);
+                gd = gdService.GetGiaoDich(maGD);
+                taiKhoanGui = tkService.GetTaiKhoan(gd.MaNguoiGui);
+                taiKhoanNhan = tkService.GetTaiKhoan(gd.MaNguoiNhan);
             }
         }
         private void FChiTietGD_Load(object sender, EventArgs e)

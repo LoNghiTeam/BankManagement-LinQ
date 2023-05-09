@@ -1,12 +1,6 @@
 ﻿using BankManagement.Service;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BankManagement.UI
@@ -14,6 +8,7 @@ namespace BankManagement.UI
     public partial class FRutTienTTD : Form
     {
         GiaoDichService gdService = new GiaoDichService();
+        TheTinDungService ttdService = new TheTinDungService();
         TheTinDung theTD;
         TaiKhoan taiKhoanRut;
         double soTien = 0;
@@ -46,11 +41,8 @@ namespace BankManagement.UI
             {
                 gdService.TaoGiaoDichRutTienTheTD(taiKhoanRut.SoTK, theTD.MaTTD, soTien);
 
-                using (var db = new BankModelContainer())
-                {
-                    theTD = db.TheTinDungs.FirstOrDefault(t => t.SoTK == theTD.SoTK);
-                    lblSoDu.Text = theTD.SoDu.ToString();
-                }
+                theTD = ttdService.GetTheTinDung(theTD.MaTTD);
+                lblSoDu.Text = theTD.SoDu.ToString();
             }
         }
 

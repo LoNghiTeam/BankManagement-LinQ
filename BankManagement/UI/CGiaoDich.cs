@@ -1,19 +1,11 @@
 ﻿using BankManagement.Service;
 using BankManagement.UI;
-using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Globalization;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Shapes;
-using System.Xml.Linq;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace BankManagement
 {
@@ -35,19 +27,7 @@ namespace BankManagement
 
         private void HienThiDanhSach()
         {
-            using (var db = new BankModelContainer())
-            {
-                if(logging.Taikhoan.IsAdmin == 1)
-                {
-                    this.dtgvTrans.DataSource = db.GiaoDiches.ToList();
-                }    
-                else
-                {
-                    this.dtgvTrans.DataSource =
-                        db.GiaoDiches.Where(t => t.MaNguoiNhan == logging.Taikhoan.SoTK
-                                              || t.MaNguoiGui == logging.Taikhoan.SoTK).ToList();
-                }
-            }
+            this.dtgvTrans.DataSource = gdService.GetDSGiaoDich();
         }
 
         private void CustomDataGridView()
@@ -114,16 +94,15 @@ namespace BankManagement
                 int maGD;
                 if (Int32.TryParse(dtgvTrans.Rows[i].Cells[0].Value.ToString(), out maGD))
                 {
-                    using (var db = new BankModelContainer())
+                    if(gdService.CheckGiaoDich(maGD))
                     {
-                        GiaoDich gd = db.GiaoDiches.FirstOrDefault(g => g.MaGD == maGD);
-                        if (gd != null)
-                            giaoDiches.Add(gd);
+                        GiaoDich gd = gdService.GetGiaoDich(maGD);
+                        giaoDiches.Add(gd);
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Lỗi không xác định!");
+                    MessageBox.Show("Lỗi không xác định, có thể do giao dịch không tồn tại!");
                     return;
                 }
             }
@@ -136,16 +115,15 @@ namespace BankManagement
             int maGD;
             if (Int32.TryParse(lbMaGD.Text, out maGD))
             {
-                using (var db = new BankModelContainer())
+                if (gdService.CheckGiaoDich(maGD))
                 {
-                    GiaoDich gd = db.GiaoDiches.FirstOrDefault(g => g.MaGD == maGD);
-                    if (gd != null)
-                        giaoDiches.Add(gd);
-                    else 
-                    {
-                        MessageBox.Show("Lỗi không xác định!");
-                        return;
-                    }
+                    GiaoDich gd = gdService.GetGiaoDich(maGD);
+                    giaoDiches.Add(gd);
+                }
+                else
+                {
+                    MessageBox.Show("Lỗi không xác định, có thể do giao dịch không tồn tại!");
+                    return;
                 }
                 FPrintGD print = new FPrintGD(giaoDiches);
                 print.ShowDialog();
@@ -173,62 +151,9 @@ namespace BankManagement
 
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
-            using (var db = new BankModelContainer())
-            {
-                IQueryable<GiaoDich> listGD = db.GiaoDiches;
-
-                if (!string.IsNullOrEmpty(tbxMaGD.Texts))
-                {
-                    int maGD;
-                    if (Int32.TryParse(tbxMaGD.Texts, out maGD))
-                    {
-                        listGD = listGD.Where(l => l.MaGD == maGD);
-                    }
-                }
-                if (!string.IsNullOrEmpty(tbxNgGui.Texts))
-                {
-                    int maNgGui;
-                    if (Int32.TryParse(tbxNgGui.Texts, out maNgGui))
-                    {
-                        listGD = listGD.Where(l => l.MaNguoiGui == maNgGui);
-                    }
-                }
-                if (!string.IsNullOrEmpty(tbxNgNhan.Texts))
-                {
-                    int maNgNhan;
-                    if (Int32.TryParse(tbxNgNhan.Texts, out maNgNhan))
-                    {
-                        listGD = listGD.Where(l => l.MaNguoiNhan == maNgNhan);
-                    }
-                }
-                if (cbDate.Checked)
-                {
-                    listGD = listGD.Where(l => l.NgayGD.Year == dpNgayGD.Value.Year
-                                                && l.NgayGD.Month == dpNgayGD.Value.Month
-                                                && l.NgayGD.Day == dpNgayGD.Value.Day);
-                }
-                if (!string.IsNullOrEmpty(tbxTienGD.Texts))
-                {
-                    double soTien;
-                    if (Double.TryParse(tbxTienGD.Texts, out soTien))
-                    {
-                        listGD = listGD.Where(l => l.SoTienGD == soTien);
-                    }
-                }
-                if(cbbLoaiGD.SelectedIndex != 0)
-                {
-                    listGD = listGD.Where(l => l.LoaiGD == cbbLoaiGD.SelectedIndex);
-                }
-                if(logging.Taikhoan.IsAdmin == 1)
-                {
-                    dtgvTrans.DataSource = listGD.ToList();
-                }
-                else
-                {
-                    dtgvTrans.DataSource = listGD.Where(t => t.MaNguoiNhan == logging.Taikhoan.SoTK
-                                              || t.MaNguoiGui == logging.Taikhoan.SoTK).ToList();
-                }
-            }
+            dtgvTrans.DataSource = gdService.KetQuaTimKiem(tbxMaGD.Texts, tbxNgGui.Texts, tbxNgNhan.Texts,
+                                                            cbDate.Checked, dpNgayGD.Value, tbxTienGD.Texts,
+                                                            cbbLoaiGD.SelectedIndex);
         }
 
         private void btnClear_Click(object sender, EventArgs e)

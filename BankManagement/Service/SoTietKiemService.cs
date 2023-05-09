@@ -1,4 +1,5 @@
-﻿using BankManagement.Enums;
+﻿using BankManagement.DAO;
+using BankManagement.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,20 @@ namespace BankManagement.Service
 {
     internal class SoTietKiemService
     {
-        
+        SoTietKiemDAO stkDAO = new SoTietKiemDAO();
+        public SoTietKiem GetSoTietKiem(int maSTK)
+        {
+            return stkDAO.GetSoTietKiem(maSTK);
+        }
+
+        internal List<SoTietKiem> GetDSSoTietKiem()
+        {
+            return stkDAO.GetDSSoTietKiem();
+        }
+        public Boolean CheckSoTietKiem(int maSTK)
+        {
+            return stkDAO.CheckSoTietKiem(maSTK);
+        }
         public double TinhTienLai(double tienGui, int thoiHan, double laiSuat)
         {
             double tienLai = tienGui;

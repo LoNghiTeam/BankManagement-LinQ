@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/04/2023 19:50:39
+-- Date Created: 05/09/2023 13:58:21
 -- Generated from EDMX file: C:\Users\admin\Documents\GitHub\BankManagement-LinQ\BankManagement\BankModel.edmx
 -- --------------------------------------------------
 
@@ -14,7 +14,7 @@ IF SCHEMA_ID(N'dbo') IS NULL EXECUTE(N'CREATE SCHEMA [dbo]');
 GO
 
 -- --------------------------------------------------
--- Dropping existing FOREIGN KEY constraintsFTheT
+-- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
 IF OBJECT_ID(N'[dbo].[FK_GiaoDichTaiKhoan_GiaoDich]', 'F') IS NOT NULL
@@ -143,6 +143,7 @@ GO
 CREATE TABLE [dbo].[TheChaps] (
     [MaKVTC] int IDENTITY(1,1) NOT NULL,
     [VatTheChap] nvarchar(max)  NOT NULL,
+    [GiaTriTheChap] float  NOT NULL,
     [KhoanVay_SoKV] int  NOT NULL
 );
 GO

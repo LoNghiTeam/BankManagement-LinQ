@@ -14,6 +14,8 @@ namespace BankManagement.UI
     public partial class FRutTien : Form
     {
         GiaoDichService gdService = new GiaoDichService();
+        TaiKhoanService tkService = new TaiKhoanService();
+
         TaiKhoan taiKhoan = logging.Taikhoan;
         double tienRut=0;
         public FRutTien()
@@ -43,15 +45,13 @@ namespace BankManagement.UI
             if (CheckRutTien())
             {
                 gdService.TaoGiaoDichRut(taiKhoan.SoTK, tienRut);
-                using (var db = new BankModelContainer())
-                {
-                    taiKhoan = db.TaiKhoans.FirstOrDefault(tk => tk.SoTK == taiKhoan.SoTK);
-                    lblSoDu.Text = taiKhoan.SoDu.ToString();
+                
+                taiKhoan = tkService.GetTaiKhoan(taiKhoan.SoTK);
+                lblSoDu.Text = taiKhoan.SoDu.ToString();
 
-                    if (logging.Taikhoan.SoTK == taiKhoan.SoTK)
-                    {
-                        logging.Taikhoan = taiKhoan;
-                    }
+                if (logging.Taikhoan.SoTK == taiKhoan.SoTK)
+                {
+                    logging.Taikhoan = taiKhoan;
                 }
             }
         }
@@ -89,14 +89,11 @@ namespace BankManagement.UI
             int soTK;
             if(Int32.TryParse(tbxSoTK.Texts, out soTK))
             {
-                using (var db = new BankModelContainer())
+                if(tkService.CheckSoTaiKhoan(soTK))
                 {
-                    taiKhoan = db.TaiKhoans.FirstOrDefault(t=>t.SoTK == soTK);
-                    if(taiKhoan != null)
-                    {
-                        lblTen.Text = taiKhoan.HoVaTen;
-                        lblSoDu.Text = taiKhoan.SoDu.ToString();
-                    }
+                    taiKhoan = tkService.GetTaiKhoan(soTK);
+                    lblTen.Text = taiKhoan.HoVaTen;
+                    lblSoDu.Text = taiKhoan.SoDu.ToString();
                 }
             }
         }

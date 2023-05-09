@@ -32,6 +32,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.cbThoiGianVay = new RJCodeAdvance.RJControls.RJComboBox();
+            this.tbxGiaTriTC = new RJCodeAdvance.RJControls.RJTextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.tbTheChap = new RJCodeAdvance.RJControls.RJTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -61,6 +63,8 @@
             // 
             this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.cbThoiGianVay);
+            this.panel3.Controls.Add(this.tbxGiaTriTC);
+            this.panel3.Controls.Add(this.label9);
             this.panel3.Controls.Add(this.tbTheChap);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.label2);
@@ -79,13 +83,13 @@
             this.panel3.Location = new System.Drawing.Point(3, 17);
             this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(423, 449);
+            this.panel3.Size = new System.Drawing.Size(423, 423);
             this.panel3.TabIndex = 2;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(359, 274);
+            this.label8.Location = new System.Drawing.Point(361, 256);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(54, 16);
             this.label8.TabIndex = 19;
@@ -109,7 +113,7 @@
             "36"});
             this.cbThoiGianVay.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
             this.cbThoiGianVay.ListTextColor = System.Drawing.Color.DimGray;
-            this.cbThoiGianVay.Location = new System.Drawing.Point(146, 268);
+            this.cbThoiGianVay.Location = new System.Drawing.Point(148, 250);
             this.cbThoiGianVay.MinimumSize = new System.Drawing.Size(200, 30);
             this.cbThoiGianVay.Name = "cbThoiGianVay";
             this.cbThoiGianVay.Padding = new System.Windows.Forms.Padding(1);
@@ -117,6 +121,38 @@
             this.cbThoiGianVay.TabIndex = 18;
             this.cbThoiGianVay.Texts = "";
             this.cbThoiGianVay.OnSelectedIndexChanged += new System.EventHandler(this.cbThoiGian_OnSelectedIndexChanged);
+            // 
+            // tbxGiaTriTC
+            // 
+            this.tbxGiaTriTC.BackColor = System.Drawing.SystemColors.Window;
+            this.tbxGiaTriTC.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.tbxGiaTriTC.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.tbxGiaTriTC.BorderRadius = 0;
+            this.tbxGiaTriTC.BorderSize = 2;
+            this.tbxGiaTriTC.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxGiaTriTC.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tbxGiaTriTC.Location = new System.Drawing.Point(148, 204);
+            this.tbxGiaTriTC.Margin = new System.Windows.Forms.Padding(5);
+            this.tbxGiaTriTC.Multiline = false;
+            this.tbxGiaTriTC.Name = "tbxGiaTriTC";
+            this.tbxGiaTriTC.Padding = new System.Windows.Forms.Padding(11, 7, 11, 7);
+            this.tbxGiaTriTC.PasswordChar = false;
+            this.tbxGiaTriTC.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.tbxGiaTriTC.PlaceholderText = "";
+            this.tbxGiaTriTC.Size = new System.Drawing.Size(273, 35);
+            this.tbxGiaTriTC.TabIndex = 17;
+            this.tbxGiaTriTC.Texts = "";
+            this.tbxGiaTriTC.UnderlinedStyle = false;
+            this.tbxGiaTriTC._TextChanged += new System.EventHandler(this.tbxGiaTriTC__TextChanged);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(12, 212);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(91, 16);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Giá trị quy đổi:";
             // 
             // tbTheChap
             // 
@@ -127,7 +163,7 @@
             this.tbTheChap.BorderSize = 2;
             this.tbTheChap.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbTheChap.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tbTheChap.Location = new System.Drawing.Point(144, 204);
+            this.tbTheChap.Location = new System.Drawing.Point(148, 159);
             this.tbTheChap.Margin = new System.Windows.Forms.Padding(5);
             this.tbTheChap.Multiline = false;
             this.tbTheChap.Name = "tbTheChap";
@@ -144,16 +180,16 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(8, 212);
+            this.label7.Location = new System.Drawing.Point(12, 167);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 16);
+            this.label7.Size = new System.Drawing.Size(84, 16);
             this.label7.TabIndex = 16;
-            this.label7.Text = "Giá trị thế chấp:";
+            this.label7.Text = "Vật thế chấp:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(8, 350);
+            this.label2.Location = new System.Drawing.Point(8, 333);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(122, 16);
             this.label2.TabIndex = 15;
@@ -162,7 +198,7 @@
             // lblTen
             // 
             this.lblTen.AutoSize = true;
-            this.lblTen.Location = new System.Drawing.Point(143, 92);
+            this.lblTen.Location = new System.Drawing.Point(143, 78);
             this.lblTen.Name = "lblTen";
             this.lblTen.Size = new System.Drawing.Size(16, 16);
             this.lblTen.TabIndex = 13;
@@ -171,7 +207,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 92);
+            this.label6.Location = new System.Drawing.Point(12, 78);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(72, 16);
             this.label6.TabIndex = 12;
@@ -212,7 +248,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 268);
+            this.label3.Location = new System.Drawing.Point(5, 256);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(88, 16);
             this.label3.TabIndex = 9;
@@ -228,7 +264,7 @@
             this.btnVayTien.FlatAppearance.BorderSize = 0;
             this.btnVayTien.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVayTien.ForeColor = System.Drawing.Color.White;
-            this.btnVayTien.Location = new System.Drawing.Point(91, 394);
+            this.btnVayTien.Location = new System.Drawing.Point(91, 370);
             this.btnVayTien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnVayTien.Name = "btnVayTien";
             this.btnVayTien.Size = new System.Drawing.Size(273, 39);
@@ -247,7 +283,7 @@
             this.tbTien.BorderSize = 2;
             this.tbTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbTien.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tbTien.Location = new System.Drawing.Point(144, 144);
+            this.tbTien.Location = new System.Drawing.Point(148, 114);
             this.tbTien.Margin = new System.Windows.Forms.Padding(5);
             this.tbTien.Multiline = false;
             this.tbTien.Name = "tbTien";
@@ -264,7 +300,7 @@
             // lblTong
             // 
             this.lblTong.AutoSize = true;
-            this.lblTong.Location = new System.Drawing.Point(159, 350);
+            this.lblTong.Location = new System.Drawing.Point(159, 333);
             this.lblTong.Name = "lblTong";
             this.lblTong.Size = new System.Drawing.Size(16, 16);
             this.lblTong.TabIndex = 1;
@@ -273,7 +309,7 @@
             // lblLaiSuat
             // 
             this.lblLaiSuat.AutoSize = true;
-            this.lblLaiSuat.Location = new System.Drawing.Point(147, 313);
+            this.lblLaiSuat.Location = new System.Drawing.Point(147, 300);
             this.lblLaiSuat.Name = "lblLaiSuat";
             this.lblLaiSuat.Size = new System.Drawing.Size(26, 16);
             this.lblLaiSuat.TabIndex = 1;
@@ -283,7 +319,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 313);
+            this.label4.Location = new System.Drawing.Point(11, 300);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 16);
             this.label4.TabIndex = 1;
@@ -292,7 +328,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(8, 145);
+            this.label1.Location = new System.Drawing.Point(12, 115);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(112, 16);
             this.label1.TabIndex = 1;
@@ -306,7 +342,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(429, 468);
+            this.groupBox1.Size = new System.Drawing.Size(429, 442);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin gửi vay tiền";
@@ -356,7 +392,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(429, 614);
+            this.ClientSize = new System.Drawing.Size(429, 588);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -399,5 +435,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private RJCodeAdvance.RJControls.RJComboBox cbThoiGianVay;
+        private RJCodeAdvance.RJControls.RJTextBox tbxGiaTriTC;
+        private System.Windows.Forms.Label label9;
     }
 }

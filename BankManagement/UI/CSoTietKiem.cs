@@ -27,13 +27,7 @@ namespace BankManagement.UI
         }
         private void HienThiDanhSach()
         {
-            using(var db = new BankModelContainer())
-            {
-                if(logging.Taikhoan.IsAdmin == 1)
-                    this.dtgvGuiTK.DataSource = db.SoTietKiems.ToList();
-                else
-                    this.dtgvGuiTK.DataSource = db.SoTietKiems.Where(s => s.SoTK == logging.Taikhoan.SoTK).ToList();
-            }
+            this.dtgvGuiTK.DataSource = stkService.GetDSSoTietKiem();
         }
 
         private void CustomDataGridView()
@@ -97,19 +91,16 @@ namespace BankManagement.UI
                 tbxTien.Texts = row.Cells[5].Value.ToString();
                 tbxTinhTrang.Texts = row.Cells[6].Value.ToString();
 
-                using (var db = new BankModelContainer())
+                if(stkService.CheckSoTietKiem(maSTK))
                 {
-                    SoTietKiem stk = db.SoTietKiems.FirstOrDefault(s => s.MaSTK == maSTK);
-                    if (stk != null)
+                    SoTietKiem stk = stkService.GetSoTietKiem(maSTK);
+                    if (stk.TinhTrang == 0)
                     {
-                        if (stk.TinhTrang == 0)
-                        {
-                            btnTatToan.Visible = true;
-                        }
-                        else
-                        {
-                            btnTatToan.Visible = false;
-                        }
+                        btnTatToan.Visible = true;
+                    }
+                    else
+                    {
+                        btnTatToan.Visible = false;
                     }
                 }
 

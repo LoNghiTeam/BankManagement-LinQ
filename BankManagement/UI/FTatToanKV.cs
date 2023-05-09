@@ -1,13 +1,8 @@
 ﻿using BankManagement.Enums;
 using BankManagement.Service;
+using Microsoft.ReportingServices.Diagnostics.Internal;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BankManagement.UI
@@ -16,6 +11,7 @@ namespace BankManagement.UI
     {
         KhoanVayService kvService = new KhoanVayService();
         GiaoDichService gdService = new GiaoDichService();
+        TaiKhoanService tkService = new TaiKhoanService();
         KhoanVay kv;
         double laiSuat = 0;
         double tienTT = 0;
@@ -27,10 +23,7 @@ namespace BankManagement.UI
         internal FTatToanKV(int soKV)
         {
             InitializeComponent();
-            using (var db = new BankModelContainer())
-            {
-                kv = db.KhoanVays.FirstOrDefault(v => v.SoKV == soKV);
-            }
+            kv = kvService.GetKhoanVay(soKV);
         }
 
         private void FTatToanKV_Load(object sender, EventArgs e)
@@ -83,10 +76,7 @@ namespace BankManagement.UI
             gdService.TaoGiaoDichTatToanKV(kv, tienTT);
             if(logging.Taikhoan.SoTK == kv.SoTK)
             {
-                using (var db = new BankModelContainer())
-                {
-                    logging.Taikhoan = db.TaiKhoans.FirstOrDefault(tk=>tk.SoTK== kv.SoTK);
-                }
+               logging.Taikhoan = tkService.GetTaiKhoan(kv.SoTK);
             }
             this.Close();
         }
