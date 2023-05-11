@@ -28,6 +28,7 @@ namespace BankManagement.UI
            if (logging.Taikhoan.IsAdmin != 1)
            {
                 tbxSoTK.Enabled = false;
+                btnMoThe.Visible = false;
            }
            lbTenChuThe.Text = taiKhoan.HoVaTen;
            tbxSoTK.Texts = taiKhoan.SoTK.ToString();

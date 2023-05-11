@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 05/09/2023 13:58:21
+-- Date Created: 05/11/2023 08:59:28
 -- Generated from EDMX file: C:\Users\admin\Documents\GitHub\BankManagement-LinQ\BankManagement\BankModel.edmx
 -- --------------------------------------------------
 
@@ -78,7 +78,6 @@ CREATE TABLE [dbo].[TaiKhoans] (
     [SDT] nvarchar(10)  NOT NULL,
     [IsAdmin] int  NOT NULL,
     [SoDu] float  NOT NULL,
-    [DiemTinDung] int  NOT NULL,
     [NgayMoTaiKhoan] nvarchar(max)  NOT NULL,
     [DanhSachDen] int  NOT NULL
 );

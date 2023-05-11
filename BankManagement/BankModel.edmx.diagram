@@ -14,7 +14,7 @@
         <AssociationConnector Association="BankModel.KhoanVayTaiKhoan" />
         <AssociationConnector Association="BankModel.SoTietKiemTaiKhoan" />
         <AssociationConnector Association="BankModel.TheTinDungTaiKhoan" />
-        <EntityTypeShape EntityType="BankModel.TheChap" Width="1.5" PointX="5.625" PointY="5" />
+        <EntityTypeShape EntityType="BankModel.TheChap" Width="1.5" PointX="5.625" PointY="5.5" />
         <AssociationConnector Association="BankModel.TheChapKhoanVay" />
       </Diagram>
     </edmx:Diagrams>

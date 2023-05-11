@@ -9,6 +9,7 @@ namespace BankManagement.UI
     {
         SoTietKiemService stkService = new SoTietKiemService();
         GiaoDichService gdService = new GiaoDichService();
+        TaiKhoanService tkService = new TaiKhoanService();
         SoTietKiem stk;
         double tienTT = 0;
         public FTatToanSTK()
@@ -76,6 +77,12 @@ namespace BankManagement.UI
         private void btnTatToan_Click(object sender, EventArgs e)
         {
             gdService.TaoGiaoDichTatToanSTK(stk, tienTT);
+
+            if(logging.Taikhoan.SoTK == stk.SoTK)
+            {
+                logging.Taikhoan = tkService.GetTaiKhoan(stk.SoTK);
+            }
+
             this.Close();
         }
     }

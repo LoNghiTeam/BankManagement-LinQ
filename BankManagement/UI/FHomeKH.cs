@@ -327,12 +327,6 @@ namespace BankManagement
             panelDesktop.Controls.Add(transControl);
         }
 
-        private void btnVayTD_Click(object sender, EventArgs e)
-        {
-            FVayTienTinDung fVayTien = new FVayTienTinDung();
-            fVayTien.ShowDialog();
-        }
-
         private void đổiMậtKhẩuToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FDoiMK fChangePass = new FDoiMK();

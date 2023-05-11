@@ -23,15 +23,14 @@ namespace BankManagement.DAO
                 return db.SoTietKiems.FirstOrDefault(s => s.MaSTK == maSTK);
             }
         }
-
         internal List<SoTietKiem> GetDSSoTietKiem()
         {
             using (var db = new BankModelContainer())
             {
                 if (logging.Taikhoan.IsAdmin == 1)
-                    return db.SoTietKiems.ToList();
+                    return db.SoTietKiems.Where(s => s.TinhTrang == 0).ToList();
                 else
-                    return db.SoTietKiems.Where(s => s.SoTK == logging.Taikhoan.SoTK).ToList();
+                    return db.SoTietKiems.Where(s => s.SoTK == logging.Taikhoan.SoTK && s.TinhTrang == 0).ToList();
             }
         }
     }

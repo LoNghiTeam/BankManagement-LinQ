@@ -225,7 +225,6 @@ namespace BankManagement.DAO
                 if (taiKhoanNhan != null)
                 {
                     taiKhoanNhan.SoDu += kv.SoTienVay;
-                    taiKhoanNhan.DiemTinDung -= (int)Math.Floor((double)kv.SoTienVay / 100000)+1;
                 }
                 else
                 {
@@ -308,7 +307,6 @@ namespace BankManagement.DAO
                 if (taiKhoanGui != null)
                 {
                     taiKhoanGui.SoDu -= stk.SoTienGui;
-                    taiKhoanGui.DiemTinDung += (int)Math.Floor((double)stk.SoTienGui / 100000) + 1;
                 }
                 else
                 {
@@ -410,7 +408,6 @@ namespace BankManagement.DAO
                 };
 
                 taiKhoanNap.SoDu += soTien;
-                taiKhoanNap.DiemTinDung += (int)Math.Floor((double)soTien / 1000000) + 1;
                 taiKhoanNap.GiaoDiches.Add(newGDNap);
 
                 db.GiaoDiches.Add(newGDNap);

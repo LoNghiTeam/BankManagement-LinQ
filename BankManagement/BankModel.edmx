@@ -52,7 +52,6 @@
     <Property Name="SDT" Type="nvarchar" Nullable="false" MaxLength="10" />
     <Property Name="IsAdmin" Type="int" Nullable="false" />
     <Property Name="SoDu" Type="float" Nullable="false" />
-    <Property Name="DiemTinDung" Type="int" Nullable="false" />
     <Property Name="NgayMoTaiKhoan" Type="nvarchar(max)" Nullable="false" />
     <Property Name="DanhSachDen" Type="int" Nullable="false" />
   </EntityType>
@@ -246,7 +245,6 @@
           <Property Name="SDT" Type="String" Nullable="false" MaxLength="10" Unicode="true" FixedLength="false" />
           <Property Name="IsAdmin" Type="Int32" Nullable="false" />
           <Property Name="SoDu" Type="Double" Nullable="false" />
-          <Property Name="DiemTinDung" Type="Int32" Nullable="false" />
           <Property Name="NgayMoTaiKhoan" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <NavigationProperty Name="GiaoDiches" Relationship="BankModel.GiaoDichTaiKhoan" FromRole="TaiKhoan" ToRole="GiaoDich" />
           <NavigationProperty Name="KhoanVays" Relationship="BankModel.KhoanVayTaiKhoan" FromRole="TaiKhoan" ToRole="KhoanVay" />
@@ -386,7 +384,6 @@
           <ScalarProperty Name="SDT" ColumnName="SDT" />
           <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
           <ScalarProperty Name="SoDu" ColumnName="SoDu" />
-          <ScalarProperty Name="DiemTinDung" ColumnName="DiemTinDung" />
           <ScalarProperty Name="NgayMoTaiKhoan" ColumnName="NgayMoTaiKhoan" />
           <ScalarProperty Name="DanhSachDen" ColumnName="DanhSachDen" />
         </MappingFragment>

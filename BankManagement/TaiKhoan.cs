@@ -32,7 +32,6 @@ namespace BankManagement
         public string SDT { get; set; }
         public int IsAdmin { get; set; }
         public double SoDu { get; set; }
-        public int DiemTinDung { get; set; }
         public string NgayMoTaiKhoan { get; set; }
         public int DanhSachDen { get; set; }
     

@@ -32,9 +32,10 @@
             this.rjDropdownMenu2 = new RJCodeAdvance.RJControls.RJDropdownMenu(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cbThoiGian = new RJCodeAdvance.RJControls.RJComboBox();
             this.lblTienDuocVay = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.lblDiemTD = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblTen = new System.Windows.Forms.Label();
@@ -51,8 +52,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.rjDropdownMenu1 = new RJCodeAdvance.RJControls.RJDropdownMenu(this.components);
-            this.cbThoiGian = new RJCodeAdvance.RJControls.RJComboBox();
-            this.label9 = new System.Windows.Forms.Label();
+            this.tbxDTD = new RJCodeAdvance.RJControls.RJTextBox();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -88,7 +88,6 @@
             this.panel3.Controls.Add(this.cbThoiGian);
             this.panel3.Controls.Add(this.lblTienDuocVay);
             this.panel3.Controls.Add(this.label8);
-            this.panel3.Controls.Add(this.lblDiemTD);
             this.panel3.Controls.Add(this.label7);
             this.panel3.Controls.Add(this.label2);
             this.panel3.Controls.Add(this.lblTen);
@@ -97,6 +96,7 @@
             this.panel3.Controls.Add(this.tbSoTK);
             this.panel3.Controls.Add(this.label3);
             this.panel3.Controls.Add(this.btnVayTien);
+            this.panel3.Controls.Add(this.tbxDTD);
             this.panel3.Controls.Add(this.tbTien);
             this.panel3.Controls.Add(this.lblTong);
             this.panel3.Controls.Add(this.lblLaiSuat);
@@ -108,6 +108,42 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(458, 455);
             this.panel3.TabIndex = 2;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(393, 271);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(54, 16);
+            this.label9.TabIndex = 21;
+            this.label9.Text = "(Tháng)";
+            // 
+            // cbThoiGian
+            // 
+            this.cbThoiGian.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cbThoiGian.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbThoiGian.BorderSize = 1;
+            this.cbThoiGian.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.cbThoiGian.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cbThoiGian.ForeColor = System.Drawing.Color.DimGray;
+            this.cbThoiGian.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbThoiGian.Items.AddRange(new object[] {
+            "1",
+            "3",
+            "6",
+            "12",
+            "24",
+            "36"});
+            this.cbThoiGian.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.cbThoiGian.ListTextColor = System.Drawing.Color.DimGray;
+            this.cbThoiGian.Location = new System.Drawing.Point(146, 264);
+            this.cbThoiGian.MinimumSize = new System.Drawing.Size(200, 30);
+            this.cbThoiGian.Name = "cbThoiGian";
+            this.cbThoiGian.Padding = new System.Windows.Forms.Padding(1);
+            this.cbThoiGian.Size = new System.Drawing.Size(241, 30);
+            this.cbThoiGian.TabIndex = 20;
+            this.cbThoiGian.Texts = "";
+            this.cbThoiGian.OnSelectedIndexChanged += new System.EventHandler(this.cbThoiGian_OnSelectedIndexChanged);
             // 
             // lblTienDuocVay
             // 
@@ -127,16 +163,6 @@
             this.label8.Size = new System.Drawing.Size(109, 16);
             this.label8.TabIndex = 18;
             this.label8.Text = "Số tiền được vay:";
-            // 
-            // lblDiemTD
-            // 
-            this.lblDiemTD.AutoSize = true;
-            this.lblDiemTD.Location = new System.Drawing.Point(143, 135);
-            this.lblDiemTD.Name = "lblDiemTD";
-            this.lblDiemTD.Size = new System.Drawing.Size(14, 16);
-            this.lblDiemTD.TabIndex = 17;
-            this.lblDiemTD.Tag = " Điểm";
-            this.lblDiemTD.Text = "0";
             // 
             // label7
             // 
@@ -327,41 +353,28 @@
             this.rjDropdownMenu1.PrimaryColor = System.Drawing.Color.Empty;
             this.rjDropdownMenu1.Size = new System.Drawing.Size(61, 4);
             // 
-            // cbThoiGian
+            // tbxDTD
             // 
-            this.cbThoiGian.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.cbThoiGian.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.cbThoiGian.BorderSize = 1;
-            this.cbThoiGian.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
-            this.cbThoiGian.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.cbThoiGian.ForeColor = System.Drawing.Color.DimGray;
-            this.cbThoiGian.IconColor = System.Drawing.Color.MediumSlateBlue;
-            this.cbThoiGian.Items.AddRange(new object[] {
-            "1",
-            "3",
-            "6",
-            "12",
-            "24",
-            "36"});
-            this.cbThoiGian.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
-            this.cbThoiGian.ListTextColor = System.Drawing.Color.DimGray;
-            this.cbThoiGian.Location = new System.Drawing.Point(146, 264);
-            this.cbThoiGian.MinimumSize = new System.Drawing.Size(200, 30);
-            this.cbThoiGian.Name = "cbThoiGian";
-            this.cbThoiGian.Padding = new System.Windows.Forms.Padding(1);
-            this.cbThoiGian.Size = new System.Drawing.Size(241, 30);
-            this.cbThoiGian.TabIndex = 20;
-            this.cbThoiGian.Texts = "";
-            this.cbThoiGian.OnSelectedIndexChanged += new System.EventHandler(this.cbThoiGian_OnSelectedIndexChanged);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(393, 271);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(54, 16);
-            this.label9.TabIndex = 21;
-            this.label9.Text = "(Tháng)";
+            this.tbxDTD.BackColor = System.Drawing.SystemColors.Window;
+            this.tbxDTD.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.tbxDTD.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.tbxDTD.BorderRadius = 0;
+            this.tbxDTD.BorderSize = 2;
+            this.tbxDTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxDTD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tbxDTD.Location = new System.Drawing.Point(144, 125);
+            this.tbxDTD.Margin = new System.Windows.Forms.Padding(5);
+            this.tbxDTD.Multiline = false;
+            this.tbxDTD.Name = "tbxDTD";
+            this.tbxDTD.Padding = new System.Windows.Forms.Padding(11, 7, 11, 7);
+            this.tbxDTD.PasswordChar = false;
+            this.tbxDTD.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.tbxDTD.PlaceholderText = "";
+            this.tbxDTD.Size = new System.Drawing.Size(303, 35);
+            this.tbxDTD.TabIndex = 5;
+            this.tbxDTD.Texts = "";
+            this.tbxDTD.UnderlinedStyle = false;
+            this.tbxDTD._TextChanged += new System.EventHandler(this.tbxDTD__TextChanged);
             // 
             // FVayTienTinDung
             // 
@@ -408,9 +421,9 @@
         private RJCodeAdvance.RJControls.RJDropdownMenu rjDropdownMenu1;
         private System.Windows.Forms.Label lblTienDuocVay;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label lblDiemTD;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label9;
         private RJCodeAdvance.RJControls.RJComboBox cbThoiGian;
+        private RJCodeAdvance.RJControls.RJTextBox tbxDTD;
     }
 }

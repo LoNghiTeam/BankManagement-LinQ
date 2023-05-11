@@ -17,6 +17,7 @@ namespace BankManagement.UI
         double tienVay = 0;
         double tienLai = 0;
         double tienDuocVay = 0;
+        int diemTD = 0;
         public FVayTienTinDung()
         {
             InitializeComponent();
@@ -32,8 +33,6 @@ namespace BankManagement.UI
                 tbSoTK.Enabled = false;
             }
             lblTen.Text = taiKhoanVay.HoVaTen;
-            lblDiemTD.Text = taiKhoanVay.DiemTinDung.ToString() + lblDiemTD.Tag;
-            tienDuocVay = taiKhoanVay.DiemTinDung * 100000;
             lblTienDuocVay.Text = tienDuocVay.ToString() + lblTienDuocVay.Tag;
         }
 
@@ -45,8 +44,6 @@ namespace BankManagement.UI
             {  
                 taiKhoanVay = tkService.GetTaiKhoan(soTK);
                 lblTen.Text = taiKhoanVay.HoVaTen;
-                lblDiemTD.Text = taiKhoanVay.DiemTinDung.ToString() + lblDiemTD.Tag;
-                tienDuocVay = taiKhoanVay.DiemTinDung * 100000;
                 lblTienDuocVay.Text = tienDuocVay.ToString() + lblTienDuocVay.Tag;
             }
         }
@@ -99,8 +96,6 @@ namespace BankManagement.UI
 
                 //Load lai tai khoan
                 taiKhoanVay = tkService.GetTaiKhoan(taiKhoanVay.SoTK);
-                lblDiemTD.Text = taiKhoanVay.DiemTinDung.ToString() + lblDiemTD.Tag;
-                tienDuocVay = taiKhoanVay.DiemTinDung * 100000;
                 lblTienDuocVay.Text = tienDuocVay.ToString() + lblTienDuocVay.Tag;
                 if(logging.Taikhoan.SoTK == taiKhoanVay.SoTK)
                 {
@@ -152,6 +147,14 @@ namespace BankManagement.UI
                 return false;
             }    
             return true;
+        }
+
+        private void tbxDTD__TextChanged(object sender, EventArgs e)
+        {
+            if (!Int32.TryParse(tbxDTD.Texts, out diemTD))
+            {
+                diemTD = 0;
+            }
         }
     }
 }

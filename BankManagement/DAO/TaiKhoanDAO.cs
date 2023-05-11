@@ -55,7 +55,6 @@ namespace BankManagement.DAO
                     SDT = tk.SDT,
                     IsAdmin = 0,
                     SoDu = 0,
-                    DiemTinDung = 100,
                     NgayMoTaiKhoan = DateTime.Now.ToString(),
                     DanhSachDen = 0
                 };
