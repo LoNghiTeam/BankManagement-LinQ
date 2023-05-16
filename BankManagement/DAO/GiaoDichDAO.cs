@@ -10,7 +10,19 @@ namespace BankManagement.DAO
 {
     internal class GiaoDichDAO
     {
-        public void TaoGiaoDichThanhToanNoTheTD(int maTheTD,int soTK, double soTien)
+        public void ThayDoiTrangThaiGD(int maGD, int trangThai)
+        {
+            using (var db = new BankModelContainer())
+            {
+                GiaoDich giaoDich = db.GiaoDiches.FirstOrDefault(t => t.MaGD == maGD);
+                if(giaoDich != null)
+                {
+                    giaoDich.TrangThaiGD = trangThai;
+                }
+                db.SaveChanges();
+            }
+        }
+        public void TaoGiaoDichThanhToanNoTheTD(int maGD, int maTheTD,int soTK, double soTien)
         {
             using (var db = new BankModelContainer())
             {
@@ -24,7 +36,10 @@ namespace BankManagement.DAO
                     MaNguoiGui = taiKhoanThanhToan.SoTK,
                     MaNguoiNhan = 1,
                     SoTienGD = soTien,
-                    NgayGD = DateTime.Now
+                    NgayGD = DateTime.Now,
+                    NoiDungGD ="Thanh toán nợ thẻ tín dụng!",
+                    TrangThaiGD = (int)TrangThaiGiaoDich.Da_xu_ly
+
                 };
                 if(taiKhoanThanhToan.SoDu < soTien)
                 {
@@ -46,6 +61,8 @@ namespace BankManagement.DAO
                 db.GiaoDiches.Add(newGD);
 
                 db.SaveChanges();
+
+                ThayDoiTrangThaiGD(maGD, (int)TrangThaiGiaoDich.Da_xu_ly);
                 MessageBox.Show("Thanh toán nợ thành công!");
             }
         }
@@ -63,7 +80,9 @@ namespace BankManagement.DAO
                     MaNguoiGui = taiKhoanRut.SoTK,
                     MaNguoiNhan = taiKhoanRut.SoTK,
                     SoTienGD = soTien,
-                    NgayGD = DateTime.Now
+                    NgayGD = DateTime.Now,
+                    NoiDungGD = "Rút tiền thẻ tín dụng!",
+                    TrangThaiGD = (int)TrangThaiGiaoDich.Trong_qua_trinh_xu_ly
                 };
                 taiKhoanNH.SoDu -= soTien;
 
@@ -96,7 +115,9 @@ namespace BankManagement.DAO
                     MaNguoiGui = taiKhoanChuyen.SoTK,
                     MaNguoiNhan = taiKhoanNhan.SoTK,
                     SoTienGD = soTien,
-                    NgayGD = DateTime.Now
+                    NgayGD = DateTime.Now,
+                    NoiDungGD = "Chuyển tiền thẻ tín dụng!",
+                    TrangThaiGD = (int)TrangThaiGiaoDich.Trong_qua_trinh_xu_ly
                 };
                 taiKhoanNH.SoDu -= soTien;
 
@@ -131,7 +152,9 @@ namespace BankManagement.DAO
                     MaNguoiNhan= 1,
                     MaNguoiGui = taiKhoanGui.SoTK,
                     SoTienGD = soTien,
-                    NgayGD = DateTime.Now
+                    NgayGD = DateTime.Now,
+                    NoiDungGD = "Tất toán khoản vay!",
+                    TrangThaiGD = (int)TrangThaiGiaoDich.Da_xu_ly
                 };
 
                 if (taiKhoanGui != null)
@@ -208,6 +231,8 @@ namespace BankManagement.DAO
                     MaNguoiNhan = taiKhoanNhan.SoTK,
                     SoTienGD = kv.SoTienVay,
                     NgayGD = DateTime.Now,
+                    NoiDungGD = "Vay thế chấp",
+                    TrangThaiGD = (int)TrangThaiGiaoDich.Da_xu_ly
                 };
 
                 taiKhoanNhan.GiaoDiches.Add(newGD);
@@ -243,7 +268,9 @@ namespace BankManagement.DAO
                     MaNguoiGui = 1,
                     MaNguoiNhan = taiKhoanNhan.SoTK,
                     SoTienGD = kv.SoTienVay,
-                    NgayGD = DateTime.Now
+                    NgayGD = DateTime.Now,
+                    NoiDungGD = "Vay tín dụng",
+                    TrangThaiGD = (int)TrangThaiGiaoDich.Da_xu_ly
                 };
 
                 taiKhoanNhan.GiaoDiches.Add(newGD);
@@ -266,7 +293,9 @@ namespace BankManagement.DAO
                     MaNguoiGui = 1,
                     MaNguoiNhan = taiKhoanNhan.SoTK,
                     SoTienGD = soTien,
-                    NgayGD = DateTime.Now
+                    NgayGD = DateTime.Now,
+                    NoiDungGD = "Tất toán sổ tiết kiệm",
+                    TrangThaiGD = (int)TrangThaiGiaoDich.Da_xu_ly
                 };
 
                 if (taiKhoanGui != null)
@@ -330,7 +359,9 @@ namespace BankManagement.DAO
                     MaNguoiGui = taiKhoanGui.SoTK,
                     MaNguoiNhan = 1,
                     SoTienGD = stk.SoTienGui,
-                    NgayGD = DateTime.Now
+                    NgayGD = DateTime.Now,
+                    NoiDungGD = "Gửi tiết kiệm tiền",
+                    TrangThaiGD = (int)TrangThaiGiaoDich.Da_xu_ly
                 };
 
                 taiKhoanGui.GiaoDiches.Add(newGD);
@@ -339,7 +370,7 @@ namespace BankManagement.DAO
                 MessageBox.Show("Gửi tiết kiệm thành công!");
             }
         }
-        public void TaoGiaoDichChuyenTien(int soTKChuyen, int soTKNhan, double soTien)
+        public void TaoGiaoDichChuyenTien(int soTKChuyen, int soTKNhan, double soTien, string noiDung)
         {
             using (var db = new BankModelContainer())
             {
@@ -352,7 +383,9 @@ namespace BankManagement.DAO
                     MaNguoiGui = taiKhoanChuyen.SoTK,
                     MaNguoiNhan = taiKhoanNhan.SoTK,
                     SoTienGD = soTien,
-                    NgayGD = DateTime.Now
+                    NgayGD = DateTime.Now,
+                    NoiDungGD = noiDung,
+                    TrangThaiGD = (int)TrangThaiGiaoDich.Da_xu_ly
                 };
 
                 taiKhoanChuyen.SoDu -= soTien;
@@ -380,7 +413,9 @@ namespace BankManagement.DAO
                     MaNguoiGui = taiKhoanRut.SoTK,
                     MaNguoiNhan = taiKhoanRut.SoTK,
                     SoTienGD = soTien,
-                    NgayGD = DateTime.Now
+                    NgayGD = DateTime.Now,
+                    NoiDungGD = "Rút tiền",
+                    TrangThaiGD = (int)TrangThaiGiaoDich.Da_xu_ly
                 };
 
                 taiKhoanRut.SoDu -= soTien;
@@ -404,7 +439,9 @@ namespace BankManagement.DAO
                     MaNguoiGui = taiKhoanNap.SoTK,
                     MaNguoiNhan = taiKhoanNap.SoTK,
                     SoTienGD = soTien,
-                    NgayGD = DateTime.Now
+                    NgayGD = DateTime.Now,
+                    NoiDungGD = "Nạp tiền",
+                    TrangThaiGD = (int)TrangThaiGiaoDich.Da_xu_ly
                 };
 
                 taiKhoanNap.SoDu += soTien;

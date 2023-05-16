@@ -17,9 +17,11 @@ namespace BankManagement.UI
     {
         GiaoDichService gdService = new GiaoDichService();
         TheTinDungService theTDService = new TheTinDungService();
+        GiaoDich gd;
 
         TheTinDung theTD;
         TaiKhoan taiKhoan;
+        List<GiaoDich> dsGiaoDich;
         double tienNo = 0;
         double tienPhat = 0;
         double tienTong = 0;
@@ -37,10 +39,24 @@ namespace BankManagement.UI
             lblMST.Text = theTD.MaTTD.ToString();
             lblSoDu.Text = taiKhoan.SoDu.ToString();
 
-            tienNo = theTD.HanMuc - theTD.SoDu;
-            lblTienNo.Text = tienNo.ToString();
-
+            lblTienNo.Text = (theTD.HanMuc - theTD.SoDu).ToString();
             lblTrangThai.Text = Enum.GetName(typeof(TrangThai), theTD.TrangThai);
+            dsGiaoDich = theTDService.GetDSNoTheTD(taiKhoan.SoTK);
+            cbGiaoDich.DataSource = dsGiaoDich;
+            cbGiaoDich.DisplayMember = "NoiDungGD";
+        }
+
+        private void btnTatToan_Click(object sender, EventArgs e)
+        {
+            gdService.TaoGiaoDichThanhToanNoTheTD(gd.MaGD,theTD.MaTTD, taiKhoan.SoTK, tienTong);
+            this.Close();
+        }
+
+        private void cbGiaoDich_OnSelectedIndexChanged(object sender, EventArgs e)
+        {
+            gd = (GiaoDich)cbGiaoDich.SelectedItem;
+            tienNo = gd.SoTienGD;
+            lbTraNo.Text = tienNo.ToString();
             lblNgayHan.Text = theTD.NgayHan.ToString();
             lblNgayThanhToan.Text = DateTime.Now.ToString();
 
@@ -59,12 +75,8 @@ namespace BankManagement.UI
             tienTong = tienNo + tienPhat;
             lblTong.Text = tienTong.ToString();
             lblPhat.Text = tienPhat.ToString();
-        }
 
-        private void btnTatToan_Click(object sender, EventArgs e)
-        {
-            gdService.TaoGiaoDichThanhToanNoTheTD(theTD.MaTTD, taiKhoan.SoTK, tienTong);
-            this.Close();
+            btnTatToan.Enabled = true;
         }
     }
 }

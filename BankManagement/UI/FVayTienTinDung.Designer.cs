@@ -44,6 +44,7 @@
             this.tbSoTK = new RJCodeAdvance.RJControls.RJTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnVayTien = new RJCodeAdvance.RJControls.RJButton();
+            this.tbxDTD = new RJCodeAdvance.RJControls.RJTextBox();
             this.tbTien = new RJCodeAdvance.RJControls.RJTextBox();
             this.lblTong = new System.Windows.Forms.Label();
             this.lblLaiSuat = new System.Windows.Forms.Label();
@@ -52,7 +53,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.rjDropdownMenu1 = new RJCodeAdvance.RJControls.RJDropdownMenu(this.components);
-            this.tbxDTD = new RJCodeAdvance.RJControls.RJTextBox();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -154,6 +154,7 @@
             this.lblTienDuocVay.TabIndex = 19;
             this.lblTienDuocVay.Tag = " VNĐ";
             this.lblTienDuocVay.Text = "0";
+            this.lblTienDuocVay.Click += new System.EventHandler(this.lblTienDuocVay_Click);
             // 
             // label8
             // 
@@ -261,6 +262,29 @@
             this.btnVayTien.UseVisualStyleBackColor = false;
             this.btnVayTien.Click += new System.EventHandler(this.btnVayTien_Click);
             // 
+            // tbxDTD
+            // 
+            this.tbxDTD.BackColor = System.Drawing.SystemColors.Window;
+            this.tbxDTD.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.tbxDTD.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.tbxDTD.BorderRadius = 0;
+            this.tbxDTD.BorderSize = 2;
+            this.tbxDTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxDTD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tbxDTD.Location = new System.Drawing.Point(144, 125);
+            this.tbxDTD.Margin = new System.Windows.Forms.Padding(5);
+            this.tbxDTD.Multiline = false;
+            this.tbxDTD.Name = "tbxDTD";
+            this.tbxDTD.Padding = new System.Windows.Forms.Padding(11, 7, 11, 7);
+            this.tbxDTD.PasswordChar = false;
+            this.tbxDTD.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.tbxDTD.PlaceholderText = "";
+            this.tbxDTD.Size = new System.Drawing.Size(303, 35);
+            this.tbxDTD.TabIndex = 5;
+            this.tbxDTD.Texts = "";
+            this.tbxDTD.UnderlinedStyle = false;
+            this.tbxDTD._TextChanged += new System.EventHandler(this.tbxDTD__TextChanged);
+            // 
             // tbTien
             // 
             this.tbTien.BackColor = System.Drawing.SystemColors.Window;
@@ -352,29 +376,6 @@
             this.rjDropdownMenu1.Name = "rjDropdownMenu1";
             this.rjDropdownMenu1.PrimaryColor = System.Drawing.Color.Empty;
             this.rjDropdownMenu1.Size = new System.Drawing.Size(61, 4);
-            // 
-            // tbxDTD
-            // 
-            this.tbxDTD.BackColor = System.Drawing.SystemColors.Window;
-            this.tbxDTD.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.tbxDTD.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.tbxDTD.BorderRadius = 0;
-            this.tbxDTD.BorderSize = 2;
-            this.tbxDTD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxDTD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tbxDTD.Location = new System.Drawing.Point(144, 125);
-            this.tbxDTD.Margin = new System.Windows.Forms.Padding(5);
-            this.tbxDTD.Multiline = false;
-            this.tbxDTD.Name = "tbxDTD";
-            this.tbxDTD.Padding = new System.Windows.Forms.Padding(11, 7, 11, 7);
-            this.tbxDTD.PasswordChar = false;
-            this.tbxDTD.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.tbxDTD.PlaceholderText = "";
-            this.tbxDTD.Size = new System.Drawing.Size(303, 35);
-            this.tbxDTD.TabIndex = 5;
-            this.tbxDTD.Texts = "";
-            this.tbxDTD.UnderlinedStyle = false;
-            this.tbxDTD._TextChanged += new System.EventHandler(this.tbxDTD__TextChanged);
             // 
             // FVayTienTinDung
             // 

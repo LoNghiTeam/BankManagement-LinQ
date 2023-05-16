@@ -51,11 +51,14 @@
             this.tbxTenNgNhan = new RJCodeAdvance.RJControls.RJTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
+            this.tbxNgayGD = new RJCodeAdvance.RJControls.RJTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.tbxTien = new RJCodeAdvance.RJControls.RJTextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.tbxNgayGD = new RJCodeAdvance.RJControls.RJTextBox();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.tbNoiDung = new System.Windows.Forms.TextBox();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -68,6 +71,7 @@
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
             this.panel8.SuspendLayout();
+            this.panel9.SuspendLayout();
             this.SuspendLayout();
             // 
             // flowLayoutPanel1
@@ -78,7 +82,7 @@
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(567, 461);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1004, 485);
             this.flowLayoutPanel1.TabIndex = 2;
             // 
             // flowLayoutPanel2
@@ -87,7 +91,7 @@
             this.flowLayoutPanel2.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 3);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(114, 455);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(114, 475);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // pictureBox1
@@ -95,7 +99,7 @@
             this.pictureBox1.Image = global::BankManagement.Properties.Resources._1527713;
             this.pictureBox1.Location = new System.Drawing.Point(3, 3);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(109, 452);
+            this.pictureBox1.Size = new System.Drawing.Size(109, 472);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -111,10 +115,11 @@
             this.flowLayoutPanel3.Controls.Add(this.panel6);
             this.flowLayoutPanel3.Controls.Add(this.panel7);
             this.flowLayoutPanel3.Controls.Add(this.panel8);
+            this.flowLayoutPanel3.Controls.Add(this.panel9);
             this.flowLayoutPanel3.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel3.Location = new System.Drawing.Point(123, 3);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(442, 455);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(881, 475);
             this.flowLayoutPanel3.TabIndex = 4;
             // 
             // panel1
@@ -366,6 +371,28 @@
             this.panel7.Size = new System.Drawing.Size(436, 50);
             this.panel7.TabIndex = 2;
             // 
+            // tbxNgayGD
+            // 
+            this.tbxNgayGD.BackColor = System.Drawing.SystemColors.Window;
+            this.tbxNgayGD.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.tbxNgayGD.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.tbxNgayGD.BorderRadius = 0;
+            this.tbxNgayGD.BorderSize = 2;
+            this.tbxNgayGD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxNgayGD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tbxNgayGD.Location = new System.Drawing.Point(136, 9);
+            this.tbxNgayGD.Margin = new System.Windows.Forms.Padding(4);
+            this.tbxNgayGD.Multiline = false;
+            this.tbxNgayGD.Name = "tbxNgayGD";
+            this.tbxNgayGD.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.tbxNgayGD.PasswordChar = false;
+            this.tbxNgayGD.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.tbxNgayGD.PlaceholderText = "";
+            this.tbxNgayGD.Size = new System.Drawing.Size(296, 35);
+            this.tbxNgayGD.TabIndex = 1;
+            this.tbxNgayGD.Texts = "";
+            this.tbxNgayGD.UnderlinedStyle = false;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -415,34 +442,38 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Số tiền giao dịch";
             // 
-            // tbxNgayGD
+            // panel9
             // 
-            this.tbxNgayGD.BackColor = System.Drawing.SystemColors.Window;
-            this.tbxNgayGD.BorderColor = System.Drawing.Color.MediumSlateBlue;
-            this.tbxNgayGD.BorderFocusColor = System.Drawing.Color.HotPink;
-            this.tbxNgayGD.BorderRadius = 0;
-            this.tbxNgayGD.BorderSize = 2;
-            this.tbxNgayGD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxNgayGD.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.tbxNgayGD.Location = new System.Drawing.Point(136, 9);
-            this.tbxNgayGD.Margin = new System.Windows.Forms.Padding(4);
-            this.tbxNgayGD.Multiline = false;
-            this.tbxNgayGD.Name = "tbxNgayGD";
-            this.tbxNgayGD.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.tbxNgayGD.PasswordChar = false;
-            this.tbxNgayGD.PlaceholderColor = System.Drawing.Color.DarkGray;
-            this.tbxNgayGD.PlaceholderText = "";
-            this.tbxNgayGD.Size = new System.Drawing.Size(296, 35);
-            this.tbxNgayGD.TabIndex = 1;
-            this.tbxNgayGD.Texts = "";
-            this.tbxNgayGD.UnderlinedStyle = false;
+            this.panel9.Controls.Add(this.tbNoiDung);
+            this.panel9.Controls.Add(this.label9);
+            this.panel9.Location = new System.Drawing.Point(445, 3);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(436, 442);
+            this.panel9.TabIndex = 3;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(16, 17);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(122, 16);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Nội dung giao dịch:";
+            // 
+            // tbNoiDung
+            // 
+            this.tbNoiDung.Location = new System.Drawing.Point(19, 36);
+            this.tbNoiDung.Multiline = true;
+            this.tbNoiDung.Name = "tbNoiDung";
+            this.tbNoiDung.Size = new System.Drawing.Size(408, 398);
+            this.tbNoiDung.TabIndex = 1;
             // 
             // FChiTietGD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(567, 461);
+            this.ClientSize = new System.Drawing.Size(1004, 485);
             this.Controls.Add(this.flowLayoutPanel1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -470,6 +501,8 @@
             this.panel7.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -503,5 +536,8 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private RJCodeAdvance.RJControls.RJTextBox tbxNgayGD;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.TextBox tbNoiDung;
+        private System.Windows.Forms.Label label9;
     }
 }

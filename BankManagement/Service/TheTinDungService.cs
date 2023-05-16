@@ -35,5 +35,10 @@ namespace BankManagement.Service
         {
             return ttdDAO.CheckTheTinDung(maTTD);
         }
+
+        internal List<GiaoDich> GetDSNoTheTD(int soTK)
+        {
+            return ttdDAO.GetDSNoTheTD(soTK);
+        }
     }
 }

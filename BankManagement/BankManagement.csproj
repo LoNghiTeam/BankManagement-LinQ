@@ -109,6 +109,7 @@
     <Compile Include="DAO\TaiKhoanDAO.cs" />
     <Compile Include="DAO\TheTinDungDAO.cs" />
     <Compile Include="Enums\TrangThai.cs" />
+    <Compile Include="Enums\TrangThaiGiaoDich.cs" />
     <Compile Include="GiaoDich.cs">
       <DependentUpon>BankModel.tt</DependentUpon>
     </Compile>

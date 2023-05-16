@@ -72,5 +72,16 @@ namespace BankManagement.DAO
                 return db.TheTinDungs.Any(t=>t.MaTTD == maTTD);
             }
         }
+
+        internal List<GiaoDich> GetDSNoTheTD(int soTK)
+        {
+            using (var db = new BankModelContainer())
+            {
+                return db.GiaoDiches.Where(t => t.MaNguoiGui == soTK 
+                                            && t.TrangThaiGD == (int)TrangThaiGiaoDich.Trong_qua_trinh_xu_ly
+                                            && (t.LoaiGD == (int)LoaiGiaoDich.ChuyenTienTheTinDung
+                                                || t.LoaiGD == (int)LoaiGiaoDich.RutTienTheTinDung)).ToList();
+            }
+        }
     }
 }

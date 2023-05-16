@@ -33,7 +33,6 @@ namespace BankManagement.UI
                 tbSoTK.Enabled = false;
             }
             lblTen.Text = taiKhoanVay.HoVaTen;
-            lblTienDuocVay.Text = tienDuocVay.ToString() + lblTienDuocVay.Tag;
         }
 
         private void tbSoTK__TextChanged(object sender, EventArgs e)
@@ -44,7 +43,6 @@ namespace BankManagement.UI
             {  
                 taiKhoanVay = tkService.GetTaiKhoan(soTK);
                 lblTen.Text = taiKhoanVay.HoVaTen;
-                lblTienDuocVay.Text = tienDuocVay.ToString() + lblTienDuocVay.Tag;
             }
         }
 
@@ -96,7 +94,6 @@ namespace BankManagement.UI
 
                 //Load lai tai khoan
                 taiKhoanVay = tkService.GetTaiKhoan(taiKhoanVay.SoTK);
-                lblTienDuocVay.Text = tienDuocVay.ToString() + lblTienDuocVay.Tag;
                 if(logging.Taikhoan.SoTK == taiKhoanVay.SoTK)
                 {
                     logging.Taikhoan = taiKhoanVay;
@@ -154,7 +151,19 @@ namespace BankManagement.UI
             if (!Int32.TryParse(tbxDTD.Texts, out diemTD))
             {
                 diemTD = 0;
+                tienDuocVay = 0;
+                lblTienDuocVay.Text = "0 VNĐ";
             }
+            else
+            {
+                tienDuocVay = diemTD * 100000;
+                lblTienDuocVay.Text = tienDuocVay.ToString() + lblTienDuocVay.Tag;
+            }
+        }
+
+        private void lblTienDuocVay_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

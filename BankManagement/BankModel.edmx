@@ -65,6 +65,8 @@
     <Property Name="MaNguoiNhan" Type="int" Nullable="false" />
     <Property Name="SoTienGD" Type="float" Nullable="false" />
     <Property Name="NgayGD" Type="datetime" Nullable="false" />
+    <Property Name="NoiDungGD" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TrangThaiGD" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="KhoanVays">
     <Key>
@@ -263,6 +265,8 @@
           <Property Name="SoTienGD" Type="Double" Nullable="false" />
           <Property Name="NgayGD" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="TaiKhoans" Relationship="BankModel.GiaoDichTaiKhoan" FromRole="GiaoDich" ToRole="TaiKhoan" />
+          <Property Name="NoiDungGD" Type="String" Nullable="false" />
+          <Property Name="TrangThaiGD" Type="Int32" Nullable="false" />
         </EntityType>
         <Association Name="GiaoDichTaiKhoan">
           <End Type="BankModel.GiaoDich" Role="GiaoDich" Multiplicity="*" />
@@ -398,6 +402,8 @@
           <ScalarProperty Name="MaNguoiNhan" ColumnName="MaNguoiNhan" />
           <ScalarProperty Name="SoTienGD" ColumnName="SoTienGD" />
           <ScalarProperty Name="NgayGD" ColumnName="NgayGD" />
+          <ScalarProperty Name="NoiDungGD" ColumnName="NoiDungGD" />
+          <ScalarProperty Name="TrangThaiGD" ColumnName="TrangThaiGD" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

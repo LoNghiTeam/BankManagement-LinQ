@@ -36,12 +36,23 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.lblSoTK = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.lblTen = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblMST = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.lblSoDu = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.lblTienNo = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.lblTrangThai = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
             this.flowLayoutPanel4 = new System.Windows.Forms.FlowLayoutPanel();
             this.panel9 = new System.Windows.Forms.Panel();
             this.lblNgayHan = new System.Windows.Forms.Label();
@@ -58,31 +69,28 @@
             this.panel14 = new System.Windows.Forms.Panel();
             this.lblTong = new System.Windows.Forms.Label();
             this.btnTatToan = new RJCodeAdvance.RJControls.RJButton();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.lblTen = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.lblTienNo = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.lblTrangThai = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
+            this.cbGiaoDich = new RJCodeAdvance.RJControls.RJComboBox();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.lbTraNo = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1.SuspendLayout();
             this.flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.flowLayoutPanel3.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.flowLayoutPanel4.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
             this.panel11.SuspendLayout();
             this.panel13.SuspendLayout();
             this.panel14.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel6.SuspendLayout();
+            this.panel8.SuspendLayout();
             this.SuspendLayout();
             // 
             // lable12
@@ -104,7 +112,7 @@
             this.flowLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutPanel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(1008, 363);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(1008, 423);
             this.flowLayoutPanel1.TabIndex = 4;
             // 
             // flowLayoutPanel2
@@ -114,7 +122,7 @@
             this.flowLayoutPanel2.Location = new System.Drawing.Point(3, 2);
             this.flowLayoutPanel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(115, 355);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(115, 417);
             this.flowLayoutPanel2.TabIndex = 0;
             // 
             // pictureBox1
@@ -123,7 +131,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(3, 2);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(109, 353);
+            this.pictureBox1.Size = new System.Drawing.Size(109, 415);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -131,6 +139,7 @@
             // flowLayoutPanel3
             // 
             this.flowLayoutPanel3.AutoScroll = true;
+            this.flowLayoutPanel3.Controls.Add(this.panel7);
             this.flowLayoutPanel3.Controls.Add(this.panel2);
             this.flowLayoutPanel3.Controls.Add(this.panel3);
             this.flowLayoutPanel3.Controls.Add(this.panel1);
@@ -141,14 +150,14 @@
             this.flowLayoutPanel3.Location = new System.Drawing.Point(124, 2);
             this.flowLayoutPanel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.flowLayoutPanel3.Name = "flowLayoutPanel3";
-            this.flowLayoutPanel3.Size = new System.Drawing.Size(443, 355);
+            this.flowLayoutPanel3.Size = new System.Drawing.Size(443, 417);
             this.flowLayoutPanel3.TabIndex = 4;
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.lblSoTK);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(3, 2);
+            this.panel2.Location = new System.Drawing.Point(3, 93);
             this.panel2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(436, 50);
@@ -172,11 +181,39 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Số tài khoản:";
             // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.lblTen);
+            this.panel3.Controls.Add(this.label4);
+            this.panel3.Location = new System.Drawing.Point(3, 147);
+            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(436, 50);
+            this.panel3.TabIndex = 2;
+            // 
+            // lblTen
+            // 
+            this.lblTen.AutoSize = true;
+            this.lblTen.Location = new System.Drawing.Point(231, 17);
+            this.lblTen.Name = "lblTen";
+            this.lblTen.Size = new System.Drawing.Size(16, 16);
+            this.lblTen.TabIndex = 0;
+            this.lblTen.Text = "...";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 17);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(79, 16);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Tên chủ thẻ:";
+            // 
             // panel1
             // 
             this.panel1.Controls.Add(this.lblMST);
             this.panel1.Controls.Add(this.label3);
-            this.panel1.Location = new System.Drawing.Point(3, 110);
+            this.panel1.Location = new System.Drawing.Point(3, 201);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(436, 50);
@@ -204,7 +241,7 @@
             // 
             this.panel5.Controls.Add(this.lblSoDu);
             this.panel5.Controls.Add(this.label5);
-            this.panel5.Location = new System.Drawing.Point(3, 164);
+            this.panel5.Location = new System.Drawing.Point(3, 255);
             this.panel5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(436, 50);
@@ -228,204 +265,11 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Số dư tài khoản:";
             // 
-            // flowLayoutPanel4
-            // 
-            this.flowLayoutPanel4.Controls.Add(this.panel9);
-            this.flowLayoutPanel4.Controls.Add(this.panel10);
-            this.flowLayoutPanel4.Controls.Add(this.panel11);
-            this.flowLayoutPanel4.Controls.Add(this.panel13);
-            this.flowLayoutPanel4.Controls.Add(this.panel14);
-            this.flowLayoutPanel4.Controls.Add(this.btnTatToan);
-            this.flowLayoutPanel4.Location = new System.Drawing.Point(573, 2);
-            this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
-            this.flowLayoutPanel4.Size = new System.Drawing.Size(429, 355);
-            this.flowLayoutPanel4.TabIndex = 5;
-            // 
-            // panel9
-            // 
-            this.panel9.Controls.Add(this.lblNgayHan);
-            this.panel9.Controls.Add(this.label9);
-            this.panel9.Location = new System.Drawing.Point(3, 2);
-            this.panel9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(415, 50);
-            this.panel9.TabIndex = 0;
-            // 
-            // lblNgayHan
-            // 
-            this.lblNgayHan.AutoSize = true;
-            this.lblNgayHan.Location = new System.Drawing.Point(195, 17);
-            this.lblNgayHan.Name = "lblNgayHan";
-            this.lblNgayHan.Size = new System.Drawing.Size(16, 16);
-            this.lblNgayHan.TabIndex = 0;
-            this.lblNgayHan.Text = "...";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(13, 17);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(68, 16);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Ngày hạn:";
-            // 
-            // panel10
-            // 
-            this.panel10.Controls.Add(this.lblNgayThanhToan);
-            this.panel10.Controls.Add(this.label12);
-            this.panel10.Location = new System.Drawing.Point(3, 56);
-            this.panel10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel10.Name = "panel10";
-            this.panel10.Size = new System.Drawing.Size(415, 50);
-            this.panel10.TabIndex = 0;
-            // 
-            // lblNgayThanhToan
-            // 
-            this.lblNgayThanhToan.AutoSize = true;
-            this.lblNgayThanhToan.Location = new System.Drawing.Point(195, 17);
-            this.lblNgayThanhToan.Name = "lblNgayThanhToan";
-            this.lblNgayThanhToan.Size = new System.Drawing.Size(16, 16);
-            this.lblNgayThanhToan.TabIndex = 0;
-            this.lblNgayThanhToan.Text = "...";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(13, 17);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(107, 16);
-            this.label12.TabIndex = 0;
-            this.label12.Text = "Ngày thanh toán:";
-            // 
-            // panel11
-            // 
-            this.panel11.Controls.Add(this.lblSaiLech);
-            this.panel11.Controls.Add(this.label14);
-            this.panel11.Location = new System.Drawing.Point(3, 110);
-            this.panel11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(415, 50);
-            this.panel11.TabIndex = 0;
-            // 
-            // lblSaiLech
-            // 
-            this.lblSaiLech.AutoSize = true;
-            this.lblSaiLech.Location = new System.Drawing.Point(195, 17);
-            this.lblSaiLech.Name = "lblSaiLech";
-            this.lblSaiLech.Size = new System.Drawing.Size(16, 16);
-            this.lblSaiLech.TabIndex = 0;
-            this.lblSaiLech.Text = "...";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(13, 17);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(114, 16);
-            this.label14.TabIndex = 0;
-            this.label14.Text = "Số ngày trả muộn:";
-            // 
-            // panel13
-            // 
-            this.panel13.Controls.Add(this.lblPhat);
-            this.panel13.Controls.Add(this.label18);
-            this.panel13.Location = new System.Drawing.Point(3, 164);
-            this.panel13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel13.Name = "panel13";
-            this.panel13.Size = new System.Drawing.Size(415, 50);
-            this.panel13.TabIndex = 0;
-            // 
-            // lblPhat
-            // 
-            this.lblPhat.AutoSize = true;
-            this.lblPhat.Location = new System.Drawing.Point(195, 17);
-            this.lblPhat.Name = "lblPhat";
-            this.lblPhat.Size = new System.Drawing.Size(16, 16);
-            this.lblPhat.TabIndex = 0;
-            this.lblPhat.Text = "...";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(13, 17);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(58, 16);
-            this.label18.TabIndex = 0;
-            this.label18.Text = "Phí phạt:";
-            // 
-            // panel14
-            // 
-            this.panel14.Controls.Add(this.lblTong);
-            this.panel14.Controls.Add(this.lable12);
-            this.panel14.Location = new System.Drawing.Point(3, 218);
-            this.panel14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(415, 50);
-            this.panel14.TabIndex = 0;
-            // 
-            // lblTong
-            // 
-            this.lblTong.AutoSize = true;
-            this.lblTong.Location = new System.Drawing.Point(195, 17);
-            this.lblTong.Name = "lblTong";
-            this.lblTong.Size = new System.Drawing.Size(16, 16);
-            this.lblTong.TabIndex = 0;
-            this.lblTong.Text = "...";
-            // 
-            // btnTatToan
-            // 
-            this.btnTatToan.BackColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnTatToan.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
-            this.btnTatToan.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnTatToan.BorderRadius = 0;
-            this.btnTatToan.BorderSize = 0;
-            this.btnTatToan.FlatAppearance.BorderSize = 0;
-            this.btnTatToan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnTatToan.ForeColor = System.Drawing.Color.White;
-            this.btnTatToan.Location = new System.Drawing.Point(3, 272);
-            this.btnTatToan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnTatToan.Name = "btnTatToan";
-            this.btnTatToan.Size = new System.Drawing.Size(415, 39);
-            this.btnTatToan.TabIndex = 1;
-            this.btnTatToan.Text = "Xác nhận thanh toán";
-            this.btnTatToan.TextColor = System.Drawing.Color.White;
-            this.btnTatToan.UseVisualStyleBackColor = false;
-            this.btnTatToan.Click += new System.EventHandler(this.btnTatToan_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.lblTen);
-            this.panel3.Controls.Add(this.label4);
-            this.panel3.Location = new System.Drawing.Point(3, 56);
-            this.panel3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(436, 50);
-            this.panel3.TabIndex = 2;
-            // 
-            // lblTen
-            // 
-            this.lblTen.AutoSize = true;
-            this.lblTen.Location = new System.Drawing.Point(231, 17);
-            this.lblTen.Name = "lblTen";
-            this.lblTen.Size = new System.Drawing.Size(16, 16);
-            this.lblTen.TabIndex = 0;
-            this.lblTen.Text = "...";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 17);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(79, 16);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Tên chủ thẻ:";
-            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.lblTienNo);
             this.panel4.Controls.Add(this.label6);
-            this.panel4.Location = new System.Drawing.Point(3, 218);
+            this.panel4.Location = new System.Drawing.Point(3, 309);
             this.panel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(436, 50);
@@ -453,7 +297,7 @@
             // 
             this.panel6.Controls.Add(this.lblTrangThai);
             this.panel6.Controls.Add(this.label7);
-            this.panel6.Location = new System.Drawing.Point(3, 272);
+            this.panel6.Location = new System.Drawing.Point(3, 363);
             this.panel6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(436, 50);
@@ -477,13 +321,247 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Trạng thái thẻ:";
             // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.cbGiaoDich);
+            this.panel7.Controls.Add(this.label8);
+            this.panel7.Location = new System.Drawing.Point(3, 2);
+            this.panel7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(436, 87);
+            this.panel7.TabIndex = 1;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(13, 17);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(199, 16);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Chọn giao dịch muốn thanh toán:";
+            // 
+            // flowLayoutPanel4
+            // 
+            this.flowLayoutPanel4.Controls.Add(this.panel8);
+            this.flowLayoutPanel4.Controls.Add(this.panel9);
+            this.flowLayoutPanel4.Controls.Add(this.panel10);
+            this.flowLayoutPanel4.Controls.Add(this.panel11);
+            this.flowLayoutPanel4.Controls.Add(this.panel13);
+            this.flowLayoutPanel4.Controls.Add(this.panel14);
+            this.flowLayoutPanel4.Controls.Add(this.btnTatToan);
+            this.flowLayoutPanel4.Location = new System.Drawing.Point(573, 2);
+            this.flowLayoutPanel4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.flowLayoutPanel4.Name = "flowLayoutPanel4";
+            this.flowLayoutPanel4.Size = new System.Drawing.Size(429, 417);
+            this.flowLayoutPanel4.TabIndex = 5;
+            // 
+            // panel9
+            // 
+            this.panel9.Controls.Add(this.lblNgayHan);
+            this.panel9.Controls.Add(this.label9);
+            this.panel9.Location = new System.Drawing.Point(3, 56);
+            this.panel9.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(415, 50);
+            this.panel9.TabIndex = 0;
+            // 
+            // lblNgayHan
+            // 
+            this.lblNgayHan.AutoSize = true;
+            this.lblNgayHan.Location = new System.Drawing.Point(195, 17);
+            this.lblNgayHan.Name = "lblNgayHan";
+            this.lblNgayHan.Size = new System.Drawing.Size(16, 16);
+            this.lblNgayHan.TabIndex = 0;
+            this.lblNgayHan.Text = "...";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(13, 17);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(68, 16);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Ngày hạn:";
+            // 
+            // panel10
+            // 
+            this.panel10.Controls.Add(this.lblNgayThanhToan);
+            this.panel10.Controls.Add(this.label12);
+            this.panel10.Location = new System.Drawing.Point(3, 110);
+            this.panel10.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(415, 50);
+            this.panel10.TabIndex = 0;
+            // 
+            // lblNgayThanhToan
+            // 
+            this.lblNgayThanhToan.AutoSize = true;
+            this.lblNgayThanhToan.Location = new System.Drawing.Point(195, 17);
+            this.lblNgayThanhToan.Name = "lblNgayThanhToan";
+            this.lblNgayThanhToan.Size = new System.Drawing.Size(16, 16);
+            this.lblNgayThanhToan.TabIndex = 0;
+            this.lblNgayThanhToan.Text = "...";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(13, 17);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(107, 16);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Ngày thanh toán:";
+            // 
+            // panel11
+            // 
+            this.panel11.Controls.Add(this.lblSaiLech);
+            this.panel11.Controls.Add(this.label14);
+            this.panel11.Location = new System.Drawing.Point(3, 164);
+            this.panel11.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(415, 50);
+            this.panel11.TabIndex = 0;
+            // 
+            // lblSaiLech
+            // 
+            this.lblSaiLech.AutoSize = true;
+            this.lblSaiLech.Location = new System.Drawing.Point(195, 17);
+            this.lblSaiLech.Name = "lblSaiLech";
+            this.lblSaiLech.Size = new System.Drawing.Size(16, 16);
+            this.lblSaiLech.TabIndex = 0;
+            this.lblSaiLech.Text = "...";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(13, 17);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(114, 16);
+            this.label14.TabIndex = 0;
+            this.label14.Text = "Số ngày trả muộn:";
+            // 
+            // panel13
+            // 
+            this.panel13.Controls.Add(this.lblPhat);
+            this.panel13.Controls.Add(this.label18);
+            this.panel13.Location = new System.Drawing.Point(3, 218);
+            this.panel13.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(415, 50);
+            this.panel13.TabIndex = 0;
+            // 
+            // lblPhat
+            // 
+            this.lblPhat.AutoSize = true;
+            this.lblPhat.Location = new System.Drawing.Point(195, 17);
+            this.lblPhat.Name = "lblPhat";
+            this.lblPhat.Size = new System.Drawing.Size(16, 16);
+            this.lblPhat.TabIndex = 0;
+            this.lblPhat.Text = "...";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(13, 17);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(58, 16);
+            this.label18.TabIndex = 0;
+            this.label18.Text = "Phí phạt:";
+            // 
+            // panel14
+            // 
+            this.panel14.Controls.Add(this.lblTong);
+            this.panel14.Controls.Add(this.lable12);
+            this.panel14.Location = new System.Drawing.Point(3, 272);
+            this.panel14.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel14.Name = "panel14";
+            this.panel14.Size = new System.Drawing.Size(415, 50);
+            this.panel14.TabIndex = 0;
+            // 
+            // lblTong
+            // 
+            this.lblTong.AutoSize = true;
+            this.lblTong.Location = new System.Drawing.Point(195, 17);
+            this.lblTong.Name = "lblTong";
+            this.lblTong.Size = new System.Drawing.Size(16, 16);
+            this.lblTong.TabIndex = 0;
+            this.lblTong.Text = "...";
+            // 
+            // btnTatToan
+            // 
+            this.btnTatToan.BackColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnTatToan.BackgroundColor = System.Drawing.Color.MediumSlateBlue;
+            this.btnTatToan.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnTatToan.BorderRadius = 0;
+            this.btnTatToan.BorderSize = 0;
+            this.btnTatToan.Enabled = false;
+            this.btnTatToan.FlatAppearance.BorderSize = 0;
+            this.btnTatToan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTatToan.ForeColor = System.Drawing.Color.White;
+            this.btnTatToan.Location = new System.Drawing.Point(3, 326);
+            this.btnTatToan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnTatToan.Name = "btnTatToan";
+            this.btnTatToan.Size = new System.Drawing.Size(415, 39);
+            this.btnTatToan.TabIndex = 1;
+            this.btnTatToan.Text = "Xác nhận thanh toán";
+            this.btnTatToan.TextColor = System.Drawing.Color.White;
+            this.btnTatToan.UseVisualStyleBackColor = false;
+            this.btnTatToan.Click += new System.EventHandler(this.btnTatToan_Click);
+            // 
+            // cbGiaoDich
+            // 
+            this.cbGiaoDich.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.cbGiaoDich.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbGiaoDich.BorderSize = 1;
+            this.cbGiaoDich.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDown;
+            this.cbGiaoDich.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.cbGiaoDich.ForeColor = System.Drawing.Color.DimGray;
+            this.cbGiaoDich.IconColor = System.Drawing.Color.MediumSlateBlue;
+            this.cbGiaoDich.ListBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(228)))), ((int)(((byte)(245)))));
+            this.cbGiaoDich.ListTextColor = System.Drawing.Color.DimGray;
+            this.cbGiaoDich.Location = new System.Drawing.Point(16, 37);
+            this.cbGiaoDich.MinimumSize = new System.Drawing.Size(200, 30);
+            this.cbGiaoDich.Name = "cbGiaoDich";
+            this.cbGiaoDich.Padding = new System.Windows.Forms.Padding(1);
+            this.cbGiaoDich.Size = new System.Drawing.Size(402, 30);
+            this.cbGiaoDich.TabIndex = 1;
+            this.cbGiaoDich.Texts = "";
+            this.cbGiaoDich.OnSelectedIndexChanged += new System.EventHandler(this.cbGiaoDich_OnSelectedIndexChanged);
+            // 
+            // panel8
+            // 
+            this.panel8.Controls.Add(this.lbTraNo);
+            this.panel8.Controls.Add(this.label10);
+            this.panel8.Location = new System.Drawing.Point(3, 2);
+            this.panel8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(436, 50);
+            this.panel8.TabIndex = 4;
+            // 
+            // lbTraNo
+            // 
+            this.lbTraNo.AutoSize = true;
+            this.lbTraNo.Location = new System.Drawing.Point(195, 17);
+            this.lbTraNo.Name = "lbTraNo";
+            this.lbTraNo.Size = new System.Drawing.Size(16, 16);
+            this.lbTraNo.TabIndex = 1;
+            this.lbTraNo.Text = "...";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(16, 17);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(99, 16);
+            this.label10.TabIndex = 0;
+            this.label10.Text = "Số nợ muốn trả:";
+            // 
             // FThanhToanTTD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 363);
+            this.ClientSize = new System.Drawing.Size(1008, 423);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FThanhToanTTD";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thanh toán nợ tín dụng";
@@ -494,10 +572,18 @@
             this.flowLayoutPanel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.flowLayoutPanel4.ResumeLayout(false);
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
@@ -509,12 +595,8 @@
             this.panel13.PerformLayout();
             this.panel14.ResumeLayout(false);
             this.panel14.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel8.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -560,5 +642,11 @@
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label lblTrangThai;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label label8;
+        private RJCodeAdvance.RJControls.RJComboBox cbGiaoDich;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Label lbTraNo;
+        private System.Windows.Forms.Label label10;
     }
 }

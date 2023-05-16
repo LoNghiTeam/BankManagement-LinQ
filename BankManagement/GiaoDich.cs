@@ -25,6 +25,8 @@ namespace BankManagement
         public int MaNguoiNhan { get; set; }
         public double SoTienGD { get; set; }
         public System.DateTime NgayGD { get; set; }
+        public string NoiDungGD { get; set; }
+        public int TrangThaiGD { get; set; }
     
         public virtual ICollection<TaiKhoan> TaiKhoans { get; set; }
     }

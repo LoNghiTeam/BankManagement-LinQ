@@ -30,6 +30,7 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.tbxSoTKChuyen = new RJCodeAdvance.RJControls.RJTextBox();
             this.lblSoDu = new System.Windows.Forms.Label();
             this.lblNguoiChuyen = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -37,16 +38,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tbxSoTKNhan = new RJCodeAdvance.RJControls.RJTextBox();
             this.btnKiemTra = new System.Windows.Forms.Button();
-            this.tbxSoTKNhan = new System.Windows.Forms.TextBox();
             this.lblNguoiNhan = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.tbNoiDung = new System.Windows.Forms.TextBox();
+            this.tbSoTien = new RJCodeAdvance.RJControls.RJTextBox();
             this.btnChuyenTien = new System.Windows.Forms.Button();
-            this.tbSoTien = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.tbxSoTKChuyen = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -80,6 +82,29 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(520, 121);
             this.panel3.TabIndex = 3;
+            // 
+            // tbxSoTKChuyen
+            // 
+            this.tbxSoTKChuyen.BackColor = System.Drawing.SystemColors.Window;
+            this.tbxSoTKChuyen.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.tbxSoTKChuyen.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.tbxSoTKChuyen.BorderRadius = 0;
+            this.tbxSoTKChuyen.BorderSize = 2;
+            this.tbxSoTKChuyen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxSoTKChuyen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tbxSoTKChuyen.Location = new System.Drawing.Point(145, 3);
+            this.tbxSoTKChuyen.Margin = new System.Windows.Forms.Padding(4);
+            this.tbxSoTKChuyen.Multiline = false;
+            this.tbxSoTKChuyen.Name = "tbxSoTKChuyen";
+            this.tbxSoTKChuyen.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.tbxSoTKChuyen.PasswordChar = false;
+            this.tbxSoTKChuyen.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.tbxSoTKChuyen.PlaceholderText = "";
+            this.tbxSoTKChuyen.Size = new System.Drawing.Size(250, 35);
+            this.tbxSoTKChuyen.TabIndex = 4;
+            this.tbxSoTKChuyen.Texts = "";
+            this.tbxSoTKChuyen.UnderlinedStyle = false;
+            this.tbxSoTKChuyen._TextChanged += new System.EventHandler(this.tbxSoTKChuyen__TextChanged);
             // 
             // lblSoDu
             // 
@@ -135,27 +160,49 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(547, 110);
+            this.groupBox2.Size = new System.Drawing.Size(547, 130);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Người nhận";
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnKiemTra);
             this.panel1.Controls.Add(this.tbxSoTKNhan);
+            this.panel1.Controls.Add(this.btnKiemTra);
             this.panel1.Controls.Add(this.lblNguoiNhan);
             this.panel1.Controls.Add(this.label13);
             this.panel1.Controls.Add(this.label16);
             this.panel1.Location = new System.Drawing.Point(12, 21);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(520, 78);
+            this.panel1.Size = new System.Drawing.Size(520, 105);
             this.panel1.TabIndex = 3;
+            // 
+            // tbxSoTKNhan
+            // 
+            this.tbxSoTKNhan.BackColor = System.Drawing.SystemColors.Window;
+            this.tbxSoTKNhan.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.tbxSoTKNhan.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.tbxSoTKNhan.BorderRadius = 0;
+            this.tbxSoTKNhan.BorderSize = 2;
+            this.tbxSoTKNhan.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbxSoTKNhan.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tbxSoTKNhan.Location = new System.Drawing.Point(145, 4);
+            this.tbxSoTKNhan.Margin = new System.Windows.Forms.Padding(4);
+            this.tbxSoTKNhan.Multiline = false;
+            this.tbxSoTKNhan.Name = "tbxSoTKNhan";
+            this.tbxSoTKNhan.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.tbxSoTKNhan.PasswordChar = false;
+            this.tbxSoTKNhan.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.tbxSoTKNhan.PlaceholderText = "";
+            this.tbxSoTKNhan.Size = new System.Drawing.Size(250, 35);
+            this.tbxSoTKNhan.TabIndex = 7;
+            this.tbxSoTKNhan.Texts = "";
+            this.tbxSoTKNhan.UnderlinedStyle = false;
             // 
             // btnKiemTra
             // 
-            this.btnKiemTra.Location = new System.Drawing.Point(419, 37);
+            this.btnKiemTra.Location = new System.Drawing.Point(417, 5);
             this.btnKiemTra.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnKiemTra.Name = "btnKiemTra";
             this.btnKiemTra.Size = new System.Drawing.Size(99, 34);
@@ -164,21 +211,14 @@
             this.btnKiemTra.UseVisualStyleBackColor = true;
             this.btnKiemTra.Click += new System.EventHandler(this.btnKiemTra_Click);
             // 
-            // tbxSoTKNhan
-            // 
-            this.tbxSoTKNhan.Location = new System.Drawing.Point(169, 7);
-            this.tbxSoTKNhan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbxSoTKNhan.Name = "tbxSoTKNhan";
-            this.tbxSoTKNhan.Size = new System.Drawing.Size(347, 22);
-            this.tbxSoTKNhan.TabIndex = 4;
-            // 
             // lblNguoiNhan
             // 
             this.lblNguoiNhan.AutoSize = true;
-            this.lblNguoiNhan.Location = new System.Drawing.Point(165, 46);
+            this.lblNguoiNhan.Location = new System.Drawing.Point(165, 60);
             this.lblNguoiNhan.Name = "lblNguoiNhan";
-            this.lblNguoiNhan.Size = new System.Drawing.Size(0, 16);
+            this.lblNguoiNhan.Size = new System.Drawing.Size(16, 16);
             this.lblNguoiNhan.TabIndex = 2;
+            this.lblNguoiNhan.Text = "...";
             // 
             // label13
             // 
@@ -192,7 +232,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(3, 46);
+            this.label16.Location = new System.Drawing.Point(3, 60);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(102, 16);
             this.label16.TabIndex = 1;
@@ -200,22 +240,54 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.btnChuyenTien);
+            this.groupBox3.Controls.Add(this.tbNoiDung);
             this.groupBox3.Controls.Add(this.tbSoTien);
+            this.groupBox3.Controls.Add(this.btnChuyenTien);
+            this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label17);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox3.Location = new System.Drawing.Point(0, 276);
+            this.groupBox3.Location = new System.Drawing.Point(0, 285);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(547, 62);
+            this.groupBox3.Size = new System.Drawing.Size(547, 193);
             this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thông tin chuyển tiền";
             // 
+            // tbNoiDung
+            // 
+            this.tbNoiDung.Location = new System.Drawing.Point(157, 76);
+            this.tbNoiDung.Multiline = true;
+            this.tbNoiDung.Name = "tbNoiDung";
+            this.tbNoiDung.Size = new System.Drawing.Size(250, 105);
+            this.tbNoiDung.TabIndex = 7;
+            // 
+            // tbSoTien
+            // 
+            this.tbSoTien.BackColor = System.Drawing.SystemColors.Window;
+            this.tbSoTien.BorderColor = System.Drawing.Color.MediumSlateBlue;
+            this.tbSoTien.BorderFocusColor = System.Drawing.Color.HotPink;
+            this.tbSoTien.BorderRadius = 0;
+            this.tbSoTien.BorderSize = 2;
+            this.tbSoTien.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbSoTien.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.tbSoTien.Location = new System.Drawing.Point(157, 21);
+            this.tbSoTien.Margin = new System.Windows.Forms.Padding(4);
+            this.tbSoTien.Multiline = false;
+            this.tbSoTien.Name = "tbSoTien";
+            this.tbSoTien.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.tbSoTien.PasswordChar = false;
+            this.tbSoTien.PlaceholderColor = System.Drawing.Color.DarkGray;
+            this.tbSoTien.PlaceholderText = "";
+            this.tbSoTien.Size = new System.Drawing.Size(250, 35);
+            this.tbSoTien.TabIndex = 6;
+            this.tbSoTien.Texts = "";
+            this.tbSoTien.UnderlinedStyle = false;
+            // 
             // btnChuyenTien
             // 
-            this.btnChuyenTien.Location = new System.Drawing.Point(434, 21);
+            this.btnChuyenTien.Location = new System.Drawing.Point(429, 76);
             this.btnChuyenTien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnChuyenTien.Name = "btnChuyenTien";
             this.btnChuyenTien.Size = new System.Drawing.Size(99, 34);
@@ -224,13 +296,14 @@
             this.btnChuyenTien.UseVisualStyleBackColor = true;
             this.btnChuyenTien.Click += new System.EventHandler(this.btnChuyenTien_Click);
             // 
-            // tbSoTien
+            // label3
             // 
-            this.tbSoTien.Location = new System.Drawing.Point(181, 25);
-            this.tbSoTien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.tbSoTien.Name = "tbSoTien";
-            this.tbSoTien.Size = new System.Drawing.Size(246, 22);
-            this.tbSoTien.TabIndex = 4;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(11, 76);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(134, 16);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Nội dung chuyển tiền:";
             // 
             // label17
             // 
@@ -241,19 +314,11 @@
             this.label17.TabIndex = 3;
             this.label17.Text = "Số tiền cần chuyển:";
             // 
-            // tbxSoTKChuyen
-            // 
-            this.tbxSoTKChuyen.Location = new System.Drawing.Point(168, 9);
-            this.tbxSoTKChuyen.Name = "tbxSoTKChuyen";
-            this.tbxSoTKChuyen.Size = new System.Drawing.Size(348, 22);
-            this.tbxSoTKChuyen.TabIndex = 3;
-            this.tbxSoTKChuyen.TextChanged += new System.EventHandler(this.tbxSoTKChuyen_TextChanged);
-            // 
             // FChuyenTien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(547, 338);
+            this.ClientSize = new System.Drawing.Size(547, 478);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -290,10 +355,12 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button btnChuyenTien;
-        private System.Windows.Forms.TextBox tbSoTien;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox tbxSoTKNhan;
         private System.Windows.Forms.Button btnKiemTra;
-        private System.Windows.Forms.TextBox tbxSoTKChuyen;
+        private RJCodeAdvance.RJControls.RJTextBox tbxSoTKChuyen;
+        private RJCodeAdvance.RJControls.RJTextBox tbxSoTKNhan;
+        private System.Windows.Forms.TextBox tbNoiDung;
+        private RJCodeAdvance.RJControls.RJTextBox tbSoTien;
+        private System.Windows.Forms.Label label3;
     }
 }

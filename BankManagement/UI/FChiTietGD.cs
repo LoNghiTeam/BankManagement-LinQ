@@ -38,6 +38,7 @@ namespace BankManagement.UI
             tbxTenNgGui.Texts = taiKhoanGui.HoVaTen;
             tbxTenNgNhan.Texts = taiKhoanNhan.HoVaTen;
             tbxLoaiGD.Texts = Enum.GetName(typeof(LoaiGiaoDich), gd.LoaiGD);
+            tbNoiDung.Text = gd.NoiDungGD;
         }
     }
 }

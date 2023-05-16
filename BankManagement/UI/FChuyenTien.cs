@@ -22,7 +22,7 @@ namespace BankManagement
         {
             btnChuyenTien.Enabled = false;
             lblNguoiChuyen.Text = taiKhoanChuyen.HoVaTen;
-            tbxSoTKChuyen.Text = taiKhoanChuyen.SoTK.ToString();
+            tbxSoTKChuyen.Texts = taiKhoanChuyen.SoTK.ToString();
             lblSoDu.Text = taiKhoanChuyen.SoDu.ToString() + " VND";
             if (logging.Taikhoan.IsAdmin != 1)
             {
@@ -33,7 +33,7 @@ namespace BankManagement
         private void btnKiemTra_Click(object sender, EventArgs e)
         {
             int soTKNhan;
-            Int32.TryParse(tbxSoTKNhan.Text, out soTKNhan);
+            Int32.TryParse(tbxSoTKNhan.Texts, out soTKNhan);
             if (tkService.CheckSoTaiKhoan(soTKNhan))
             {
                 taiKhoanNhan = tkService.GetTaiKhoan(soTKNhan);
@@ -52,13 +52,13 @@ namespace BankManagement
         private void btnChuyenTien_Click(object sender, EventArgs e)
         {
             double soTien;
-            if (double.TryParse(tbSoTien.Text, out soTien))
+            if (double.TryParse(tbSoTien.Texts, out soTien))
             {
                 if (soTien.ToString() != "" && soTien > 0)
                 {
                     if (taiKhoanChuyen.SoDu >= soTien)
                     {
-                        gdService.TaoGiaoDichChuyenTien(taiKhoanChuyen.SoTK, taiKhoanNhan.SoTK, soTien);
+                        gdService.TaoGiaoDichChuyenTien(taiKhoanChuyen.SoTK, taiKhoanNhan.SoTK, soTien, tbNoiDung.Text);
                         taiKhoanChuyen = tkService.GetTaiKhoan(taiKhoanChuyen.SoTK);
                         taiKhoanNhan = tkService.GetTaiKhoan(taiKhoanNhan.SoTK);
                         if (logging.Taikhoan.SoTK == taiKhoanChuyen.SoTK || logging.Taikhoan.SoTK == taiKhoanNhan.SoTK)
@@ -84,16 +84,23 @@ namespace BankManagement
             }
         }
 
-        private void tbxSoTKChuyen_TextChanged(object sender, EventArgs e)
+        private void tbxSoTKChuyen__TextChanged(object sender, EventArgs e)
         {
             int soTKChuyen;
-            Int32.TryParse(tbxSoTKChuyen.Text, out soTKChuyen);
-            if(tkService.CheckSoTaiKhoan(soTKChuyen))
+            Int32.TryParse(tbxSoTKChuyen.Texts, out soTKChuyen);
+            if (tkService.CheckSoTaiKhoan(soTKChuyen))
             {
                 taiKhoanChuyen = tkService.GetTaiKhoan(soTKChuyen);
                 lblNguoiChuyen.Text = taiKhoanChuyen.HoVaTen;
                 lblSoDu.Text = taiKhoanChuyen.SoDu.ToString();
+                tbNoiDung.Text = taiKhoanChuyen.HoVaTen + " chuyển tiền";
                 btnChuyenTien.Enabled = true;
+            }
+            else
+            {
+                lblNguoiChuyen.Text = "Không tìm thấy";
+                lblSoDu.Text = "0 VNĐ";
+                tbNoiDung.Text = "Chuyển tiền";
             }
         }
     }

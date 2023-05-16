@@ -12,6 +12,10 @@ namespace BankManagement.Service
     {
         GiaoDichDAO gdDAO = new GiaoDichDAO();
 
+        internal void ThayDoiTrangThaiGD(int maGD, int trangThai)
+        {
+            gdDAO.ThayDoiTrangThaiGD(maGD, trangThai);
+        }
         internal List<GiaoDich> KetQuaTimKiem(string tbxMaGD, string tbxNgGui, string tbxNgNhan, Boolean dateCheck,
                                                 DateTime date, string tbxTienGD, int loaiGD)
         {
@@ -45,9 +49,9 @@ namespace BankManagement.Service
         {
             gdDAO.TaoGiaoDichVayTD(kv);
         }
-        public void TaoGiaoDichThanhToanNoTheTD(int maTheTD, int soTK, double soTien)
+        public void TaoGiaoDichThanhToanNoTheTD(int maGD, int maTheTD, int soTK, double soTien)
         {
-            gdDAO.TaoGiaoDichThanhToanNoTheTD(maTheTD, soTK, soTien);
+            gdDAO.TaoGiaoDichThanhToanNoTheTD(maGD, maTheTD, soTK, soTien);
         }
         public void TaoGiaoDichRutTienTheTD(int soTKRut, int maTheTD, double soTien)
         {
@@ -66,9 +70,9 @@ namespace BankManagement.Service
             gdDAO.TaoGiaoDichTatToanSTK(stk, soTien);
         }
 
-        public void TaoGiaoDichChuyenTien(int soTKChuyen, int soTKNhan, double soTien)
+        public void TaoGiaoDichChuyenTien(int soTKChuyen, int soTKNhan, double soTien, string noiDung)
         {
-            gdDAO.TaoGiaoDichChuyenTien(soTKChuyen,soTKNhan, soTien);
+            gdDAO.TaoGiaoDichChuyenTien(soTKChuyen,soTKNhan, soTien, noiDung);
         }
 
         public void TaoGiaoDichRut(int soTK, double soTien)

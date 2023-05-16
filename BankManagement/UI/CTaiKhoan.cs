@@ -60,11 +60,6 @@ namespace BankManagement
             soDuColumn.HeaderText = "Số dư";
             dtgvBank.Columns.Add(soDuColumn);
 
-            DataGridViewTextBoxColumn diemTDColumn = new DataGridViewTextBoxColumn();
-            diemTDColumn.DataPropertyName = "DiemTinDung";
-            diemTDColumn.HeaderText = "Điểm tín dụng";
-            dtgvBank.Columns.Add(diemTDColumn);
-
             DataGridViewTextBoxColumn ngayMoColumn = new DataGridViewTextBoxColumn();
             ngayMoColumn.DataPropertyName = "NgayMoTaiKhoan";
             ngayMoColumn.HeaderText = "Ngày mở";
@@ -144,8 +139,7 @@ namespace BankManagement
                 tbxQueQuan.Texts = row.Cells[4].Value.ToString();
                 tbxSDT.Texts = row.Cells[5].Value.ToString();
                 tbxSoDu.Texts = row.Cells[6].Value.ToString();
-                tbxDiemTD.Texts = row.Cells[7].Value.ToString();
-                tbxNgayMo.Texts = row.Cells[8].Value.ToString();
+                tbxNgayMo.Texts = row.Cells[7].Value.ToString();
             }
 
         }

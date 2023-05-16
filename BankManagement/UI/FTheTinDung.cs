@@ -52,27 +52,6 @@ namespace BankManagement.UI
             }
         }
 
-        private void btnThanhToan_Click(object sender, EventArgs e)
-        {
-            if(theTD.SoDu  != theTD.HanMuc)
-            {
-                FThanhToanTTD fThanhToanTTD = new FThanhToanTTD(theTD, taiKhoan);
-                fThanhToanTTD.ShowDialog();
-                cbSoTheTD_OnSelectedIndexChanged(sender, e);
-
-                taiKhoan = tkService.GetTaiKhoan(taiKhoan.SoTK);
-                if(logging.Taikhoan.SoTK == taiKhoan.SoTK)
-                {
-                    logging.Taikhoan = taiKhoan;
-                }
-            }
-            else
-            {
-                MessageBox.Show("Thẻ không có nợ để thanh toán!");
-            }
-        }
-       
-        
         private void btnRutTien_Click(object sender, EventArgs e)
         {
             if (taiKhoan.DanhSachDen == 1)
@@ -143,7 +122,6 @@ namespace BankManagement.UI
                 lbNgayHan.Text = "...";
                 btnChuyenTien.Enabled = false;
                 btnRutTien.Enabled = false;
-                btnThanhToan.Enabled = false;
             }
         }
 
@@ -171,13 +149,19 @@ namespace BankManagement.UI
                         btnChuyenTien.Enabled = true;
                         btnRutTien.Enabled = true;
                     }
-                    btnThanhToan.Enabled = true;
                 }
                 else
                 {
                     MessageBox.Show("Thẻ lỗi và không tồn tại!");
                 }
             }
+        }
+
+        private void btnChiTietNo_Click(object sender, EventArgs e)
+        {
+            FThanhToanTTD fThanhToanTTD = new FThanhToanTTD(theTD,taiKhoan);
+            fThanhToanTTD.ShowDialog();
+            cbSoTheTD_OnSelectedIndexChanged(sender, e);
         }
     }
 
